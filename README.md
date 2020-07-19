@@ -1,6 +1,6 @@
 # eCarComparison
 
-Codeworks solo project comparing electric and cars
+Codeworks solo project comparing electric and ICE cars
 
 Tech Stack:
 TypeScript
