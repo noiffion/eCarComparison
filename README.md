@@ -6,7 +6,7 @@ Tech Stack:
 TypeScript
 Mongo
 Express
-Next.js
 GraphQL
+React
 JWT
 Jest
