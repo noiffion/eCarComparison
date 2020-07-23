@@ -13,6 +13,9 @@ Jest
 
 
 sources:
+TypeScript Express:
+ - https://wanago.io/2018/12/03/typescript-express-tutorial-routing-controllers-middleware/
+
 Mongo-Express-GraphQL-TypeScript:
  - https://www.ibrahima-ndaw.com/blog/graphql-api-express-mongodb/
 
