@@ -1,0 +1,32 @@
+{
+  "name": "ecarcomparison",
+  "version": "1.0.0",
+  "description": "eCarComparison Codeworks project BE folder",
+  "main": "server.ts",
+  "repository": "https://github.com/noiffion/eCarComparison",
+  "author": "DK",
+  "license": "BSD",
+  "private": false,
+  "scripts": {
+    "start": "./node_modules/.bin/nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "apollo-server-express": "^2.16.0",
+    "class-validator": "^0.12.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "graphql": "^15.3.0",
+    "mongoose": "^5.9.25",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "^1.0.0-rc.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.7",
+    "@types/mongoose": "^5.7.32",
+    "@types/node": "^14.0.24",
+    "nodemon": "^2.0.4",
+    "ts-node": "^8.10.2",
+    "ts-node-dev": "^1.0.0-pre.54"
+  }
+}
