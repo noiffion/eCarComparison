@@ -32,7 +32,7 @@ const info: Info = {
 
 console.oldInfo = console.info;
 console.info = function() {
-  const infoIcon = [info.blueBg + info.blueFg, info.icon, info.reset];
+  const infoIcon = [info.blueBg + info.whiteFg, info.icon, info.reset];
   const msg = [info.blueFg, ...arguments, info.reset];
   console.oldInfo(...infoIcon, ...msg);
 };
