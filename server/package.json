@@ -1,5 +1,5 @@
 {
-  "name": "ecarcomparison",
+  "name": "ecarcomparison_server",
   "version": "1.0.0",
   "description": "eCarComparison Codeworks project BE folder",
   "main": "server.ts",
@@ -9,9 +9,23 @@
   "private": false,
   "scripts": {
     "dev": "tsnd --respawn server.ts",
+    "lint": "eslint . --ext .ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "lint-staged": {
+    "./**/*.{ts,json,md}": [
+      "prettier --write",
+      "eslint"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.7.0",
+    "@typescript-eslint/parser": "^3.7.0",
     "apollo-server-express": "^2.16.0",
     "class-validator": "^0.12.2",
     "cors": "^2.8.5",
@@ -27,6 +41,7 @@
     "@types/express": "^4.17.7",
     "@types/mongoose": "^5.7.32",
     "@types/node": "^14.0.24",
+    "eslint": "^7.5.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
