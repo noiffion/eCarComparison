@@ -10,17 +10,13 @@
   "scripts": {
     "dev": "tsnd --respawn server.ts",
     "lint": "eslint . --ext .ts",
+    "pretty": "./node_modules/.bin/prettier --write './**/*.{ts,json,md}'",
+    "format": "yarn lint && yarn pretty",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "lint-staged": {
-    "./**/*.{ts,json,md}": [
-      "prettier --write",
-      "eslint"
-    ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "yarn format"
     }
   },
   "dependencies": {
@@ -43,7 +39,6 @@
     "@types/node": "^14.0.24",
     "eslint": "^7.5.0",
     "husky": "^4.2.5",
-    "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
     "ts-node": "^8.10.2",
     "ts-node-dev": "^1.0.0-pre.54"

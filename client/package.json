@@ -6,17 +6,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --write",
-      "eslint"
-    ]
+    "eject": "react-scripts eject",
+    "pretty": "./node_modules/.bin/prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "yarn pretty"
     }
   },
   "eslintConfig": {
@@ -51,7 +46,6 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.5",
     "husky": "^4.2.5",
-    "lint-staged": "^10.2.11",
     "prettier": "^2.0.5"
   }
 }
