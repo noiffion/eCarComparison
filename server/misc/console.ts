@@ -24,16 +24,16 @@ interface Info extends BaseLog {
 const info: Info = {
   icon: '\u2139',
   blueBg: '\x1b[44m',
-  blueFg: '\x1b[36m',
+  blueFg: '\x1b[34m',
   whiteFg: '\x1b[37m',
   reset: '\x1b[0m',
   reverse: '\x1b[7m',
 };
 
 console.oldInfo = console.info;
-console.info = function () {
+console.info = function (...args: string[]): void {
   const infoIcon = [info.blueBg + info.whiteFg, info.icon, info.reset];
-  const msg = [info.blueFg, ...arguments, info.reset];
+  const msg: string[] = [info.blueFg, ...args, info.reset];
   console.oldInfo(...infoIcon, ...msg);
 };
 
@@ -51,13 +51,13 @@ const warn: Warn = {
 };
 
 console.oldWarn = console.warn;
-console.warn = function () {
+console.warn = function (...args: string[]): void {
   const warnIcon: string[] = [
     warn.yellowBg + warn.whiteFg,
     warn.icon,
     warn.reset,
   ];
-  const msg = [warn.yellowFg, ...arguments, warn.reset];
+  const msg: string[] = [warn.yellowFg, ...args, warn.reset];
   console.oldWarn(...warnIcon, ...msg);
 };
 
@@ -75,13 +75,13 @@ const error: Error = {
 };
 
 console.oldError = console.error;
-console.error = function () {
+console.error = function (...args: string[]): void {
   const errorIcon: string[] = [
     error.redBg + error.whiteFg,
     error.icon,
     error.reset,
   ];
-  const msg = [error.redFg, ...arguments, error.reset];
+  const msg: string[] = [error.redFg, ...args, error.reset];
   console.oldError(...errorIcon, ...msg);
 };
 

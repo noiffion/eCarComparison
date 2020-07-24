@@ -11,12 +11,12 @@
     "dev": "tsnd --respawn server.ts",
     "lint": "eslint . --ext .ts",
     "pretty": "./node_modules/.bin/prettier --write './**/*.{ts,json,md}'",
-    "format": "yarn lint && yarn pretty",
+    "fchk": "yarn lint && yarn pretty",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn format"
+      "pre-commit": "yarn fchk"
     }
   },
   "dependencies": {
