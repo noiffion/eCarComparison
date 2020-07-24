@@ -5,7 +5,6 @@ import { createBrowserHistory } from 'history';
 import CarBoard from './Containers/CarBoard';
 import * as serviceWorker from './ServiceWorker';
 
-
 ReactDOM.render(
   <React.StrictMode>
     <Router history={createBrowserHistory()}>
