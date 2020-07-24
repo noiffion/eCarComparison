@@ -15,9 +15,7 @@ const isLocalhost = Boolean(
     // [::1] is the IPv6 localhost address.
     window.location.hostname === '[::1]' ||
     // 127.0.0.0/8 are considered localhost for IPv4.
-    window.location.hostname.match(
-      /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
-    )
+    window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/)
 );
 
 type Config = {
@@ -25,44 +23,11 @@ type Config = {
   onUpdate?: (registration: ServiceWorkerRegistration) => void;
 };
 
-export function register(config?: Config) {
-  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
-    // The URL constructor is available in all browsers that support SW.
-    const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
-    if (publicUrl.origin !== window.location.origin) {
-      // Our service worker won't work if PUBLIC_URL is on a different origin
-      // from what our page is served on. This might happen if a CDN is used to
-      // serve assets; see https://github.com/facebook/create-react-app/issues/2374
-      return;
-    }
-
-    window.addEventListener('load', () => {
-      const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
-
-      if (isLocalhost) {
-        // This is running on localhost. Let's check if a service worker still exists or not.
-        checkValidServiceWorker(swUrl, config);
-
-        // Add some additional logging to localhost, pointing developers to the
-        // service worker/PWA documentation.
-        navigator.serviceWorker.ready.then(() => {
-          console.info(
-            'This web app is being served cache-first by a service ' +
-              'worker. To learn more, visit https://bit.ly/CRA-PWA'
-          );
-        });
-      } else {
-        // Is not localhost. Just register service worker
-        registerValidSW(swUrl, config);
-      }
-    });
-  }
-}
-
 function registerValidSW(swUrl: string, config?: Config) {
   navigator.serviceWorker
     .register(swUrl)
-    .then((registration) => {
+    .then((registrationArg) => {
+      const registration = registrationArg;
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
         if (installingWorker == null) {
@@ -74,10 +39,9 @@ function registerValidSW(swUrl: string, config?: Config) {
               // At this point, the updated precached content has been fetched,
               // but the previous service worker will still serve the older
               // content until all client tabs are closed.
-              console.info(
-                'New content is available and will be used when all ' +
-                  'tabs for this page are closed. See https://bit.ly/CRA-PWA.'
-              );
+              const stateChangeMsg = `New content is available and will be used when all
+                tabs for this page are closed. See https://bit.ly/CRA-PWA.`;
+              console.info(stateChangeMsg); // eslint-disable-line no-console
 
               // Execute callback
               if (config && config.onUpdate) {
@@ -87,7 +51,7 @@ function registerValidSW(swUrl: string, config?: Config) {
               // At this point, everything has been precached.
               // It's the perfect time to display a
               // "Content is cached for offline use." message.
-              console.info('Content is cached for offline use.');
+              console.info('Content is cached for offline use.'); // eslint-disable-line no-console
 
               // Execute callback
               if (config && config.onSuccess) {
@@ -99,7 +63,7 @@ function registerValidSW(swUrl: string, config?: Config) {
       };
     })
     .catch((error) => {
-      console.error('Error during service worker registration:', error);
+      console.error('Error during service worker registration:', error); // eslint-disable-line no-console
     });
 }
 
@@ -127,13 +91,45 @@ function checkValidServiceWorker(swUrl: string, config?: Config) {
       }
     })
     .catch(() => {
-      console.info(
-        'No internet connection found. App is running in offline mode.'
-      );
+      const errMsg = 'No internet connection found. App is running in offline mode.';
+      console.error(errMsg); // eslint-disable-line no-console
     });
 }
 
-export function unregister() {
+export function register(config?: Config): void {
+  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+    // The URL constructor is available in all browsers that support SW.
+    const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
+    if (publicUrl.origin !== window.location.origin) {
+      // Our service worker won't work if PUBLIC_URL is on a different origin
+      // from what our page is served on. This might happen if a CDN is used to
+      // serve assets; see https://github.com/facebook/create-react-app/issues/2374
+      return;
+    }
+
+    window.addEventListener('load', () => {
+      const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
+
+      if (isLocalhost) {
+        // This is running on localhost. Let's check if a service worker still exists or not.
+        checkValidServiceWorker(swUrl, config);
+
+        // Add some additional logging to localhost, pointing developers to the
+        // service worker/PWA documentation.
+        navigator.serviceWorker.ready.then(() => {
+          const readyMsg = `This web app is being served cache-first by a service
+            worker. To learn more, visit https://bit.ly/CRA-PWA`;
+          console.info(readyMsg); // eslint-disable-line no-console
+        });
+      } else {
+        // Is not localhost. Just register service worker
+        registerValidSW(swUrl, config);
+      }
+    });
+  }
+}
+
+export function unregister(): void {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.ready
       .then((registration) => {

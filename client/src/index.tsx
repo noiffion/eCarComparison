@@ -8,7 +8,7 @@ import * as serviceWorker from './ServiceWorker';
 ReactDOM.render(
   <React.StrictMode>
     <Router history={createBrowserHistory()}>
-      <CarBoard />
+      <CarBoard movie="movie" addOrRemove />
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
