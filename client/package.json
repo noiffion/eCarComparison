@@ -1,19 +1,20 @@
 {
   "name": "ecarcomparison_client",
   "version": "0.1.0",
-  "private": true,
+  "author": "David Kerekes",
+  "license": "BSD-3-Clause",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint . --ext .tsx --ext .ts",
+    "eslint": "eslint . --ext .tsx --ext .ts",
     "pretty": "./node_modules/.bin/prettier --write 'src/**/*.{ts,tsx,json,css,md}'",
-    "synchk": "yarn run lint && yarn run pretty"
+    "lint": "yarn run eslint && yarn run pretty"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn run synchk"
+      "pre-commit": "yarn run lint"
     }
   },
   "eslintConfig": {
