@@ -4,19 +4,19 @@
   "description": "eCarComparison Codeworks project BE folder",
   "main": "src/server.ts",
   "repository": "https://github.com/noiffion/eCarComparison",
-  "author": "DK",
-  "license": "BSD",
+  "author": "David Kerekes",
+  "license": "BSD-3-Clause",
   "private": false,
   "scripts": {
     "start": "./node_modules/.bin/nodemon",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint . --ext .ts",
+    "eslint": "eslint . --ext .ts",
     "pretty": "./node_modules/.bin/prettier --write './**/*.{ts,json,md}'",
-    "check": "yarn run lint && yarn run pretty"
+    "lint": "yarn run eslint && yarn run pretty"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn run check"
+      "pre-commit": "yarn run lint"
     }
   },
   "dependencies": {
