@@ -1,11 +1,15 @@
-import * as express from 'express';
+import express, {
+  Request,
+  Response,
+  NextFunction
+} from 'express';
 import console from './misc/console';
 
 const PORT = 3003;
 
 const app = express();
 
-app.get('/', (req, res) => {
+app.get('/', (req: Request, res: Response) => {
   res.send('Hello world!');
 });
 
