@@ -8,13 +8,17 @@
     "esModuleInterop": true,
     "sourceMap": true,
     "baseUrl": ".",
+    "rootDir": "src",
     "paths": {
       "*": ["node_modules*"]
     },
     "typeRoots": ["node_modules/@types"],
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true
+    "noEmit": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true
   },
-  "include": ["src/**/*",],
+  "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }
