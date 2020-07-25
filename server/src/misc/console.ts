@@ -52,11 +52,7 @@ const warn: Warn = {
 
 console.oldWarn = console.warn;
 console.warn = function (...args: string[]): void {
-  const warnIcon: string[] = [
-    warn.yellowBg + warn.whiteFg,
-    warn.icon,
-    warn.reset,
-  ];
+  const warnIcon: string[] = [warn.yellowBg + warn.whiteFg, warn.icon, warn.reset];
   const msg: string[] = [warn.yellowFg, ...args, warn.reset];
   console.oldWarn(...warnIcon, ...msg);
 };
@@ -76,11 +72,7 @@ const error: Error = {
 
 console.oldError = console.error;
 console.error = function (...args: string[]): void {
-  const errorIcon: string[] = [
-    error.redBg + error.whiteFg,
-    error.icon,
-    error.reset,
-  ];
+  const errorIcon: string[] = [error.redBg + error.whiteFg, error.icon, error.reset];
   const msg: string[] = [error.redFg, ...args, error.reset];
   console.oldError(...errorIcon, ...msg);
 };
