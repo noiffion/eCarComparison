@@ -1,16 +1,16 @@
 import React from 'react';
 
 interface PropTypes {
-  movie: string;
+  car: string;
   addOrRemove: boolean;
 }
 
-const CarBoard: React.FC<PropTypes> = ({ movie, addOrRemove }: PropTypes) => {
+function CarBoard({ car, addOrRemove }: PropTypes): React.ReactElement {
   return (
     <main>
-      <h1>{addOrRemove ? movie : null}</h1>
+      <h1>{addOrRemove ? car : null}</h1>
     </main>
   );
-};
+}
 
 export default CarBoard;
