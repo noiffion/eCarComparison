@@ -17,6 +17,7 @@
     "noEmit": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
     "skipLibCheck": true
   },
   "include": ["src/**/*"],
