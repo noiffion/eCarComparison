@@ -1,42 +1,24 @@
 import Controller from './interface';
-import User from '../models/User';
-import Car from '../models/Car';
-
+import getCars from './car/getCars';
+import getOneCar from './car/getOneCar';
+import signUp from './user/signUp';
+import profile from './user/profile';
+import login from './user/login';
+import readMsgs from './message/readMsgs';
+import createMsg from './message/createMsg';
+import updateMsg from './message/updateMsg';
+import deleteMsg from './message/deleteMsg';
 
 const controller: Controller = {
-
-  getCars (req, res) {
-    try {
-
-    } catch (err) {
-
-    }
-  },
-
-  getOneCar (req, res) {
-    try {
-
-    } catch (err) {
-
-    }
-  },
-
-  login (req, res) {
-    try {
-
-    } catch (err) {
-
-    }
-  },
-
-  profile (req, res) {
-    try {
-
-    } catch (err) {
-
-    }
-  },
-
-}
+  getCars,
+  getOneCar,
+  signUp,
+  login,
+  profile,
+  readMsgs,
+  createMsg,
+  updateMsg,
+  deleteMsg,
+};
 
 export default controller;
