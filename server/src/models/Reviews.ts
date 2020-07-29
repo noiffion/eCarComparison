@@ -14,9 +14,12 @@ const Reviews: mongoose.Schema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    vote: {
-      type: String,
-      required: true,
+    carRating: {
+      type: Number,
+    },
+    useful: {
+      type: Number,
+      default: 0,
     },
   },
   { timestamps: true }
