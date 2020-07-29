@@ -1,5 +1,5 @@
 import { ControllerMethod } from '../interface';
-import Car from '../../models/Car';
+import Cars from '../../models/Cars';
 
 const getOneCar: ControllerMethod = async function (req, res) {
   try {

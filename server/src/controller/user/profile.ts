@@ -1,5 +1,5 @@
 import { ControllerMethod } from '../interface';
-import User from '../../models/User';
+import Users from '../../models/Users';
 
 const profile: ControllerMethod = async function (req, res) {
   try {

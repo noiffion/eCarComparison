@@ -1,12 +1,6 @@
 import mongoose from 'mongoose';
 
-export interface ICar extends mongoose.Document {
-  name: string;
-  type: string;
-  medianPrice: number;
-}
-
-const CarSchema: mongoose.Schema = new mongoose.Schema(
+const Cars: mongoose.Schema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -26,4 +20,4 @@ const CarSchema: mongoose.Schema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model<ICar>('Car', CarSchema);
+export default mongoose.model('cars', Cars);
