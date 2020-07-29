@@ -4,10 +4,10 @@ import getOneCar from './car/getOneCar';
 import signUp from './user/signUp';
 import profile from './user/profile';
 import login from './user/login';
-import readMsgs from './message/readMsgs';
-import createMsg from './message/createMsg';
-import updateMsg from './message/updateMsg';
-import deleteMsg from './message/deleteMsg';
+import readRevs from './review/readRevs';
+import createRev from './review/createRev';
+import updateRev from './review/updateRev';
+import deleteRev from './review/deleteRev';
 
 const controller: Controller = {
   getCars,
@@ -15,10 +15,10 @@ const controller: Controller = {
   signUp,
   login,
   profile,
-  readMsgs,
-  createMsg,
-  updateMsg,
-  deleteMsg,
+  readRevs,
+  createRev,
+  updateRev,
+  deleteRev,
 };
 
 export default controller;

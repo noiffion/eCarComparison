@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const Messages: mongoose.Schema = new mongoose.Schema(
+const Reviews: mongoose.Schema = new mongoose.Schema(
   {
     carId: {
       type: String,
@@ -22,4 +22,4 @@ const Messages: mongoose.Schema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model('messages', Messages);
+export default mongoose.model('reviews', Reviews);

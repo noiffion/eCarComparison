@@ -10,10 +10,10 @@ interface Controller {
   signUp: ControllerMethod;
   login: ControllerMethod;
   profile: ControllerMethod;
-  readMsgs: ControllerMethod;
-  createMsg: ControllerMethod;
-  updateMsg: ControllerMethod;
-  deleteMsg: ControllerMethod;
+  readRevs: ControllerMethod;
+  createRev: ControllerMethod;
+  updateRev: ControllerMethod;
+  deleteRev: ControllerMethod;
 }
 
 export default Controller;
