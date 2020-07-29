@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 export interface ICar extends mongoose.Document {
   name: string;
   type: string;
+  medianPrice: number;
 }
 
 const CarSchema: mongoose.Schema = new mongoose.Schema(
@@ -12,17 +13,17 @@ const CarSchema: mongoose.Schema = new mongoose.Schema(
       required: true,
     },
 
-    email: {
+    type: {
       type: String,
       required: true,
     },
 
-    password: {
-      type: String,
+    medianPrice: {
+      type: Number,
       required: true,
     },
   },
   { timestamps: true }
-)
+);
 
-export default mongoose.model<ICar>('Car', CarSchema)
+export default mongoose.model<ICar>('Car', CarSchema);
