@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import console from './misc/console';
+import console from './utils/console';
 import router from './router';
 import cors from 'cors';
 

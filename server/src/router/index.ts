@@ -9,9 +9,9 @@ router.post('/signup', controller.signUp);
 router.post('/login', controller.login);
 router.get('/profile', controller.profile);
 
-router.get('/reviews/:carId', controller.readRevs);
-router.post('/review', controller.createRev);
-router.put('/review/:reviewId', controller.updateRev);
-router.delete('/review/:reviewId', controller.deleteRev);
+router.get('/reviews', controller.readRevs);
+router.post('/reviews', controller.createRev);
+router.put('/reviews/:reviewId', controller.updateRev);
+router.delete('/reviews/:reviewId', controller.deleteRev);
 
 export default router;

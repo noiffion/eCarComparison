@@ -14,6 +14,11 @@
   },
   "rules": {
     "linebreak-style": "off",
-    "no-console": ["warn", { "allow": ["info", "warn", "error"] }]
+    "no-console": [
+      "warn",
+      {
+        "allow": ["oldInfo", "info", "oldWarn", "warn", "oldError", "error"]
+      }
+    ]
   }
 }
