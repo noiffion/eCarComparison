@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import Users from '../models/Users';
 const JWT_KEY = process.env.JWT_KEY || '';
 
-async function checkAuth(
+async function authCheck(
   req: Request,
   res: Response,
   next: NextFunction
@@ -23,7 +23,7 @@ async function checkAuth(
   }
 }
 
-export default checkAuth;
+export default authCheck;
 
 console.log('Erase below:');
 /*
