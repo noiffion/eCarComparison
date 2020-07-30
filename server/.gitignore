@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+
+src/utils/cars.json
+src/utils/reviews.json
+src/utils/users.json
