@@ -2,6 +2,10 @@ import mongoose from 'mongoose';
 import { Car } from './interfaces';
 
 const Cars: mongoose.Schema = new mongoose.Schema({
+  manufacturer: {
+    type: String,
+    required: true,
+  },
   name: {
     type: String,
     required: true,
@@ -10,11 +14,11 @@ const Cars: mongoose.Schema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  manufacturer: {
-    type: String,
+  doors: {
+    type: Number,
     required: true,
   },
-  medianPrice: {
+  msrp: {
     type: Number,
     required: true,
   },
