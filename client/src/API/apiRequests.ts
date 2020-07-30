@@ -11,13 +11,13 @@ async function defaultRequest<T>(path: string, init: RequestInit): Promise<T> {
 
 export default {
   async getCars(): Promise<Car[]> {
-    const init = {
+    const init: RequestInit = {
       method: 'GET',
     };
     return defaultRequest<Car[]>('cars', init);
   },
   async getOneCar(carId: string): Promise<Car> {
-    const init = {
+    const init: RequestInit = {
       method: 'GET',
       headers: {
         Mode: 'cors',
@@ -28,7 +28,7 @@ export default {
 
   async signAuth(isNew: boolean, userData: User): Promise<string> {
     const path = isNew ? 'signUp' : 'login';
-    const init = {
+    const init: RequestInit = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ export default {
     return defaultRequest<string>(path, init);
   },
   async profile(jwtToken: string): Promise<User> {
-    const init = {
+    const init: RequestInit = {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ export default {
   },
 
   async getReviews(): Promise<Review> {
-    const init = {
+    const init: RequestInit = {
       method: 'GET',
       headers: {
         Mode: 'cors',
@@ -64,7 +64,7 @@ export default {
     return defaultRequest<Review>('reviews', init);
   },
   async newReview(jwtToken: string, review: Review): Promise<Review> {
-    const init = {
+    const init: RequestInit = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ export default {
     return defaultRequest<Review>('reviews', init);
   },
   async updReview(jwtToken: string, review: Review, reviewId: string): Promise<Review> {
-    const init = {
+    const init: RequestInit = {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -90,7 +90,7 @@ export default {
     return defaultRequest<Review>(`reviews/${reviewId}`, init);
   },
   async delReview(jwtToken: string, reviewId: string): Promise<Review> {
-    const init = {
+    const init: RequestInit = {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
