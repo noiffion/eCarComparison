@@ -10,11 +10,11 @@
     "eject": "react-scripts eject",
     "eslint": "eslint . --ext .tsx --ext .ts",
     "pretty": "./node_modules/.bin/prettier --write 'src/**/*.{ts,tsx,json,css,md}'",
-    "lint": "yarn run eslint && yarn run pretty"
+    "check": "yarn run eslint && yarn run pretty"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn run lint"
+      "pre-commit": "yarn run check"
     }
   },
   "eslintConfig": {
