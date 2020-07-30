@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { User } from './interface';
 
 const Users: mongoose.Schema = new mongoose.Schema({
   email: {
@@ -36,4 +37,4 @@ const Users: mongoose.Schema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model('users', Users);
+export default mongoose.model<User>('users', Users);

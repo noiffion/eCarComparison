@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { Car } from './interface';
 
 const Cars: mongoose.Schema = new mongoose.Schema({
   name: {
@@ -22,4 +23,4 @@ const Cars: mongoose.Schema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model('cars', Cars);
+export default mongoose.model<Car>('cars', Cars);
