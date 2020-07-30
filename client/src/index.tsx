@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
-import CarBoard from './Containers/CarBoard';
+import Main from './Containers/Main';
 import * as serviceWorker from './ServiceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
     <Router history={createBrowserHistory()}>
-      <CarBoard car="car" addOrRemove />
+      <Main />
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
