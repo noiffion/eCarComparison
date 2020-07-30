@@ -5,6 +5,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "strict": true,
+    "strictNullChecks": false,
     "alwaysStrict": true,
     "esModuleInterop": true,
     "sourceMap": true,
