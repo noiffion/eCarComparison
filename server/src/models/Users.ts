@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { User } from './interface';
+import { User } from './interfaces';
 
 const Users: mongoose.Schema = new mongoose.Schema({
   email: {

@@ -2,7 +2,7 @@ import { ControllerMethod } from '../interface';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import Users from '../../models/Users';
-import { User } from '../../models/interface';
+import { User } from '../../models/interfaces';
 const JWT_KEY = process.env.JWT_KEY || '';
 
 const login: ControllerMethod = async function (req, res) {
