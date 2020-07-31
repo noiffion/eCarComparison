@@ -1,7 +1,6 @@
 import React from 'react';
 
-interface PropTypes {
-}
+interface PropTypes {}
 
 function CarDetails(): React.ReactElement {
   return (

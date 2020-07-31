@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface PropTypes { }
+interface PropTypes {}
 // css-in-js declarations
 const st = {
   footer: {
