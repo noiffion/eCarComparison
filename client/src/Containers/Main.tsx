@@ -1,17 +1,24 @@
 import React from 'react';
+import MainNav from '../Components/MainNav';
+import MainFoot from '../Components/MainFoot';
 import CarList from './CarList';
-
-export const MainContext = React.createContext('');
+import { MainCtxP, IMainCtx } from '../Context/MainCtx';
 
 function Main(): React.ReactElement {
-  const contextValue = 'Hello, Bello!';
+  const contextValue = 'Context Message!';
   return (
-    <MainContext.Provider value={contextValue}>
+    <MainCtxP value={contextValue}>
+      <header>
+        <MainNav />
+      </header>
       <main>
-        <h1>Main</h1>
+        <h1>Main Car</h1>
         <CarList />
       </main>
-    </MainContext.Provider>
+      <footer>
+        <MainFoot />
+      </footer>
+    </MainCtxP>
   );
 }
 
