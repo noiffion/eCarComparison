@@ -10,7 +10,15 @@ const Cars: mongoose.Schema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  type: {
+  powertrain: {
+    type: String,
+    required: true,
+  },
+  class: {
+    type: String,
+    required: true,
+  },
+  bodyStyle: {
     type: String,
     required: true,
   },
