@@ -1,4 +1,4 @@
-import { Car, User, Review } from '../Utils/interfaces';
+import { ICar, IUser, IReview } from '../Interfaces';
 
 const API_URL = 'http://localhost:3333/';
 
@@ -10,23 +10,23 @@ async function defaultRequest<T>(path: string, init: RequestInit): Promise<T> {
 }
 
 export default {
-  async getCars(): Promise<Car[]> {
+  async getCars(): Promise<ICar[]> {
     const init: RequestInit = {
       method: 'GET',
     };
-    return defaultRequest<Car[]>('cars', init);
+    return defaultRequest<ICar[]>('cars', init);
   },
-  async getOneCar(carId: string): Promise<Car> {
+  async getOneCar(carId: string): Promise<ICar> {
     const init: RequestInit = {
       method: 'GET',
       headers: {
         Mode: 'cors',
       },
     };
-    return defaultRequest<Car>(`cars/${carId}`, init);
+    return defaultRequest<ICar>(`cars/${carId}`, init);
   },
 
-  async signAuth(isNew: boolean, userData: User): Promise<string> {
+  async signAuth(isNew: boolean, userData: IUser): Promise<string> {
     const path = isNew ? 'signUp' : 'login';
     const init: RequestInit = {
       method: 'POST',
@@ -38,7 +38,7 @@ export default {
     };
     return defaultRequest<string>(path, init);
   },
-  async profile(jwtToken: string): Promise<User> {
+  async profile(jwtToken: string): Promise<IUser> {
     const init: RequestInit = {
       method: 'GET',
       headers: {
@@ -48,22 +48,22 @@ export default {
         Authorization: `Bearer ${jwtToken}`,
       },
     };
-    return defaultRequest<User>('profile', init);
+    return defaultRequest<IUser>('profile', init);
   },
   logout(token: string): void {
     sessionStorage.removeItem(token);
   },
 
-  async getReviews(): Promise<Review> {
+  async getReviews(): Promise<IReview> {
     const init: RequestInit = {
       method: 'GET',
       headers: {
         Mode: 'cors',
       },
     };
-    return defaultRequest<Review>('reviews', init);
+    return defaultRequest<IReview>('reviews', init);
   },
-  async newReview(jwtToken: string, review: Review): Promise<Review> {
+  async newReview(jwtToken: string, review: IReview): Promise<IReview> {
     const init: RequestInit = {
       method: 'POST',
       headers: {
@@ -74,9 +74,9 @@ export default {
       },
       body: JSON.stringify(review),
     };
-    return defaultRequest<Review>('reviews', init);
+    return defaultRequest<IReview>('reviews', init);
   },
-  async updReview(jwtToken: string, review: Review, reviewId: string): Promise<Review> {
+  async updReview(jwtToken: string, review: IReview, reviewId: string): Promise<IReview> {
     const init: RequestInit = {
       method: 'PUT',
       headers: {
@@ -87,9 +87,9 @@ export default {
       },
       body: JSON.stringify(review),
     };
-    return defaultRequest<Review>(`reviews/${reviewId}`, init);
+    return defaultRequest<IReview>(`reviews/${reviewId}`, init);
   },
-  async delReview(jwtToken: string, reviewId: string): Promise<Review> {
+  async delReview(jwtToken: string, reviewId: string): Promise<IReview> {
     const init: RequestInit = {
       method: 'DELETE',
       headers: {
@@ -99,6 +99,6 @@ export default {
         Authorization: `Bearer ${jwtToken}`,
       },
     };
-    return defaultRequest<Review>(`reviews/${reviewId}`, init);
+    return defaultRequest<IReview>(`reviews/${reviewId}`, init);
   },
 };

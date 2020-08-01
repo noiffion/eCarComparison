@@ -1,4 +1,4 @@
-export interface User {
+export interface IUser {
   _id: string;
   email: string;
   password: string;
@@ -11,17 +11,20 @@ export interface User {
   lastLogin: Date;
 }
 
-export interface Car {
+export interface ICar {
   _id: string;
-  carId: string;
-  userId: string;
-  text: string;
-  carRating: number;
-  useful: number;
-  timestamps: Date;
+  manufacturer: string;
+  name: string;
+  cardPics: string[];
+  powertrain: string;
+  class: string;
+  bodyStyle: string;
+  doors: number;
+  msrp: number;
+  rating: number;
 }
 
-export interface Review {
+export interface IReview {
   _id: string;
   carId: string;
   userId: string;
