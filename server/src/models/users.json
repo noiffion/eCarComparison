@@ -1,0 +1,24 @@
+[
+  {
+    "email": "mockMail@mail.com",
+    "password": "abcd1234",
+    "userName": "mockka",
+    "userIcon": "",
+    "firstName": "Mock",
+    "lastName": "Monk",
+    "favourites": [],
+    "reviews": [],
+    "lastLogin": "2020-07-30T13:21:55.714Z"
+  },
+  {
+    "email": "testUser@mail.com",
+    "password": "1234abcd",
+    "userName": "test",
+    "userIcon": "",
+    "firstName": "Thomas",
+    "lastName": "Test",
+    "favourites": [],
+    "reviews": [],
+    "lastLogin": "2020-07-30T13:22:19.025Z"
+  }
+]

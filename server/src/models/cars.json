@@ -1,0 +1,157 @@
+[
+  {
+    "manufacturer": "Nissan",
+    "name": "Leaf",
+    "cardPics": [
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/nissan_leaf_l.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/nissan_leaf_r.jpg"
+    ],
+    "powertrain": "electric",
+    "class": "compact",
+    "bodyStyle": "fastback",
+    "doors": 5,
+    "msrp": 31600,
+    "rating": null
+  },
+  {
+    "manufacturer": "Tesla",
+    "name": "3",
+    "cardPics": [
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/tesla_3_l.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/tesla_3_r.jpg"
+    ],
+    "powertrain": "electric",
+    "class": "compact",
+    "bodyStyle": "fastback",
+    "doors": 4,
+    "msrp": 38000,
+    "rating": null
+  },
+  {
+    "manufacturer": "Hyundai",
+    "name": "Ioniq",
+    "cardPics": [
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/hyundai_ioniq_l.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/hyundai_ioniq_r.jpg"
+    ],
+    "powertrain": "electric",
+    "class": "compact",
+    "bodyStyle": "liftback",
+    "doors": 5,
+    "msrp": 33045,
+    "rating": null
+  },
+  {
+    "manufacturer": "Kia",
+    "name": "Niro EV",
+    "cardPics": [
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/kia_niro_l.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/kia_niro_r.jpg"
+    ],
+    "powertrain": "electric",
+    "class": "compact",
+    "bodyStyle": "hatchback",
+    "doors": 5,
+    "msrp": 39090,
+    "rating": null
+  },
+  {
+    "manufacturer": "Audi",
+    "powertrain": "ICE",
+    "name": "A4",
+    "cardPics": [],
+    "class": "compact",
+    "bodyStyle": "sedan",
+    "doors": 4,
+    "msrp": 37400,
+    "rating": null
+  },
+  {
+    "manufacturer": "Honda",
+    "name": "Civic",
+    "cardPics": [],
+    "powertrain": "ICE",
+    "class": "compact",
+    "bodyStyle": "fastback",
+    "doors": 4,
+    "msrp": 20800,
+    "rating": null
+  },
+  {
+    "manufacturer": "Toyota",
+    "name": "Corolla",
+    "cardPics": [],
+    "powertrain": "ICE",
+    "class": "compact",
+    "bodyStyle": "hatchback",
+    "doors": 5,
+    "msrp": 20465,
+    "rating": null
+  },
+  {
+    "manufacturer": "Volkswagen",
+    "name": "Golf",
+    "cardPics": [],
+    "powertrain": "ICE",
+    "class": "compact",
+    "bodyStyle": "hatchback",
+    "doors": 5,
+    "msrp": 23195,
+    "rating": null
+  },
+  {
+    "manufacturer": "BMW",
+    "name": "3",
+    "cardPics": [],
+    "powertrain": "ICE",
+    "class": "compact",
+    "bodyStyle": "sedan",
+    "doors": 4,
+    "msrp": 41250,
+    "rating": null
+  },
+  {
+    "manufacturer": "Chevrolet",
+    "name": "Bolt",
+    "cardPics": [],
+    "powertrain": "electric",
+    "class": "subcompact",
+    "bodyStyle": "hatchback",
+    "doors": 5,
+    "msrp": 36620,
+    "rating": null
+  },
+  {
+    "manufacturer": "Audi",
+    "powertrain": "ICE",
+    "name": "A3",
+    "cardPics": [],
+    "class": "subcompact",
+    "bodyStyle": "sedan",
+    "doors": 4,
+    "msrp": 33300,
+    "rating": null
+  },
+  {
+    "manufacturer": "BMW",
+    "name": "i3",
+    "cardPics": [],
+    "powertrain": "electric",
+    "class": "subcompact",
+    "bodyStyle": "hatchback",
+    "doors": 5,
+    "msrp": 44450,
+    "rating": null
+  },
+  {
+    "manufacturer": "Jaguar",
+    "name": "I-Pace",
+    "cardPics": [],
+    "powertrain": "electric",
+    "class": "compact",
+    "bodyStyle": "suv",
+    "doors": 5,
+    "msrp": 69850,
+    "rating": null
+  }
+]

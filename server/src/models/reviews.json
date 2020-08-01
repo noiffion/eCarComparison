@@ -1,0 +1,29 @@
+[
+  {
+    "carId": "",
+    "userId": "",
+    "text": "Good car",
+    "carRating": null,
+    "useful": null,
+    "CreatedAt": "2020-07-30T13:25:52.184Z",
+    "UpdatedAt": "2020-07-30T13:26:15.123Z"
+  },
+  {
+    "carId": "",
+    "userId": "",
+    "text": "Average car",
+    "carRating": null,
+    "useful": null,
+    "CreatedAt": "2020-07-30T13:31:06.289Z",
+    "UpdatedAt": "2020-07-30T13:31:24.489Z"
+  },
+  {
+    "carId": "",
+    "userId": "",
+    "text": "Bad car",
+    "carRating": null,
+    "useful": null,
+    "CreatedAt": "2020-07-30T13:31:39.346Z",
+    "UpdatedAt": "2020-07-30T13:32:01.004Z"
+  }
+]
