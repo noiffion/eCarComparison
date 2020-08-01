@@ -5,7 +5,7 @@ export interface ControllerMethod {
 }
 
 interface Controller {
-  getCars: ControllerMethod;
+  getECars: ControllerMethod;
   getOneCar: ControllerMethod;
   signUp: ControllerMethod;
   login: ControllerMethod;

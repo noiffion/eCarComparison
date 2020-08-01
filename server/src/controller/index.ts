@@ -1,5 +1,5 @@
 import Controller from './interface';
-import getCars from './car/getCars';
+import getECars from './car/getECars';
 import getOneCar from './car/getOneCar';
 import signUp from './user/signUp';
 import profile from './user/profile';
@@ -10,7 +10,7 @@ import updateRev from './review/updateRev';
 import deleteRev from './review/deleteRev';
 
 const controller: Controller = {
-  getCars,
+  getECars,
   getOneCar,
   signUp,
   login,
