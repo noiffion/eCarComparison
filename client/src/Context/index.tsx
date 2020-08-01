@@ -17,7 +17,7 @@ const initialDummy: ICar[] = [
 ];
 
 export interface Context {
-  carList: ICar[];
+  eCarList: ICar[];
 }
-export const Ctx = React.createContext<Context>({ carList: initialDummy });
+export const Ctx = React.createContext<Context>({ eCarList: initialDummy });
 export const CtxProvider = Ctx.Provider;

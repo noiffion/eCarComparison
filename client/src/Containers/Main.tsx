@@ -19,18 +19,18 @@ const st: Styles = {
 };
 
 function Main(): React.ReactElement {
-  const [carList, setCarList] = useState<ICar[]>([]);
+  const [eCarList, setECarList] = useState<ICar[]>([]);
 
   useEffect((): void => {
     apiReqs
-      .getCars()
-      .then((cars) => setCarList(cars))
+      .getECars()
+      .then((cars) => setECarList(cars))
       .catch(console.error);
   }, []);
 
   return (
     <ThemeProvider theme={{ ...DEFAULT_THEME, rtl: false }}>
-      <CtxProvider value={{ carList }}>
+      <CtxProvider value={{ eCarList }}>
         <header>
           <MainNav />
         </header>

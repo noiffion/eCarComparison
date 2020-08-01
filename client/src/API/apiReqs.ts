@@ -10,7 +10,7 @@ async function defaultRequest<T>(path: string, init: RequestInit): Promise<T> {
 }
 
 export default {
-  async getCars(): Promise<ICar[]> {
+  async getECars(): Promise<ICar[]> {
     const init: RequestInit = {
       method: 'GET',
     };
