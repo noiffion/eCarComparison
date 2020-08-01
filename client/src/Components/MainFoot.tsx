@@ -1,17 +1,24 @@
 import React from 'react';
+import CSS from 'csstype';
 
-interface PropTypes {}
-// css-in-js declarations
-const st = {
+interface Styles {
+  footer: CSS.Properties;
+  footerList: CSS.Properties;
+}
+const st: Styles = {
   footer: {
-    border: '1px solid gray',
+    marginTop: '5vh',
+    border: '1px dotted gray',
+  },
+  footerList: {
+    listStyleType: 'none',
   },
 };
 
 function MainFoot(): React.ReactElement {
   return (
     <nav style={st.footer}>
-      <ul>
+      <ul style={st.footerList}>
         <li>Footer</li>
       </ul>
     </nav>

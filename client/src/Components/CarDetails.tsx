@@ -1,7 +1,5 @@
 import React from 'react';
 
-interface PropTypes {}
-
 function CarDetails(): React.ReactElement {
   return (
     <>
