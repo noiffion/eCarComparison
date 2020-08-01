@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { Review } from './interfaces';
+import { IReview } from './interfaces';
 
 const Reviews: mongoose.Schema = new mongoose.Schema(
   {
@@ -26,4 +26,4 @@ const Reviews: mongoose.Schema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model<Review>('reviews', Reviews);
+export default mongoose.model<IReview>('reviews', Reviews);

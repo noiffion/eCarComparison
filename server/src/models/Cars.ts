@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { Car } from './interfaces';
+import { ICar } from './interfaces';
 
 const Cars: mongoose.Schema = new mongoose.Schema({
   manufacturer: {
@@ -8,6 +8,10 @@ const Cars: mongoose.Schema = new mongoose.Schema({
   },
   name: {
     type: String,
+    required: true,
+  },
+  cardPics: {
+    type: [String],
     required: true,
   },
   powertrain: {
@@ -35,4 +39,4 @@ const Cars: mongoose.Schema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model<Car>('cars', Cars);
+export default mongoose.model<ICar>('cars', Cars);

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-export interface User extends mongoose.Document {
+export interface IUser extends mongoose.Document {
   _id: string;
   email: string;
   password: string;
@@ -13,22 +13,26 @@ export interface User extends mongoose.Document {
   lastLogin: Date;
 }
 
-export interface Car extends mongoose.Document {
+export interface ICar extends mongoose.Document {
   _id: string;
-  carId: string;
-  userId: string;
-  text: string;
-  carRating: number;
-  useful: number;
-  timestamps: Date;
+  manufacturer: string;
+  name: string;
+  cardPics: string[];
+  powertrain: string;
+  class: string;
+  bodyStyle: string;
+  doors: number;
+  msrp: number;
+  rating: number;
 }
 
-export interface Review extends mongoose.Document {
+export interface IReview extends mongoose.Document {
   _id: string;
   carId: string;
   userId: string;
   text: string;
   carRating: number;
   useful: number;
-  timestamps: Date;
+  createdAt: Date;
+  updatedAt: Date;
 }
