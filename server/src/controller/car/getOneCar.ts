@@ -3,7 +3,6 @@ import Cars from '../../models/Cars';
 
 const getOneCar: ControllerMethod = async function (req, res) {
   try {
-    console.log('getOneCar');
     res.status(200);
     res.send('getOneCar');
   } catch (err) {

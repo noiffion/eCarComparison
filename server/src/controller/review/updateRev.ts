@@ -3,7 +3,6 @@ import Reviews from '../../models/Reviews';
 
 const updateRev: ControllerMethod = async function (req, res) {
   try {
-    console.log(req.body);
     res.status(200);
     res.send('updateRev');
   } catch (err) {
