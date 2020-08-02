@@ -9,6 +9,30 @@ interface Styles {
   carInfo: CSS.Properties;
   carInfoTitle: CSS.Properties;
 }
+const CarImg = styled.img`
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  max-height: 250px;
+  transition: transform 0.3s;
+  &:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+`;
+const Logo = styled.img`
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  max-height: 150px;
+`;
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #000000;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
 
 interface PropTypes {
   car: ICar;
@@ -37,41 +61,13 @@ function Car({ car, isFromLeft }: PropTypes): React.ReactElement {
       marginTop: '4vh',
     },
   };
-  const CarImg = styled.img`
-    width: 100%;
-    max-width: 450px;
-    height: auto;
-    max-height: 250px;
-    transition: transform 0.3s;
-    &:hover {
-      transform: scale(1.1);
-      cursor: pointer;
-    }
-  `;
-  const Logo = styled.img`
-    width: 100%;
-    max-width: 150px;
-    height: auto;
-    max-height: 150px;
-  `;
-  const StyledLink = styled(Link)`
-    text-decoration: none;
-    color: #000000;
-    &:hover {
-      text-decoration: underline;
-    }
-  `;
 
   const cardPicSrc = isFromLeft ? car.cardPics[0] : car.cardPics[1];
-  const carImg = (
-    <Link to={`/carDetails/${car._id}`}>
-      <CarImg src={cardPicSrc} alt={`${car.name} thumbnail`} />
-    </Link>
-  );
+  const carImg = <CarImg src={cardPicSrc} alt={`${car.name} thumbnail`} />;
 
   return (
     <article style={st.article}>
-      {isFromLeft && carImg}
+      <Link to={`/carDetails/${car._id}`}> {isFromLeft && carImg} </Link>
       <div style={st.carInfo}>
         <h3 style={st.carInfoTitle}>
           <StyledLink to={`/carDetails/${car._id}`}>
@@ -80,7 +76,7 @@ function Car({ car, isFromLeft }: PropTypes): React.ReactElement {
         </h3>
         <Logo src={car.logo} alt={`${car.manufacturer} logo`} />
       </div>
-      {!isFromLeft && carImg}
+      <Link to={`/carDetails/${car._id}`}> {!isFromLeft && carImg} </Link>
     </article>
   );
 }

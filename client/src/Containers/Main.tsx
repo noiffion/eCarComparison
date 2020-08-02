@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider, DEFAULT_THEME } from '@zendeskgarden/react-theming';
+import { Switch, Redirect, Route } from 'react-router-dom';
 import CSS from 'csstype';
+import CarList from './CarList';
+import CarDetails from '../Components/CarDetails';
 import apiReqs from '../API/apiReqs';
 import MainNav from '../Components/MainNav';
 import MainFoot from '../Components/MainFoot';
-import CarList from './CarList';
 import { CtxProvider } from '../Context';
 import { ICar } from '../Interfaces';
 
@@ -40,8 +42,15 @@ function Main(): React.ReactElement {
           <MainNav />
         </header>
         <main style={st.main}>
-          <h1>Main Carlist</h1>
-          <CarList />
+          <Switch>
+            <Route exact path="/mainList/">
+              <CarList />
+            </Route>
+            <Route path="/carDetails/:carId">
+              <CarDetails />
+            </Route>
+            <Redirect from="/" to="/mainList/" />
+          </Switch>
         </main>
         <footer>
           <MainFoot />
