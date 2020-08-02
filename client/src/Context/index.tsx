@@ -5,6 +5,7 @@ const initialDummy: ICar[] = [
   {
     _id: '',
     manufacturer: '',
+    logo: '',
     name: '',
     cardPics: [],
     powertrain: '',

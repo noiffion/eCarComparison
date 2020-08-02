@@ -1,15 +1,29 @@
 import React, { useContext } from 'react';
+import CSS from 'csstype';
 import CarCard from '../Components/CarCard';
 import { Ctx, Context } from '../Context';
 import { ICar } from '../Interfaces';
 
+interface Styles {
+  mainSection: CSS.Properties;
+}
+const st: Styles = {
+  mainSection: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '70vw',
+  },
+};
+
 function CarList(): React.ReactElement {
   const { eCarList } = useContext<Context>(Ctx);
+
   const cars = eCarList.map((car: ICar, ind) => {
-    const cardPicSrc = ind % 2 === 0 ? car.cardPics[0] : car.cardPics[1];
-    return <CarCard key={`${car.name}_CarCard`} carName={car.name} cardPicSrc={cardPicSrc} />;
+    const isFromLeft = ind % 2 === 0;
+    return <CarCard key={`${car.name}_CarCard`} car={car} isFromLeft={isFromLeft} />;
   });
-  return <section>{cars}</section>;
+
+  return <section style={st.mainSection}>{cars}</section>;
 }
 
 export default CarList;

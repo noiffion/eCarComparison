@@ -18,6 +18,7 @@ const st: Styles = {
     backgroundColor: '#2F4F4F',
     color: '#00FF00',
     position: 'fixed',
+    zIndex: 999,
     width: '100%',
     top: 0,
     left: 0,

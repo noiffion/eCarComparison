@@ -14,6 +14,7 @@ export interface IUser {
 export interface ICar {
   _id: string;
   manufacturer: string;
+  logo: string;
   name: string;
   cardPics: string[];
   powertrain: string;

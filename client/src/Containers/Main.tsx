@@ -13,7 +13,12 @@ interface Styles {
 }
 const st: Styles = {
   main: {
-    margin: '100px 0 0 0',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    margin: '120px 0 0 0',
     padding: 0,
   },
 };
@@ -35,7 +40,7 @@ function Main(): React.ReactElement {
           <MainNav />
         </header>
         <main style={st.main}>
-          <h1>Main Car</h1>
+          <h1>Main Carlist</h1>
           <CarList />
         </main>
         <footer>
