@@ -41,6 +41,7 @@
         "endOfLine": "auto"
       }
     ],
-    "no-console": ["warn", {"allow": ["info", "warn", "error"]}]
+    "no-console": ["warn", {"allow": ["info", "warn", "error"]}],
+    "no-underscore-dangle": "off"
   }
 }
