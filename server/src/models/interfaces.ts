@@ -16,6 +16,7 @@ export interface IUser extends mongoose.Document {
 export interface ICar extends mongoose.Document {
   _id: string;
   manufacturer: string;
+  logo: string;
   name: string;
   cardPics: string[];
   powertrain: string;

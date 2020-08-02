@@ -6,6 +6,10 @@ const Cars: mongoose.Schema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  logo: {
+    type: String,
+    required: true,
+  },
   name: {
     type: String,
     required: true,
