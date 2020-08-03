@@ -18,6 +18,7 @@ const CarImg = styled.img`
   &:hover {
     transform: scale(1.1);
     cursor: pointer;
+    border: none;
   }
 `;
 const Logo = styled.img`
@@ -39,7 +40,7 @@ interface PropTypes {
   isFromLeft: boolean;
 }
 function Car({ car, isFromLeft }: PropTypes): React.ReactElement {
-  const backgroundColor = isFromLeft ? 'to left, #98FB98, #FFFFFF' : 'to right, #3CB371, #FFFFFF';
+  const backgroundColor = isFromLeft ? 'to left, #98fb98, #ffffff' : 'to right, #3cb371, #ffffff';
   const brdRadius = isFromLeft ? '0 0 20px 0' : '0 0 0 20px';
   const st: Styles = {
     article: {
@@ -63,7 +64,10 @@ function Car({ car, isFromLeft }: PropTypes): React.ReactElement {
   };
 
   const cardPicSrc = isFromLeft ? car.cardPics[0] : car.cardPics[1];
-  const carImg = <CarImg src={cardPicSrc} alt={`${car.name} thumbnail`} />;
+  const carShadow = isFromLeft
+    ? { boxShadow: '-5px 5px 10px #888888' }
+    : { boxShadow: '5px 5px 10px #888888' };
+  const carImg = <CarImg src={cardPicSrc} alt={`${car.name} thumbnail`} style={carShadow} />;
 
   return (
     <article style={st.article}>
