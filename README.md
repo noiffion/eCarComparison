@@ -25,3 +25,5 @@ TypeScript Eslint React:
 - https://medium.com/@brygrill/create-react-app-with-typescript-eslint-prettier-and-github-actions-f3ce6a571c97
 - https://dev.to/chuck_huey/setup-a-typescript-project-with-eslint-prettier-editorconfig-and-husky-13aa
 
+Embla Carousel
+- https://davidcetinkaya.github.io/embla-carousel/
