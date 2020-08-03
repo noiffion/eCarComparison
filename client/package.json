@@ -41,6 +41,7 @@
     "@zendeskgarden/react-notifications": "^8.17.1",
     "@zendeskgarden/react-theming": "^8.17.1",
     "csstype": "^3.0.2",
+    "embla-carousel": "^3.0.23",
     "history": "^5.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
