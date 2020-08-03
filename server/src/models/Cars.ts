@@ -18,6 +18,10 @@ const Cars: mongoose.Schema = new mongoose.Schema({
     type: [String],
     required: true,
   },
+  detailPics: {
+    type: [String],
+    required: true,
+  },
   powertrain: {
     type: String,
     required: true,
