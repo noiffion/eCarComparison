@@ -3,7 +3,7 @@ import { ThemeProvider, DEFAULT_THEME } from '@zendeskgarden/react-theming';
 import { Switch, Redirect, Route } from 'react-router-dom';
 import CSS from 'csstype';
 import CarList from './CarList';
-import CarDetails from '../Components/CarDetails';
+import CarDetails from './CarDetails';
 import apiReqs from '../API/apiReqs';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';

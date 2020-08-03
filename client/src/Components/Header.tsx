@@ -41,13 +41,14 @@ const st: Styles = {
   pageTitle: {
     margin: '0 0 0 1vw',
     padding: 0,
+    fontSize: '24px',
   },
   searchForm: {
     marginRight: '2vw',
     width: '20vw',
   },
   searchBar: {
-    fontSize: '24px',
+    fontSize: '18px',
   },
 };
 

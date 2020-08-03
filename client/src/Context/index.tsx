@@ -8,6 +8,7 @@ const initialDummy: ICar[] = [
     logo: '',
     name: '',
     cardPics: [],
+    detailPics: [],
     powertrain: '',
     class: '',
     bodyStyle: '',

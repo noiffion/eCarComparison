@@ -17,6 +17,7 @@ export interface ICar {
   logo: string;
   name: string;
   cardPics: string[];
+  detailPics: string[];
   powertrain: string;
   class: string;
   bodyStyle: string;

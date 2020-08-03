@@ -11,7 +11,7 @@ interface Styles {
 }
 const CarImg = styled.img`
   width: 100%;
-  max-width: 450px;
+  max-width: 420px;
   height: auto;
   max-height: 250px;
   transition: transform 0.3s;
@@ -26,11 +26,14 @@ const Logo = styled.img`
   max-width: 150px;
   height: auto;
   max-height: 150px;
+  margin-top: 2vh;
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: #000000;
+  color: #2f4f4f;
+  font-size: 24px;
   &:hover {
+    color: #000000;
     text-decoration: underline;
   }
 `;
