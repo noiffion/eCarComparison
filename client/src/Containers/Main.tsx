@@ -5,8 +5,8 @@ import CSS from 'csstype';
 import CarList from './CarList';
 import CarDetails from '../Components/CarDetails';
 import apiReqs from '../API/apiReqs';
-import MainNav from '../Components/MainNav';
-import MainFoot from '../Components/MainFoot';
+import Header from '../Components/Header';
+import Footer from '../Components/Footer';
 import { CtxProvider } from '../Context';
 import { ICar } from '../Interfaces';
 
@@ -39,7 +39,7 @@ function Main(): React.ReactElement {
     <ThemeProvider theme={{ ...DEFAULT_THEME, rtl: false }}>
       <CtxProvider value={{ eCarList }}>
         <header>
-          <MainNav />
+          <Header />
         </header>
         <main style={st.main}>
           <Switch>
@@ -53,7 +53,7 @@ function Main(): React.ReactElement {
           </Switch>
         </main>
         <footer>
-          <MainFoot />
+          <Footer />
         </footer>
       </CtxProvider>
     </ThemeProvider>

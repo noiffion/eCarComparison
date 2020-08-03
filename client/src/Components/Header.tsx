@@ -15,8 +15,8 @@ interface Styles {
 }
 const st: Styles = {
   navBar: {
-    backgroundColor: '#2F4F4F',
-    color: '#00FF00',
+    backgroundColor: '#2f4f4f',
+    color: '#00ff00',
     position: 'fixed',
     zIndex: 999,
     width: '100%',
@@ -51,7 +51,7 @@ const st: Styles = {
   },
 };
 
-function MainNav(): React.ReactElement {
+function Header(): React.ReactElement {
   const magnGlass = <img src={magnGlSrc} height="30" width="30" alt="magnifying glass icon" />;
   return (
     <nav style={st.navBar}>
@@ -79,4 +79,4 @@ function MainNav(): React.ReactElement {
   );
 }
 
-export default MainNav;
+export default Header;
