@@ -7,6 +7,7 @@
       "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/nissan_leaf_l.jpg",
       "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/nissan_leaf_r.jpg"
     ],
+    "detailPics": [],
     "powertrain": "electric",
     "class": "compact",
     "bodyStyle": "fastback",
@@ -21,6 +22,13 @@
     "cardPics": [
       "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/tesla_3_l.jpg",
       "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/tesla_3_r.jpg"
+    ],
+    "detailPics": [
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/tesla_3_01.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/tesla_3_02.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/tesla_3_03.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/tesla_3_04.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/tesla_3_05.jpg"
     ],
     "powertrain": "electric",
     "class": "compact",
@@ -37,6 +45,7 @@
       "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/hyundai_ioniq_l.jpg",
       "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/hyundai_ioniq_r.jpg"
     ],
+    "detailPics": [],
     "powertrain": "electric",
     "class": "compact",
     "bodyStyle": "liftback",
@@ -52,6 +61,7 @@
       "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/kia_niro_l.jpg",
       "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/kia_niro_r.jpg"
     ],
+    "detailPics": [],
     "powertrain": "electric",
     "class": "compact",
     "bodyStyle": "hatchback",
@@ -65,6 +75,7 @@
     "powertrain": "ICE",
     "name": "A4",
     "cardPics": [],
+    "detailPics": [],
     "class": "compact",
     "bodyStyle": "sedan",
     "doors": 4,
@@ -76,6 +87,7 @@
     "logo": "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/logos/Honda.png",
     "name": "Civic",
     "cardPics": [],
+    "detailPics": [],
     "powertrain": "ICE",
     "class": "compact",
     "bodyStyle": "fastback",
@@ -88,6 +100,7 @@
     "logo": "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/logos/Toyota.png",
     "name": "Corolla",
     "cardPics": [],
+    "detailPics": [],
     "powertrain": "ICE",
     "class": "compact",
     "bodyStyle": "hatchback",
@@ -100,6 +113,7 @@
     "logo": "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/logos/Volkswagen.png",
     "name": "Golf",
     "cardPics": [],
+    "detailPics": [],
     "powertrain": "ICE",
     "class": "compact",
     "bodyStyle": "hatchback",
@@ -112,6 +126,7 @@
     "logo": "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/logos/BMW.png",
     "name": "3",
     "cardPics": [],
+    "detailPics": [],
     "powertrain": "ICE",
     "class": "compact",
     "bodyStyle": "sedan",
@@ -127,6 +142,7 @@
       "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/chevrolet_bolt_l.jpg",
       "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/chevrolet_bolt_r.jpg"
     ],
+    "detailPics": [],
     "powertrain": "electric",
     "class": "subcompact",
     "bodyStyle": "hatchback",
@@ -140,6 +156,7 @@
     "powertrain": "ICE",
     "name": "A3",
     "cardPics": [],
+    "detailPics": [],
     "class": "subcompact",
     "bodyStyle": "sedan",
     "doors": 4,
@@ -154,6 +171,7 @@
       "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/bmw_i3_l.jpg",
       "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/bmw_i3_r.jpg"
     ],
+    "detailPics": [],
     "powertrain": "electric",
     "class": "subcompact",
     "bodyStyle": "hatchback",
@@ -169,6 +187,7 @@
       "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/jaguar_ipace_l.jpg",
       "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/jaguar_ipace_r.jpg"
     ],
+    "detailPics": [],
     "powertrain": "electric",
     "class": "compact",
     "bodyStyle": "suv",

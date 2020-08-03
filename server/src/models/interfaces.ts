@@ -19,6 +19,7 @@ export interface ICar extends mongoose.Document {
   logo: string;
   name: string;
   cardPics: string[];
+  detailPics: string[];
   powertrain: string;
   class: string;
   bodyStyle: string;
