@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ReactElement } from 'react';
 import { ThemeProvider, DEFAULT_THEME } from '@zendeskgarden/react-theming';
 import { Switch, Redirect, Route } from 'react-router-dom';
 import CSS from 'csstype';
@@ -25,21 +25,25 @@ const st: Styles = {
   },
 };
 
-function Main(): React.ReactElement {
+function Main(): ReactElement {
   const [eCarList, setECarList] = useState<ICar[]>([]);
+  const [filteredCars, setFilteredCars] = useState<ICar[]>([]);
 
   useEffect((): void => {
     apiReqs
       .getECars()
-      .then((cars) => setECarList(cars))
+      .then((cars) => {
+        setECarList(cars);
+        setFilteredCars(cars);
+      })
       .catch(console.error);
   }, []);
 
   return (
     <ThemeProvider theme={{ ...DEFAULT_THEME, rtl: false }}>
-      <CtxProvider value={{ eCarList }}>
+      <CtxProvider value={{ eCarList: filteredCars }}>
         <header>
-          <Header />
+          <Header eCarList={eCarList} setFilteredCars={setFilteredCars} />
         </header>
         <main style={st.main}>
           <Switch>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, ReactElement } from 'react';
 import CSS from 'csstype';
 import CarCard from '../Components/CarCard';
 import { Ctx, Context } from '../Context';
@@ -15,7 +15,7 @@ const st: Styles = {
   },
 };
 
-function CarList(): React.ReactElement {
+function CarList(): ReactElement {
   const { eCarList } = useContext<Context>(Ctx);
 
   const cars = eCarList.map((car: ICar, ind) => {

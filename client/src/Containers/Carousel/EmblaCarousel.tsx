@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, ReactElement } from 'react';
 import { useEmblaCarousel } from 'embla-carousel/react';
 import Thumb from './EmblaCarouselThumb';
 import { ICar } from '../../Interfaces';
@@ -8,7 +8,7 @@ import './reset.css';
 interface PropTypes {
   car: ICar;
 }
-const EmblaCarousel = ({ car }: PropTypes): React.ReactElement => {
+const EmblaCarousel = ({ car }: PropTypes): ReactElement => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [EmblaCarouselReact, embla] = useEmblaCarousel();
   const [EmblaCarouselReactThumbs, emblaThumbs] = useEmblaCarousel({

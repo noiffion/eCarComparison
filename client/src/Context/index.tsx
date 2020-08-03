@@ -1,4 +1,4 @@
-import React from 'react';
+import { createContext } from 'react';
 import { ICar } from '../Interfaces';
 
 const initialDummy: ICar[] = [
@@ -21,5 +21,5 @@ const initialDummy: ICar[] = [
 export interface Context {
   eCarList: ICar[];
 }
-export const Ctx = React.createContext<Context>({ eCarList: initialDummy });
+export const Ctx = createContext<Context>({ eCarList: initialDummy });
 export const CtxProvider = Ctx.Provider;

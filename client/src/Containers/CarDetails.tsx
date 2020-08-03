@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ReactElement } from 'react';
 import { useParams, withRouter } from 'react-router-dom';
 import CSS from 'csstype';
 import apiReqs from '../API/apiReqs';
@@ -24,7 +24,7 @@ const st: Styles = {
   },
 };
 
-function CarDetails(): React.ReactElement {
+function CarDetails(): ReactElement {
   const [car, setCar] = useState<ICar | null>(null);
   const { carId } = useParams();
 

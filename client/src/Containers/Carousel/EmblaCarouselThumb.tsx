@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 interface Click {
   (): void;
@@ -8,7 +8,7 @@ interface PropTypes {
   onClick: Click;
   imgSrc: string;
 }
-const Thumb = ({ selected, onClick, imgSrc }: PropTypes): React.ReactElement => (
+const Thumb = ({ selected, onClick, imgSrc }: PropTypes): ReactElement => (
   <div className={`embla__slide embla__slide--thumb ${selected ? 'is-selected' : ''}`}>
     <button
       onClick={onClick}

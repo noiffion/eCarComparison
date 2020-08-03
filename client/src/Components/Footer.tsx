@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import CSS from 'csstype';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -35,7 +35,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-function Footer(): React.ReactElement {
+function Footer(): ReactElement {
   return (
     <nav style={st.footer}>
       <ul style={st.footerList}>

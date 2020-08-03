@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import CSS from 'csstype';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -42,7 +42,7 @@ interface PropTypes {
   car: ICar;
   isFromLeft: boolean;
 }
-function Car({ car, isFromLeft }: PropTypes): React.ReactElement {
+function Car({ car, isFromLeft }: PropTypes): ReactElement {
   const backgroundColor = isFromLeft ? 'to left, #98fb98, #ffffff' : 'to right, #3cb371, #ffffff';
   const brdRadius = isFromLeft ? '0 0 20px 0' : '0 0 0 20px';
   const st: Styles = {
