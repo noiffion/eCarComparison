@@ -1,23 +1,18 @@
-import React, {
-  useState,
-  ReactElement,
-  ChangeEvent,
-  FormEvent,
-  SetStateAction,
-  Dispatch,
-} from 'react';
+import React, { useState, ReactElement, ChangeEvent, SetStateAction, Dispatch } from 'react';
 import CSS from 'csstype';
 import { Link, useHistory } from 'react-router-dom';
 import { Field, MediaInput } from '@zendeskgarden/react-forms';
-import eCarSrc from '../Images/eCar.png';
-import magnGlSrc from '../Images/magnGlass.svg';
-import { ICar } from '../Interfaces';
+import LogBar from '../User/LogBar';
+import eCarSrc from '../../Images/eCar.png';
+import magnGlSrc from '../../Images/magnGlass.svg';
+import { ICar, FormMethod } from '../../Interfaces';
 
 interface Styles {
   navBar: CSS.Properties;
   navList: CSS.Properties;
   backToHomeLink: CSS.Properties;
   pageTitle: CSS.Properties;
+  rightBar: CSS.Properties;
   searchForm: CSS.Properties;
   searchBar: CSS.Properties;
 }
@@ -51,9 +46,14 @@ const st: Styles = {
     padding: 0,
     fontSize: '24px',
   },
+  rightBar: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
   searchForm: {
     marginRight: '2vw',
-    width: '20vw',
   },
   searchBar: {
     fontSize: '18px',
@@ -63,15 +63,19 @@ const st: Styles = {
 interface PropTypes {
   eCarList: ICar[];
   setFilteredCars: Dispatch<SetStateAction<ICar[]>>;
+  authenticated: boolean;
+  setAuthenticated: Dispatch<SetStateAction<boolean>>;
 }
-function Header({ eCarList, setFilteredCars }: PropTypes): ReactElement {
+function Header({
+  eCarList,
+  setFilteredCars,
+  authenticated,
+  setAuthenticated,
+}: PropTypes): ReactElement {
   const [searchedCar, setSearchedCar] = useState<string>('');
   const history = useHistory();
 
-  interface CarSearchForm<E> {
-    (event: E): void;
-  }
-  const carSearchChange: CarSearchForm<ChangeEvent<HTMLInputElement>> = (event) => {
+  const carSearchChange: FormMethod<ChangeEvent<HTMLInputElement>> = (event) => {
     if (!history.location.pathname.includes('mainList')) history.push('/mainList/');
     let inputStr = event.target.value;
     inputStr = inputStr.replace(/^[\s\uFEFF\xA0]/g, '');
@@ -87,12 +91,6 @@ function Header({ eCarList, setFilteredCars }: PropTypes): ReactElement {
     setFilteredCars(filtCars);
   };
 
-  // TODO: delete this
-  const carSearchSubmit: CarSearchForm<FormEvent<HTMLFormElement>> = (event) => {
-    event.preventDefault();
-    console.log(event.target);
-  };
-
   const magnGlass = <img src={magnGlSrc} height="30" width="30" alt="magnifying glass icon" />;
   return (
     <nav style={st.navBar}>
@@ -106,18 +104,21 @@ function Header({ eCarList, setFilteredCars }: PropTypes): ReactElement {
           <h1 style={st.pageTitle}>eCar comparison</h1>
         </li>
       </ul>
-      <form style={st.searchForm} onSubmit={(event) => carSearchSubmit(event)}>
-        <Field>
-          <MediaInput
-            style={st.searchBar}
-            value={searchedCar}
-            placeholder="Search for a car"
-            start={magnGlass}
-            onChange={(event) => carSearchChange(event)}
-            focusInset
-          />
-        </Field>
-      </form>
+      <div style={st.rightBar}>
+        <form style={st.searchForm}>
+          <Field>
+            <MediaInput
+              style={st.searchBar}
+              value={searchedCar}
+              placeholder="Search for a car"
+              start={magnGlass}
+              onChange={(event) => carSearchChange(event)}
+              focusInset
+            />
+          </Field>
+        </form>
+        <LogBar authenticated={authenticated} setAuthenticated={setAuthenticated} />
+      </div>
     </nav>
   );
 }

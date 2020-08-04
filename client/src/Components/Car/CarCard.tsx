@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import CSS from 'csstype';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { ICar } from '../Interfaces';
+import { ICar } from '../../Interfaces';
 
 interface Styles {
   article: CSS.Properties;
@@ -28,7 +28,7 @@ const Logo = styled.img`
   max-height: 150px;
   margin-top: 2vh;
 `;
-const StyledLink = styled(Link)`
+const SLink = styled(Link)`
   text-decoration: none;
   color: #2f4f4f;
   font-size: 24px;
@@ -70,16 +70,18 @@ function Car({ car, isFromLeft }: PropTypes): ReactElement {
   const carShadow = isFromLeft
     ? { boxShadow: '-5px 5px 10px #888888' }
     : { boxShadow: '5px 5px 10px #888888' };
-  const carImg = <CarImg src={cardPicSrc} alt={`${car.name} thumbnail`} style={carShadow} />;
+  const carImg = (
+    <CarImg src={cardPicSrc} alt={`${car.name} thumbnail`} style={carShadow} loading="lazy" />
+  );
 
   return (
     <article style={st.article}>
       <Link to={`/carDetails/${car._id}`}> {isFromLeft && carImg} </Link>
       <div style={st.carInfo}>
         <h3 style={st.carInfoTitle}>
-          <StyledLink to={`/carDetails/${car._id}`}>
+          <SLink to={`/carDetails/${car._id}`}>
             {car.manufacturer} {car.name}
-          </StyledLink>
+          </SLink>
         </h3>
         <Logo src={car.logo} alt={`${car.manufacturer} logo`} />
       </div>

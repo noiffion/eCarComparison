@@ -1,8 +1,7 @@
-import React, { useContext, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import CSS from 'csstype';
-import CarCard from '../Components/CarCard';
-import { Ctx, Context } from '../Context';
-import { ICar } from '../Interfaces';
+import CarCard from './CarCard';
+import { ICar } from '../../Interfaces';
 
 interface Styles {
   mainSection: CSS.Properties;
@@ -15,9 +14,10 @@ const st: Styles = {
   },
 };
 
-function CarList(): ReactElement {
-  const { eCarList } = useContext<Context>(Ctx);
-
+interface PropTypes {
+  eCarList: ICar[];
+}
+function CarList({ eCarList }: PropTypes): ReactElement {
   const cars = eCarList.map((car: ICar, ind) => {
     const isFromLeft = ind % 2 === 0;
     return <CarCard key={`${car.name}_CarCard`} car={car} isFromLeft={isFromLeft} />;

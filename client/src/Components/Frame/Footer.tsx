@@ -27,11 +27,11 @@ const st: Styles = {
   },
 };
 
-const StyledLink = styled(Link)`
+const SLink = styled(Link)`
   text-decoration: none;
-  color: #fffff0;
+  color: #f0ffff;
   &:hover {
-    color: #dcdcdc;
+    color: #00ff00;
   }
 `;
 
@@ -39,15 +39,15 @@ function Footer(): ReactElement {
   return (
     <nav style={st.footer}>
       <ul style={st.footerList}>
-        <StyledLink to="/about/">
+        <SLink to="/about/">
           <li>About</li>
-        </StyledLink>
-        <StyledLink to="/faq/">
+        </SLink>
+        <SLink to="/faq/">
           <li>FAQ</li>
-        </StyledLink>
-        <StyledLink to="/contact/">
+        </SLink>
+        <SLink to="/contact/">
           <li>Contact</li>
-        </StyledLink>
+        </SLink>
       </ul>
     </nav>
   );

@@ -1,11 +1,10 @@
 export interface IUser {
-  _id: string;
+  _id?: string;
   email: string;
-  password: string;
-  userName: string;
+  password?: string;
   userIcon?: string;
-  firstName: string;
-  lastName: string;
+  firstName?: string;
+  lastName?: string;
   favourites?: string[];
   reviews?: string[];
   lastLogin: Date;
@@ -34,4 +33,12 @@ export interface IReview {
   carRating: number;
   useful: number;
   timestamps: Date;
+}
+
+export interface FormMethod<E> {
+  (event: E): void;
+}
+
+export interface IToken {
+  jwtToken: string;
 }

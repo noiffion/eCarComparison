@@ -1,14 +1,11 @@
 import React, { useState, useEffect, useCallback, ReactElement } from 'react';
 import { useEmblaCarousel } from 'embla-carousel/react';
-import Thumb from './EmblaCarouselThumb';
 import { ICar } from '../../Interfaces';
-import './embla.css';
-import './reset.css';
 
 interface PropTypes {
   car: ICar;
 }
-const EmblaCarousel = ({ car }: PropTypes): ReactElement => {
+const CarOusel = ({ car }: PropTypes): ReactElement => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [EmblaCarouselReact, embla] = useEmblaCarousel();
   const [EmblaCarouselReactThumbs, emblaThumbs] = useEmblaCarousel({
@@ -60,12 +57,25 @@ const EmblaCarousel = ({ car }: PropTypes): ReactElement => {
         <EmblaCarouselReactThumbs className="embla__viewport">
           <div className="embla__container embla__container--thumb">
             {car?.detailPics.map((imgSrc, index) => (
-              <Thumb
+              <div
                 key={`${car.manufacturer} ${car.name} ${index}`}
-                imgSrc={imgSrc}
-                onClick={() => onThumbClick(index)}
-                selected={index === selectedIndex}
-              />
+                className={`embla__slide embla__slide--thumb
+                  ${index === selectedIndex ? 'is-selected' : ''}
+                `}
+              >
+                <button
+                  onClick={() => onThumbClick(index)}
+                  className="embla__slide__inner embla__slide__inner--thumb"
+                  type="button"
+                >
+                  <img
+                    className="embla__slide__thumbnail"
+                    src={imgSrc}
+                    alt="A cool cat."
+                    loading="lazy"
+                  />
+                </button>
+              </div>
             ))}
           </div>
         </EmblaCarouselReactThumbs>
@@ -74,4 +84,4 @@ const EmblaCarousel = ({ car }: PropTypes): ReactElement => {
   );
 };
 
-export default EmblaCarousel;
+export default CarOusel;

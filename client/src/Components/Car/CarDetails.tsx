@@ -1,9 +1,9 @@
 import React, { useState, useEffect, ReactElement } from 'react';
 import { useParams, withRouter } from 'react-router-dom';
 import CSS from 'csstype';
-import apiReqs from '../API/apiReqs';
-import Carousel from './Carousel/EmblaCarousel';
-import { ICar } from '../Interfaces';
+import CarOusel from './CarOusel';
+import apiReqs from '../../API/apiReqs';
+import { ICar } from '../../Interfaces';
 
 interface Styles {
   detailsSection: CSS.Properties;
@@ -37,8 +37,14 @@ function CarDetails(): ReactElement {
 
   return (
     <section style={st.detailsSection}>
-      <h3 style={st.carName}>{`${car?.manufacturer} ${car?.name}`}</h3>
-      {car && <Carousel car={car} />}
+      {!car ? (
+        <span>place of the spinner</span>
+      ) : (
+        <>
+          <h3 style={st.carName}>{`${car?.manufacturer} ${car?.name}`}</h3>
+          <CarOusel car={car} />
+        </>
+      )}
     </section>
   );
 }
