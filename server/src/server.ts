@@ -6,6 +6,7 @@ import router from './router';
 import cors from 'cors';
 
 dotenv.config({ path: __dirname + '/.env' });
+export const JWT_KEY = process.env.JWT_KEY || '';
 const PORT = process.env.PORT;
 const MONGO_USERNAME = process.env.DB_UNAME;
 const MONGO_PASSWORD = process.env.DB_PWD;
@@ -20,7 +21,7 @@ mongoose
   .then(() => {
     console.info('Successfully connected to the Mongo database!');
 
-    app.use(cors());
+    app.use(cors({ origin: 'http://localhost:3003', credentials: true }));
     app.use(express.json());
     app.get('/', (req: Request, res: Response): void => {
       res.status(200);

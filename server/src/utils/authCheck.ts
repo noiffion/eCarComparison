@@ -1,22 +1,19 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
-import Users from '../models/Users';
-const JWT_KEY = process.env.JWT_KEY || '';
+import { JWT_KEY } from '../server';
 
 async function authCheck(
   req: Request,
   res: Response,
   next: NextFunction
 ): Promise<Response | void> {
-  const authHeaders = req.get('authorization');
+  const authHeaders = req.get('Authorization');
   if (!authHeaders) return res.sendStatus(403);
   const token = authHeaders.split(' ')[1];
 
   try {
     const { _id } = <any>jwt.verify(token, JWT_KEY);
-    const user = await Users.findOne({ _id });
-    if (!user) return res.sendStatus(401);
-    req.body.user = user;
+    req.body.userId = _id;
     next();
   } catch (error) {
     return res.sendStatus(401);

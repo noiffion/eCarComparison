@@ -10,10 +10,6 @@ const Users: mongoose.Schema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  userName: {
-    type: String,
-    required: true,
-  },
   userIcon: {
     type: String,
   },

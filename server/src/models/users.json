@@ -2,7 +2,6 @@
   {
     "email": "mockMail@mail.com",
     "password": "abcd1234",
-    "userName": "mockka",
     "userIcon": "",
     "firstName": "Mock",
     "lastName": "Monk",
@@ -13,7 +12,6 @@
   {
     "email": "testUser@mail.com",
     "password": "1234abcd",
-    "userName": "test",
     "userIcon": "",
     "firstName": "Thomas",
     "lastName": "Test",

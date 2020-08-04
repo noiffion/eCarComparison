@@ -1,10 +1,22 @@
 import { ControllerMethod } from '../interface';
 import Users from '../../models/Users';
+import { IUser } from '../../models/interfaces';
 
 const profile: ControllerMethod = async function (req, res) {
   try {
+    const user: IUser = await Users.findById(req.body.userId);
+    if (!user) throw new Error('No user found with this id!');
+    const respUser = {
+      _id: user._id,
+      favourites: user.favourites,
+      reviews: user.reviews,
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      lastLogin: user.lastLogin,
+    };
     res.status(200);
-    res.send('profile');
+    res.send(respUser);
   } catch (err) {
     console.error(err);
     res.status(500);

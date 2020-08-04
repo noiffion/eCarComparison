@@ -3,8 +3,7 @@ import mongoose from 'mongoose';
 export interface IUser extends mongoose.Document {
   _id: string;
   email: string;
-  password: string;
-  userName: string;
+  password?: string;
   userIcon?: string;
   firstName: string;
   lastName: string;
