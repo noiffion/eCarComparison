@@ -7,7 +7,7 @@ router.get('/cars', controller.getECars);
 router.get('/cars/:carId', controller.getOneCar);
 
 router.post('/signup', controller.signUp);
-router.post('/login', controller.login);
+router.post('/signin', controller.signIn);
 router.get('/profile', authCheck, controller.profile);
 
 router.get('/reviews', controller.readRevs);

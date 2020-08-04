@@ -5,7 +5,7 @@ import Users from '../../models/Users';
 import { IUser } from '../../models/interfaces';
 const JWT_KEY = process.env.JWT_KEY || '';
 
-const login: ControllerMethod = async function (req, res) {
+const signIn: ControllerMethod = async function (req, res) {
   const { email, password } = req.body;
   try {
     const user: IUser = await Users.findOne({ email: email });
@@ -19,4 +19,4 @@ const login: ControllerMethod = async function (req, res) {
   }
 };
 
-export default login;
+export default signIn;

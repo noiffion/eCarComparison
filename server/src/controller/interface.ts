@@ -8,7 +8,7 @@ interface Controller {
   getECars: ControllerMethod;
   getOneCar: ControllerMethod;
   signUp: ControllerMethod;
-  login: ControllerMethod;
+  signIn: ControllerMethod;
   profile: ControllerMethod;
   readRevs: ControllerMethod;
   createRev: ControllerMethod;
