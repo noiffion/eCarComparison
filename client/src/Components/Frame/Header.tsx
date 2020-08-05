@@ -1,4 +1,11 @@
-import React, { useState, ReactElement, ChangeEvent, SetStateAction, Dispatch } from 'react';
+import React, {
+  useState,
+  ReactElement,
+  ChangeEvent,
+  FormEvent,
+  SetStateAction,
+  Dispatch,
+} from 'react';
 import CSS from 'csstype';
 import { Link, useHistory } from 'react-router-dom';
 import { Field, MediaInput } from '@zendeskgarden/react-forms';
@@ -100,6 +107,10 @@ function Header({
     setFilteredCars(filtCars);
   };
 
+  const handleSubmit: FormMethod<FormEvent<HTMLFormElement>> = async (event) => {
+    event.preventDefault();
+  };
+
   const magnGlass = <img src={magnGlSrc} height="30" width="30" alt="magnifying glass icon" />;
   return (
     <nav style={st.navBar}>
@@ -119,7 +130,7 @@ function Header({
         </Alert>
       ) : null}
       <div style={st.rightBar}>
-        <form style={st.searchForm}>
+        <form style={st.searchForm} onSubmit={handleSubmit}>
           <Field>
             <MediaInput
               style={st.searchBar}

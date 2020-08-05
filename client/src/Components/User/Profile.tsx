@@ -24,7 +24,6 @@ function Profile({ user, setUser }: PropTypes): ReactElement {
     };
     getProfile();
   }, [setUser, history]);
-  console.log(user);
 
   return (
     <div>
