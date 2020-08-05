@@ -10,6 +10,7 @@ import { useHistory } from 'react-router-dom';
 import { Field, Label, Input, Message } from '@zendeskgarden/react-forms';
 import { Button } from '@zendeskgarden/react-buttons';
 import { Alert } from '@zendeskgarden/react-notifications';
+import styled from 'styled-components';
 import CSS from 'csstype';
 import apiReqs from '../../API/apiReqs';
 import { IUser, FormMethod } from '../../Interfaces';
@@ -53,6 +54,18 @@ const st: Styles = {
     fontSize: '24px',
   },
 };
+
+const SButton = styled(Button)`
+  font-size: 36px;
+  border-color: #2f4f4f;
+  color: #2f4f4f;
+  width: 100%;
+  &:hover {
+    background-color: #f0ffff;
+    border-color: #00ff00;
+    color: #00ff00;
+  }
+`;
 
 interface PropTypes {
   setAuthenticated: Dispatch<SetStateAction<boolean>>;
@@ -131,9 +144,9 @@ function SignIn({ setAuthenticated }: PropTypes): ReactElement {
             <Message validation={undefined}> </Message>
           </Field>
           <Field style={st.field}>
-            <Button type="submit" disabled={validateForm()} style={st.submit}>
+            <SButton type="submit" disabled={validateForm()} style={st.submit}>
               Log in
-            </Button>
+            </SButton>
           </Field>
         </form>
       </section>
