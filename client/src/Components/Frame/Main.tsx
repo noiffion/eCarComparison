@@ -5,7 +5,8 @@ import CSS from 'csstype';
 import { ICar, IUser } from '../../Interfaces';
 import apiReqs from '../../API/apiReqs';
 import CarList from '../Car/CarList';
-import CarDetails from '../Car/CarDetails';
+import CarBrochure from '../Car/CarBrochure';
+import Comparison from '../Car/Comparison';
 import Header from './Header';
 import Footer from './Footer';
 import Profile from '../User/Profile';
@@ -74,8 +75,11 @@ function Main(): ReactElement {
           <Route path="/user/signUp/">
             <SignUp setAuthenticated={setAuthenticated} />
           </Route>
-          <Route path="/carDetails/:carId">
-            <CarDetails />
+          <Route path="/carBrochure/:carId">
+            <CarBrochure />
+          </Route>
+          <Route path="/comparison/:carId">
+            <Comparison />
           </Route>
           <Redirect from="/" to="/mainList/" />
         </Switch>

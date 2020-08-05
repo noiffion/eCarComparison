@@ -76,16 +76,16 @@ function Car({ car, isFromLeft }: PropTypes): ReactElement {
 
   return (
     <article style={st.article}>
-      <Link to={`/carDetails/${car._id}`}> {isFromLeft && carImg} </Link>
+      <Link to={`/carBrochure/${car._id}`}> {isFromLeft && carImg} </Link>
       <div style={st.carInfo}>
         <h3 style={st.carInfoTitle}>
-          <SLink to={`/carDetails/${car._id}`}>
+          <SLink to={`/carBrochure/${car._id}`}>
             {car.manufacturer} {car.name}
           </SLink>
         </h3>
         <Logo src={car.logo} alt={`${car.manufacturer} logo`} />
       </div>
-      <Link to={`/carDetails/${car._id}`}> {!isFromLeft && carImg} </Link>
+      <Link to={`/carBrochure/${car._id}`}> {!isFromLeft && carImg} </Link>
     </article>
   );
 }
