@@ -26,6 +26,10 @@ const Cars: mongoose.Schema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  range: {
+    type: Number,
+    required: true,
+  },
   class: {
     type: String,
     required: true,
