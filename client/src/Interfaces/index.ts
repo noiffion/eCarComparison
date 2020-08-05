@@ -18,6 +18,7 @@ export interface ICar {
   cardPics: string[];
   detailPics: string[];
   powertrain: string;
+  range: number;
   class: string;
   bodyStyle: string;
   doors: number;

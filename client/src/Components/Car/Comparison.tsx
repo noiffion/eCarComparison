@@ -19,7 +19,7 @@ const st: Styles = {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     width: '70%',
-    height: '76vh',
+    paddingBottom: '4vh',
   },
   compareCar: {
     display: 'flex',

@@ -81,6 +81,9 @@ function CarCol({ car, isLeft, setSecondCar }: PropTypes): ReactElement {
         Powertrain: <span style={st.carDetail}>{car.powertrain}</span>
       </p>
       <p style={st.carDetailP}>
+        Range: <span style={st.carDetail}>{car.range}</span>
+      </p>
+      <p style={st.carDetailP}>
         Rating: <span style={st.carDetail}>{car.rating}</span>
       </p>
       {!isLeft && <SButton onClick={() => setSecondCar(undefined)}>New comparison</SButton>}
