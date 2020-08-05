@@ -69,10 +69,10 @@ function Main(): ReactElement {
             <Profile user={user} setUser={setUser} />
           </Route>
           <Route path="/user/signIn/">
-            <SignIn user={user} setUser={setUser} setAuthenticated={setAuthenticated} />
+            <SignIn setAuthenticated={setAuthenticated} />
           </Route>
           <Route path="/user/signUp/">
-            <SignUp user={user} setUser={setUser} setAuthenticated={setAuthenticated} />
+            <SignUp setAuthenticated={setAuthenticated} />
           </Route>
           <Route path="/carDetails/:carId">
             <CarDetails />

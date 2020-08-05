@@ -2,11 +2,11 @@ import { ICar, IUser, IReview, IToken } from '../Interfaces';
 
 const API_URL = 'http://localhost:3333/';
 
-async function defaultRequest<T>(path: string, init: RequestInit, isAlert: boolean): Promise<T> {
+async function defaultRequest<T>(path: string, init: RequestInit): Promise<T> {
   return fetch(`${API_URL}${path}`, init)
     .then((result) => (result.status >= 400 ? Promise.reject(result) : result))
     .then((result) => result.json())
-    .catch((err) => (isAlert ? console.error(err) : alert(err.message)));
+    .catch(console.error);
 }
 
 export default {
@@ -14,7 +14,7 @@ export default {
     const init: RequestInit = {
       method: 'GET',
     };
-    return defaultRequest<ICar[]>('cars', init, false);
+    return defaultRequest<ICar[]>('cars', init);
   },
   async getOneCar(carId: string): Promise<ICar> {
     const init: RequestInit = {
@@ -24,7 +24,7 @@ export default {
         Accept: 'application/json',
       },
     };
-    return defaultRequest<ICar>(`cars/${carId}`, init, false);
+    return defaultRequest<ICar>(`cars/${carId}`, init);
   },
 
   async signAuth(isNew: boolean, userData: IUser): Promise<IToken> {
@@ -37,7 +37,7 @@ export default {
       },
       body: JSON.stringify(userData),
     };
-    return defaultRequest<IToken>(path, init, true);
+    return defaultRequest<IToken>(path, init);
   },
   async profile(jwtToken: string): Promise<IUser> {
     const init: RequestInit = {
@@ -49,7 +49,7 @@ export default {
         Authorization: `Bearer ${jwtToken}`,
       },
     };
-    return defaultRequest<IUser>('profile', init, true);
+    return defaultRequest<IUser>('profile', init);
   },
 
   async getReviews(): Promise<IReview> {
@@ -60,7 +60,7 @@ export default {
         Accept: 'application/json',
       },
     };
-    return defaultRequest<IReview>('reviews', init, true);
+    return defaultRequest<IReview>('reviews', init);
   },
   async newReview(jwtToken: string, review: IReview): Promise<IReview> {
     const init: RequestInit = {
@@ -73,7 +73,7 @@ export default {
       },
       body: JSON.stringify(review),
     };
-    return defaultRequest<IReview>('reviews', init, true);
+    return defaultRequest<IReview>('reviews', init);
   },
   async updReview(jwtToken: string, review: IReview, reviewId: string): Promise<IReview> {
     const init: RequestInit = {
@@ -86,7 +86,7 @@ export default {
       },
       body: JSON.stringify(review),
     };
-    return defaultRequest<IReview>(`reviews/${reviewId}`, init, true);
+    return defaultRequest<IReview>(`reviews/${reviewId}`, init);
   },
   async delReview(jwtToken: string, reviewId: string): Promise<IReview> {
     const init: RequestInit = {
@@ -98,6 +98,6 @@ export default {
         Authorization: `Bearer ${jwtToken}`,
       },
     };
-    return defaultRequest<IReview>(`reviews/${reviewId}`, init, true);
+    return defaultRequest<IReview>(`reviews/${reviewId}`, init);
   },
 };

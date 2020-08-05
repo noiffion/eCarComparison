@@ -8,7 +8,6 @@ interface Styles {
   linkList: CSS.Properties;
   link: CSS.Properties;
 }
-
 const st: Styles = {
   linkList: {
     display: 'flex',
@@ -45,8 +44,15 @@ const SButton = styled(Button)`
 interface PropTypes {
   authenticated: boolean;
   setAuthenticated: Dispatch<SetStateAction<boolean>>;
+  setAlert: Dispatch<SetStateAction<boolean>>;
+  setAlertMsg: Dispatch<SetStateAction<string>>;
 }
-function LogBar({ authenticated, setAuthenticated }: PropTypes): ReactElement {
+function LogBar({
+  authenticated,
+  setAuthenticated,
+  setAlert,
+  setAlertMsg,
+}: PropTypes): ReactElement {
   const history = useHistory();
 
   const logout = (): void => {
@@ -54,6 +60,12 @@ function LogBar({ authenticated, setAuthenticated }: PropTypes): ReactElement {
     sessionStorage.removeItem(jwtToken);
     setAuthenticated(false);
     history.push('/mainList');
+    setAlert(true);
+    setAlertMsg(`You've logged out.`);
+    setTimeout(() => {
+      setAlert(false);
+      setAlertMsg('');
+    }, 2000);
   };
 
   return (

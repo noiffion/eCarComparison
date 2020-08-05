@@ -2,6 +2,7 @@ import React, { useState, ReactElement, ChangeEvent, SetStateAction, Dispatch } 
 import CSS from 'csstype';
 import { Link, useHistory } from 'react-router-dom';
 import { Field, MediaInput } from '@zendeskgarden/react-forms';
+import { Alert } from '@zendeskgarden/react-notifications';
 import LogBar from '../User/LogBar';
 import eCarSrc from '../../Images/eCar.png';
 import magnGlSrc from '../../Images/magnGlass.svg';
@@ -15,6 +16,7 @@ interface Styles {
   rightBar: CSS.Properties;
   searchForm: CSS.Properties;
   searchBar: CSS.Properties;
+  alert: CSS.Properties;
 }
 const st: Styles = {
   navBar: {
@@ -46,6 +48,10 @@ const st: Styles = {
     padding: 0,
     fontSize: '24px',
   },
+  alert: {
+    zIndex: 1000,
+    fontSize: '18px',
+  },
   rightBar: {
     display: 'flex',
     flexDirection: 'row',
@@ -73,6 +79,9 @@ function Header({
   setAuthenticated,
 }: PropTypes): ReactElement {
   const [searchedCar, setSearchedCar] = useState<string>('');
+  const [isAlert, setAlert] = useState<boolean>(false);
+  const [alertMsg, setAlertMsg] = useState<string>('');
+
   const history = useHistory();
 
   const carSearchChange: FormMethod<ChangeEvent<HTMLInputElement>> = (event) => {
@@ -104,6 +113,11 @@ function Header({
           <h1 style={st.pageTitle}>eCar comparison</h1>
         </li>
       </ul>
+      {isAlert ? (
+        <Alert style={st.alert} type="info">
+          {alertMsg}
+        </Alert>
+      ) : null}
       <div style={st.rightBar}>
         <form style={st.searchForm}>
           <Field>
@@ -117,7 +131,12 @@ function Header({
             />
           </Field>
         </form>
-        <LogBar authenticated={authenticated} setAuthenticated={setAuthenticated} />
+        <LogBar
+          setAlert={setAlert}
+          setAlertMsg={setAlertMsg}
+          authenticated={authenticated}
+          setAuthenticated={setAuthenticated}
+        />
       </div>
     </nav>
   );
