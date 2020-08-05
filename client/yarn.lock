@@ -2118,6 +2118,13 @@
     "@zendeskgarden/container-utilities" "^0.5.1"
     polished "^3.5.1"
 
+"@zendeskgarden/react-grid@^8.17.1":
+  version "8.17.1"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-grid/-/react-grid-8.17.1.tgz#bdbde28e4c72dcda08a46262dbdb701fe11035b3"
+  integrity sha512-NXZQ1zZV87sen4RMcOuAhhRQxsg/aL+P7OrxZhHJmPcGeMjA7wM2M1CSsFPgN+xXdm6zbaLb4HtF9p4ET1avrQ==
+  dependencies:
+    polished "^3.5.1"
+
 "@zendeskgarden/react-notifications@^8.17.1":
   version "8.17.1"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-notifications/-/react-notifications-8.17.1.tgz#e0da3ed2d8a4b44be8ac92cb6c2f69028a422ada"
