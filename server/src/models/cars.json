@@ -199,7 +199,13 @@
       "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/bmw_i3_l.jpg",
       "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/bmw_i3_r.jpg"
     ],
-    "detailPics": [],
+    "detailPics": [
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/bmw_i3_01.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/bmw_i3_02.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/bmw_i3_03.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/bmw_i3_04.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/bmw_i3_05.jpg"
+    ],
     "powertrain": "electric",
     "range": 235,
     "class": "subcompact",
