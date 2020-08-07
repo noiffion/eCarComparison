@@ -7,7 +7,13 @@
       "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/nissan_leaf_l.jpg",
       "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/nissan_leaf_r.jpg"
     ],
-    "detailPics": [],
+    "detailPics": [
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/nissan_leaf_01.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/nissan_leaf_02.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/nissan_leaf_03.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/nissan_leaf_04.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/nissan_leaf_05.jpg"
+    ],
     "powertrain": "electric",
     "range": 220,
     "class": "compact",
@@ -151,7 +157,13 @@
       "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/chevrolet_bolt_l.jpg",
       "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/chevrolet_bolt_r.jpg"
     ],
-    "detailPics": [],
+    "detailPics": [
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/chevrolet_bolt_01.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/chevrolet_bolt_02.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/chevrolet_bolt_03.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/chevrolet_bolt_04.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/chevrolet_bolt_05.jpg"
+    ],
     "powertrain": "electric",
     "range": 350,
     "class": "subcompact",
