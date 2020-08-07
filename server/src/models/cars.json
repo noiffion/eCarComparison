@@ -53,7 +53,13 @@
       "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/hyundai_ioniq_l.jpg",
       "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/hyundai_ioniq_r.jpg"
     ],
-    "detailPics": [],
+    "detailPics": [
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/hyundai_ioniq_01.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/hyundai_ioniq_02.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/hyundai_ioniq_03.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/hyundai_ioniq_04.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/hyundai_ioniq_05.jpg"
+    ],
     "powertrain": "electric",
     "range": 250,
     "class": "compact",
