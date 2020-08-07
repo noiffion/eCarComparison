@@ -70,7 +70,13 @@
       "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/kia_niro_l.jpg",
       "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/card/kia_niro_r.jpg"
     ],
-    "detailPics": [],
+    "detailPics": [
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/kia_niro_01.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/kia_niro_02.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/kia_niro_03.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/kia_niro_04.jpg",
+      "https://codeworks-ecars-pics.s3.eu-central-1.amazonaws.com/details/kia_niro_05.jpg"
+    ],
     "powertrain": "electric",
     "range": 235,
     "class": "compact",
