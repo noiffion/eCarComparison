@@ -12,8 +12,8 @@ import { Field, Label, Input, Message } from '@zendeskgarden/react-forms';
 import { Button } from '@zendeskgarden/react-buttons';
 import styled from 'styled-components';
 import CSS from 'csstype';
-import { IUser, FormMethod } from '../../Interfaces';
 import apiReqs from '../../API/apiReqs';
+import { IUser, FormMethod } from '../index.d';
 
 interface Styles {
   formContainer: CSS.Properties;

@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import CSS from 'csstype';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { ICar } from '../../Interfaces';
+import { ICar } from '../index.d';
 
 interface Styles {
   article: CSS.Properties;

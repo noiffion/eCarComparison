@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, ReactElement } from 'react';
 import { useEmblaCarousel } from 'embla-carousel/react';
-import { ICar } from '../../Interfaces';
+import { ICar } from '../index.d';
 
 interface PropTypes {
   car: ICar;

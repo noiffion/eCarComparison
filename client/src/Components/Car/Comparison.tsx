@@ -4,8 +4,8 @@ import { useParams, withRouter } from 'react-router-dom';
 import { Dots } from '@zendeskgarden/react-loaders';
 import { Dropdown, Menu, Item, Field, Select, Label } from '@zendeskgarden/react-dropdowns';
 import apiReqs from '../../API/apiReqs';
-import { ICar } from '../../Interfaces';
 import CarCol from './CarCol';
+import { ICar } from '../index.d';
 
 interface Styles {
   compareContainer: CSS.Properties;

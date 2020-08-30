@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import CSS from 'csstype';
 import CarOusel from './CarOusel';
 import apiReqs from '../../API/apiReqs';
-import { ICar } from '../../Interfaces';
+import { ICar } from '../index.d';
 
 interface Styles {
   detailsSection: CSS.Properties;

@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import CSS from 'csstype';
 import CarCard from './CarCard';
-import { ICar } from '../../Interfaces';
+import { ICar } from '../index.d';
 
 interface Styles {
   mainSection: CSS.Properties;

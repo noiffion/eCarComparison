@@ -1,7 +1,7 @@
 import React, { useEffect, ReactElement, Dispatch, SetStateAction } from 'react';
 import { useHistory } from 'react-router-dom';
 import apiReqs from '../../API/apiReqs';
-import { IUser } from '../../Interfaces';
+import { IUser } from '../index.d';
 
 interface PropTypes {
   user: IUser;

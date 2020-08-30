@@ -2,7 +2,7 @@ import React, { ReactElement, Dispatch, SetStateAction } from 'react';
 import { Button } from '@zendeskgarden/react-buttons';
 import styled from 'styled-components';
 import CSS from 'csstype';
-import { ICar } from '../../Interfaces';
+import { ICar } from '../index.d';
 
 interface Styles {
   carInfo: CSS.Properties;

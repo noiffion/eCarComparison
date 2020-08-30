@@ -1,6 +1,6 @@
-import { ICar, IUser, IReview, IToken } from '../Interfaces';
+import { ICar, IUser, IReview, IToken } from '../Components/index.d';
 
-const API_URL = 'http://localhost:3333/';
+const API_URL = 'http://localhost:5000/';
 
 async function defaultRequest<T>(path: string, init: RequestInit): Promise<T> {
   return fetch(`${API_URL}${path}`, init)

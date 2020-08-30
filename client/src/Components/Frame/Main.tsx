@@ -2,7 +2,6 @@ import React, { useState, useEffect, ReactElement } from 'react';
 import { ThemeProvider, DEFAULT_THEME } from '@zendeskgarden/react-theming';
 import { Switch, Redirect, Route } from 'react-router-dom';
 import CSS from 'csstype';
-import { ICar, IUser } from '../../Interfaces';
 import apiReqs from '../../API/apiReqs';
 import CarList from '../Car/CarList';
 import CarBrochure from '../Car/CarBrochure';
@@ -12,6 +11,7 @@ import Footer from './Footer';
 import Profile from '../User/Profile';
 import SignIn from '../User/SignIn';
 import SignUp from '../User/SignUp';
+import { ICar, IUser } from '../index.d';
 
 interface Styles {
   main: CSS.Properties;

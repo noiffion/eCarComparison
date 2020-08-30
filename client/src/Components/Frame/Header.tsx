@@ -13,7 +13,7 @@ import { Alert } from '@zendeskgarden/react-notifications';
 import LogBar from '../User/LogBar';
 import eCarSrc from '../../Images/eCar.png';
 import magnGlSrc from '../../Images/magnGlass.svg';
-import { ICar, FormMethod } from '../../Interfaces';
+import { ICar, FormMethod } from '../index.d';
 
 interface Styles {
   navBar: CSS.Properties;
