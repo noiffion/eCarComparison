@@ -1,4 +1,4 @@
-import { ControllerMethod } from '../interface';
+import { ControllerMethod } from '../controller';
 import Reviews from '../../models/Reviews';
 
 const deleteRev: ControllerMethod = async function (req, res) {

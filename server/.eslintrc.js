@@ -1,4 +1,4 @@
-{
+module.exports = {
   "root": true,
   "extends": [
     "eslint:recommended",
@@ -10,9 +10,10 @@
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module",
-    "project": "./tsconfig.json"
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": __dirname
   },
-  "rules": {
+  rules: {
     "linebreak-style": "off",
     "no-console": [
       "warn",

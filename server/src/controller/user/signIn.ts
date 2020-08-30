@@ -1,8 +1,8 @@
-import { ControllerMethod } from '../interface';
+import { ControllerMethod } from '../controller';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import Users from '../../models/Users';
-import { IUser } from '../../models/interfaces';
+import { IUser } from '../../models/models';
 import { JWT_KEY } from '../../server';
 
 const signIn: ControllerMethod = async function (req, res) {

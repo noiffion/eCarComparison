@@ -1,4 +1,4 @@
-import { ControllerMethod } from '../interface';
+import { ControllerMethod } from '../controller';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import Users from '../../models/Users';

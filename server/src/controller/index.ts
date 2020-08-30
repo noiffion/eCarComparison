@@ -1,4 +1,5 @@
-import Controller from './interface';
+import Controller from './controller';
+
 import getECars from './car/getECars';
 import getOneCar from './car/getOneCar';
 import signUp from './user/signUp';
