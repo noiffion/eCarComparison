@@ -16,7 +16,7 @@ module.exports = {
   rules: {
     'linebreak-style': 'off',
     'no-console': [
-      warn,
+      'warn',
       {
         allow: ['oldInfo', 'info', 'oldWarn', 'warn', 'oldError', 'error']
       }
