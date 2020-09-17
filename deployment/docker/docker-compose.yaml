@@ -1,0 +1,26 @@
+version: "3"
+services:
+  reverseproxy:
+      image: noiffion/udagram-revproxy
+      ports:
+          - 8080:8080
+      restart: always
+      depends_on:
+        - backend-user
+        - backend-feed
+  backend-user:
+    image: noiffion/udagram-user
+    tty: true
+    env_file:
+      - .env
+  backend-feed:
+    tty: true
+    image: noiffion/udagram-feed
+    volumes:
+      - $HOME/.aws:/root/.aws
+    env_file:
+      - .env
+  frontend:
+    image: noiffion/udagram-client
+    ports:
+      - "8100:80"

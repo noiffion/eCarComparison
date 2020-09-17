@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+data:
+  AWS_BUCKET: "microudagram-334948838995-dev"
+  AWS_PROFILE: "default"
+  AWS_REGION: "eu-central-1"
+  POSTGRES_DB: "noiffionudagrambase"
+  POSTGRES_HOST: "noiffionudagrambase.cqrx8c5c3sdc.eu-central-1.rds.amazonaws.com"
+  PORT: "8080"
+  FRONT_URL: "http://localhost:8100"
+metadata:
+  name: env-config

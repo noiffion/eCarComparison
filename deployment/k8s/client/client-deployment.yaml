@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: udagram-client
+  name: udagram-client
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      service: udagram-client
+      api: external
+  template:
+    metadata:
+      labels:
+        service: udagram-client
+        api: external
+    spec:
+      containers:
+      - image: noiffion/udagram-client
+        name: udagram-client
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"
+      restartPolicy: Always
+

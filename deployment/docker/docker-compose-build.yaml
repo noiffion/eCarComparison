@@ -1,0 +1,18 @@
+version: "3"
+services:
+  reverseproxy:
+    build:
+      context: .
+    image: noiffion/udagram-revproxy
+  backend_user:
+    build:
+      context: ../../user
+    image: noiffion/udagram-user
+  backend_feed:
+    build:
+      context: ../../feed
+    image: noiffion/udagram-feed
+  frontend:
+    build:
+      context: ../../client
+    image: noiffion/udagram-client
