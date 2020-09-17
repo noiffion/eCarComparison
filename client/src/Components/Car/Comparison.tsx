@@ -43,7 +43,10 @@ function Comparison(): ReactElement {
   const [eCarList, setECarList] = useState<ICar[]>([]);
   const [firstCar, setFirstCar] = useState<ICar | undefined>(undefined);
   const [secondCar, setSecondCar] = useState<ICar | undefined>(undefined);
-  const { carId } = useParams();
+  interface ParamType {
+    carId: string;
+  }
+  const { carId } = useParams<ParamType>();
 
   useEffect(() => {
     apiReqs

@@ -7,8 +7,8 @@ interface PropTypes {
 }
 const CarOusel = ({ car }: PropTypes): ReactElement => {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [EmblaCarouselReact, embla] = useEmblaCarousel();
-  const [EmblaCarouselReactThumbs, emblaThumbs] = useEmblaCarousel({
+  const [mainViewportRef, embla] = useEmblaCarousel();
+  const [thumbViewportRef, emblaThumbs] = useEmblaCarousel({
     containScroll: 'keepSnaps',
     selectedClass: '',
   });
@@ -36,10 +36,68 @@ const CarOusel = ({ car }: PropTypes): ReactElement => {
   return (
     <article style={{ width: '70%' }}>
       <div className="embla">
+        <div className="embla__viewport" ref={mainViewportRef}>
+          <div className="embla__container">
+            {car?.detailPics.map((imgSrc, index) => {
+              const imgName = imgSrc.match(/details\/(.+)$/);
+              return (
+                <div className="embla__slide" key={index}>
+                  <div className="embla__slide__inner">
+                    <img
+                      className="embla__slide__img"
+                      src={imgSrc}
+                      alt={imgName ? imgName[1] : "car image"}
+                    />
+                  </div>
+                </div>
+            )})}
+          </div>
+        </div>
+      </div>
+
+      <div className="embla embla--thumb">
+        <div className="embla__viewport" ref={thumbViewportRef}>
+          <div className="embla__container embla__container--thumb">
+            {car?.detailPics.map((imgSrc, index) => {
+              const imgName = imgSrc.match(/details\/(.+)$/);
+              return (
+                <div
+                  key={`${car.manufacturer} ${car.name} ${index}`}
+                  className={`embla__slide embla__slide--thumb
+                    ${index === selectedIndex ? 'is-selected' : ''}
+                  `}
+                >
+                  <button
+                    onClick={() => onThumbClick(index)}
+                    className="embla__slide__inner embla__slide__inner--thumb"
+                    type="button"
+                  >
+                    <img
+                      className="embla__slide__thumbnail"
+                      src={imgSrc}
+                      alt={imgName ? imgName[1] : "car image"}
+                      loading="lazy"
+                    />
+                  </button>
+                </div>
+            )})}
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+};
+
+export default CarOusel;
+
+
+
+/*
+      <div className="embla">
         <EmblaCarouselReact className="embla__viewport">
           <div className="embla__container">
             {car?.detailPics.map((imgSrc, index) => (
-              <div className="embla__slide" key={`${car.manufacturer} ${car.name} ${index}`}>
+              <div className="embla__slide" key={`${car.manufacturer}_${car.name}`}>
                 <div className="embla__slide__inner">
                   <img
                     className="embla__slide__img"
@@ -80,8 +138,4 @@ const CarOusel = ({ car }: PropTypes): ReactElement => {
           </div>
         </EmblaCarouselReactThumbs>
       </div>
-    </article>
-  );
-};
-
-export default CarOusel;
+*/

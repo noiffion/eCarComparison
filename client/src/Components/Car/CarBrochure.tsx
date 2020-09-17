@@ -78,7 +78,10 @@ const SButton = styled(Button)`
 
 function CarBrochure(): ReactElement {
   const [car, setCar] = useState<ICar | null>(null);
-  const { carId } = useParams();
+  interface ParamType {
+    carId: string;
+  }
+  const { carId } = useParams<ParamType>();
 
   useEffect((): void => {
     apiReqs
