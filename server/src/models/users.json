@@ -1,22 +1,24 @@
 [
   {
-    "email": "mockMail@mail.com",
-    "password": "abcd1234",
+    "email": "user1@mail.com",
+    "password": "psWD1234$",
     "userIcon": "",
-    "firstName": "Mock",
-    "lastName": "Monk",
+    "firstName": "FirstName1",
+    "lastName": "LastName1",
     "favourites": [],
-    "reviews": [],
-    "lastLogin": "2020-07-30T13:21:55.714Z"
+    "lastLogin": "2020-07-30T13:21:55.714Z",
+    "CreatedAt": "2020-07-30T13:31:06.289Z",
+    "UpdatedAt": "2020-07-30T13:31:24.489Z"
   },
   {
-    "email": "testUser@mail.com",
-    "password": "1234abcd",
+    "email": "user2@mail.com",
+    "password": "psWD1234$",
     "userIcon": "",
-    "firstName": "Thomas",
-    "lastName": "Test",
+    "firstName": "FirstName1",
+    "lastName": "LastName2",
     "favourites": [],
-    "reviews": [],
-    "lastLogin": "2020-07-30T13:22:19.025Z"
+    "lastLogin": "2020-07-30T13:22:19.025Z",
+    "CreatedAt": "2020-07-30T13:31:06.289Z",
+    "UpdatedAt": "2020-07-30T13:31:24.489Z"
   }
 ]

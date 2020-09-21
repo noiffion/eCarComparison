@@ -10,6 +10,8 @@ export interface IUser extends mongoose.Document {
   favourites?: string[];
   reviews?: string[];
   lastLogin: Date;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface ICar extends mongoose.Document {
@@ -26,6 +28,8 @@ export interface ICar extends mongoose.Document {
   doors: number;
   msrp: number;
   rating: number;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface IReview extends mongoose.Document {
