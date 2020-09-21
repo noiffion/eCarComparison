@@ -1,29 +1,38 @@
 [
   {
-    "carId": "",
-    "userId": "",
+    "carId": "5f63c7b31ed8df502d8d3866",
+    "userId": "5f6871049d8a37f139251977",
     "text": "Good car",
     "carRating": null,
     "useful": null,
-    "CreatedAt": "2020-07-30T13:25:52.184Z",
-    "UpdatedAt": "2020-07-30T13:26:15.123Z"
+    "createdAt": "2020-07-30T13:25:52.184Z",
+    "updatedAt": "2020-07-30T13:26:15.123Z"
   },
   {
-    "carId": "",
-    "userId": "",
+    "carId": "5f63c7b31ed8df502d8d3866",
+    "userId": "5f6871049d8a37f139251977",
     "text": "Average car",
     "carRating": null,
     "useful": null,
-    "CreatedAt": "2020-07-30T13:31:06.289Z",
-    "UpdatedAt": "2020-07-30T13:31:24.489Z"
+    "createdAt": "2020-07-30T13:31:06.289Z",
+    "updatedAt": "2020-07-30T13:31:24.489Z"
   },
   {
-    "carId": "",
-    "userId": "",
+    "carId": "5f63c7b31ed8df502d8d3866",
+    "userId": "5f6899f157860c62405f687b",
     "text": "Bad car",
     "carRating": null,
     "useful": null,
-    "CreatedAt": "2020-07-30T13:31:39.346Z",
-    "UpdatedAt": "2020-07-30T13:32:01.004Z"
+    "createdAt": "2020-07-30T13:31:39.346Z",
+    "updatedAt": "2020-07-30T13:32:01.004Z"
+  },
+  {
+    "carId": "5f63c7b31ed8df502d8d3876",
+    "userId": "5f6899f157860c62405f687b",
+    "text": "Meh truck",
+    "carRating": null,
+    "useful": null,
+    "createdAt": "2020-07-30T13:31:39.346Z",
+    "updatedAt": "2020-07-30T13:32:01.004Z"
   }
 ]

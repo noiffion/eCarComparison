@@ -8,7 +8,6 @@ export interface IUser extends mongoose.Document {
   firstName: string;
   lastName: string;
   favourites?: string[];
-  reviews?: string[];
   lastLogin: Date;
   createdAt: Date;
   updatedAt: Date;
