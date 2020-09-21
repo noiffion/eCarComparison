@@ -2013,6 +2013,13 @@
   dependencies:
     "@babel/runtime" "^7.8.4"
 
+"@zendeskgarden/react-avatars@^8.23.1":
+  version "8.23.1"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-avatars/-/react-avatars-8.23.1.tgz#79ca73d800b7d6fccf82fa767775dc6169020879"
+  integrity sha512-DBNOtxocXy/EWCxKA3WwZDRkIdnCzwN5ZSowHcBgxXUqRoSSOGiMR01ow3K5gghgqudCa+nIjEb5aYyl7bOHLA==
+  dependencies:
+    polished "^3.5.1"
+
 "@zendeskgarden/react-buttons@^8.23.1":
   version "8.23.1"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-buttons/-/react-buttons-8.23.1.tgz#3444c0aa562464a9c138cdbf6f7e35406ad58340"
