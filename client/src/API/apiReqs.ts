@@ -52,7 +52,7 @@ export default {
     return defaultRequest<IUser>('profile', init);
   },
 
-  async getReviews(): Promise<IReview> {
+  async getReviews(carId: string): Promise<IReview[]> {
     const init: RequestInit = {
       method: 'GET',
       mode: 'cors',
@@ -60,7 +60,7 @@ export default {
         Accept: 'application/json',
       },
     };
-    return defaultRequest<IReview>('reviews', init);
+    return defaultRequest<IReview[]>(`reviews/${carId}`, init);
   },
   async newReview(jwtToken: string, review: IReview): Promise<IReview> {
     const init: RequestInit = {
