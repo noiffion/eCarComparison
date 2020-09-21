@@ -10,7 +10,7 @@ router.post('/signup', controller.signUp);
 router.post('/signin', controller.signIn);
 router.get('/profile', authCheck, controller.profile);
 
-router.get('/reviews', controller.readRevs);
+router.get('/reviews/:carId', controller.readRevs);
 router.post('/reviews', authCheck, controller.createRev);
 router.put('/reviews/:reviewId', authCheck, controller.updateRev);
 router.delete('/reviews/:reviewId', authCheck, controller.deleteRev);
