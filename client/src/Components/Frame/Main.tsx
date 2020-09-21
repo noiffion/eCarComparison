@@ -27,19 +27,12 @@ const st: Styles = {
     padding: 0,
   },
 };
-const uData: IUser = {
-  email: '',
-  password: '',
-  firstName: '',
-  lastName: '',
-  lastLogin: new Date(),
-};
 
 function Main(): ReactElement {
   const [eCarList, setECarList] = useState<ICar[]>([]);
   const [filteredCars, setFilteredCars] = useState<ICar[]>([]);
   const [authenticated, setAuthenticated] = useState<boolean>(false);
-  const [user, setUser] = useState<IUser>(uData);
+  const [user, setUser] = useState<IUser>({ email: '' });
 
   useEffect((): void => {
     apiReqs

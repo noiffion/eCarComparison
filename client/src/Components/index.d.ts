@@ -6,8 +6,9 @@ export interface IUser {
   firstName?: string;
   lastName?: string;
   favourites?: string[];
-  reviews?: string[];
-  lastLogin: Date;
+  lastLogin?: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export interface ICar {
@@ -24,6 +25,8 @@ export interface ICar {
   doors: number;
   msrp: number;
   rating: number;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface IReview {
@@ -33,7 +36,8 @@ export interface IReview {
   text: string;
   carRating: number;
   useful: number;
-  timestamps: Date;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface FormMethod<E> {

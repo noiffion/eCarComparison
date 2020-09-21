@@ -5,6 +5,7 @@ import { Dots } from '@zendeskgarden/react-loaders';
 import styled from 'styled-components';
 import CSS from 'csstype';
 import CarOusel from './CarOusel';
+import ReviewTable from '../Review/ReviewTable';
 import apiReqs from '../../API/apiReqs';
 import { ICar } from '../index.d';
 
@@ -92,31 +93,34 @@ function CarBrochure(): ReactElement {
 
   const carPrice = `${car?.msrp.toString().slice(0, 2)},${car?.msrp.toString().slice(2)}`;
   return (
-    <section style={st.detailsSection}>
-      {!car ? (
-        <div style={st.loader}>
-          <Dots color="#00ff00" size="100px" delayMS={500} />
-        </div>
-      ) : (
-        <>
-          <div style={st.titleBox}>
-            <h2 style={st.carName}> {`${car?.manufacturer} ${car?.name}`}</h2>
-            <img src={car.logo} style={st.logo} alt={`${car.manufacturer} logo`} />
+    <>
+      <section style={st.detailsSection}>
+        {!car ? (
+          <div style={st.loader}>
+            <Dots color="#00ff00" size="100px" delayMS={500} />
           </div>
-          <CarOusel car={car} />
-          <div style={st.baseInfo}>
-            <span>
-              Model: {car.manufacturer} {car.name}
-            </span>
-            <span> Starting price: ${carPrice} </span>
-            <span>Powertrain: {car.powertrain}</span>
-          </div>
-          <SLink to={`/comparison/${carId}`}>
-            <SButton>Compare</SButton>
-          </SLink>
-        </>
-      )}
-    </section>
+        ) : (
+          <>
+            <div style={st.titleBox}>
+              <h2 style={st.carName}> {`${car?.manufacturer} ${car?.name}`}</h2>
+              <img src={car.logo} style={st.logo} alt={`${car.manufacturer} logo`} />
+            </div>
+            <CarOusel car={car} />
+            <div style={st.baseInfo}>
+              <span>
+                Model: {car.manufacturer} {car.name}
+              </span>
+              <span> Starting price: ${carPrice} </span>
+              <span>Powertrain: {car.powertrain}</span>
+            </div>
+            <SLink to={`/comparison/${carId}`}>
+              <SButton>Compare</SButton>
+            </SLink>
+          </>
+        )}
+      </section>
+      <ReviewTable carId={carId} />
+    </>
   );
 }
 

@@ -1,8 +1,9 @@
 import React, { ReactElement, Dispatch, SetStateAction } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { Avatar } from '@zendeskgarden/react-avatars';
+import { Button } from '@zendeskgarden/react-buttons';
 import styled from 'styled-components';
 import CSS from 'csstype';
-import { Button } from '@zendeskgarden/react-buttons';
 
 interface Styles {
   linkList: CSS.Properties;
@@ -23,6 +24,10 @@ const st: Styles = {
 };
 
 const SLink = styled(Link)`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
   color: #00ff00;
   &:hover {
@@ -56,8 +61,7 @@ function LogBar({
   const history = useHistory();
 
   const logout = (): void => {
-    const jwtToken = sessionStorage.getItem('jwtToken') || '';
-    sessionStorage.removeItem(jwtToken);
+    sessionStorage.removeItem('jwtToken');
     setAuthenticated(false);
     history.push('/mainList');
     setAlert(true);
@@ -68,13 +72,25 @@ function LogBar({
     }, 2000);
   };
 
+  const avatarName = (): string => {
+    const jwtToken = sessionStorage.getItem('jwtToken');
+    const userData = jwtToken ? JSON.parse(atob(jwtToken.split('.')[1])) : { firstName : 'X'};
+    return userData.firstName.charAt(0);
+  };
+
   return (
     <ul style={st.linkList}>
       {authenticated ? (
         <>
           <li style={st.link}>
             <SLink to="/user/profile">
-              <SButton>Profile</SButton>
+              <Avatar
+                backgroundColor="#00ff00"
+                size="medium"
+                style={{ marginRight: '3px', marginBottom: '3px' }}
+              >
+                <Avatar.Text>{avatarName()}</Avatar.Text>
+              </Avatar>
             </SLink>
           </li>
           <li style={st.link}>
