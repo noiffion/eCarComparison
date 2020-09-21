@@ -1,5 +1,4 @@
 import { ControllerMethod } from '../controller';
-
 import Cars from '../../models/Cars';
 import { ICar } from '../../models/models';
 

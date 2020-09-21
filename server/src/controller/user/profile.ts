@@ -10,7 +10,6 @@ const profile: ControllerMethod = async function (req, res) {
     const respUser = {
       _id: user._id,
       favourites: user.favourites,
-      reviews: user.reviews,
       email: user.email,
       firstName: user.firstName,
       lastName: user.lastName,

@@ -11,11 +11,15 @@ const signIn: ControllerMethod = async function (req, res) {
     const user: IUser = await Users.findOne({ email: email });
     const validatedPswd = await bcrypt.compare(password, user.password);
     if (!validatedPswd) throw new Error('Incorrect password!');
-    const jwtToken = jwt.sign({ _id: user._id }, JWT_KEY);
+    const jwtToken = jwt.sign({
+      _id: user._id,
+      email: user.email,
+      firstName: user.firstName,
+    }, JWT_KEY);
     res.status(200).send({ jwtToken });
   } catch (err) {
     console.error(err);
-    res.status(401).send({ error: 'Username or password is incorrect' });
+    res.status(401).send({ error: 'Username or password is incorrect!' });
   }
 };
 
