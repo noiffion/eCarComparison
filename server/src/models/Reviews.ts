@@ -11,6 +11,14 @@ const Reviews: mongoose.Schema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    userFirstName: {
+      type: String,
+      required: true,
+    },
+    userLastName: {
+      type: String,
+      required: true,
+    },
     text: {
       type: String,
       required: true,
