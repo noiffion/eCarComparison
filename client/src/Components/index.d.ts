@@ -38,6 +38,7 @@ export interface IReview {
   text?: string;
   carRating?: number;
   useful?: number;
+  voters?: string[];
   createdAt?: Date;
   updatedAt?: Date;
 }
