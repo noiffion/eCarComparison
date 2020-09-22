@@ -16,6 +16,7 @@ const signIn: ControllerMethod = async function (req, res) {
         _id: user._id,
         email: user.email,
         firstName: user.firstName,
+        lastName: user.lastName,
       },
       JWT_KEY
     );

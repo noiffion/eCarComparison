@@ -15,8 +15,8 @@ const signUp: ControllerMethod = async function (req, res) {
     password: pswdHash,
   });
   try {
-    const { _id, email, firstName } = await newUser.save();
-    const jwtToken = jwt.sign({ _id, email, firstName }, JWT_KEY);
+    const { _id, email, firstName, lastName } = await newUser.save();
+    const jwtToken = jwt.sign({ _id, email, firstName, lastName }, JWT_KEY);
     res.status(201).send({ jwtToken });
   } catch (err) {
     console.error(err);
