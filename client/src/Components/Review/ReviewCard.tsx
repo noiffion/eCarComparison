@@ -1,21 +1,22 @@
-import React, { useState, useEffect, ReactElement, FormEvent, ChangeEvent } from 'react';
+import React, { useState, useEffect, ReactElement, FormEvent, ChangeEvent, Dispatch, SetStateAction } from 'react';
 import moment from 'moment';
 import CSS from 'csstype';
 import styled from 'styled-components';
 import { Alert } from '@zendeskgarden/react-notifications';
 import { Textarea } from '@zendeskgarden/react-forms';
 import { Button } from '@zendeskgarden/react-buttons';
+import { IReview, FormMethod } from '../index.d';
 import RatingStar from './RatingStar';
 import upArrow from '../../Images/upArrow.png';
 import downArrow from '../../Images/downArrow.png';
 import starEmpty from '../../Images/ratingStar.png';
 import starFull from '../../Images/ratingStarFull.png';
-import { IReview, FormMethod } from '../index.d';
 import apiReqs from '../../API/apiReqs';
 
 interface Styles {
   reviewCard: CSS.Properties;
   reviewBody: CSS.Properties;
+  textAndStars: CSS.Properties;
   carRating: CSS.Properties;
   posted: CSS.Properties;
   poster: CSS.Properties;
@@ -25,6 +26,7 @@ interface Styles {
   editText: CSS.Properties;
   buttonWrapper: CSS.Properties;
   editReviewBody: CSS.Properties;
+  newReviewBody: CSS.Properties;
 }
 const st: Styles = {
   alert: {
@@ -44,6 +46,12 @@ const st: Styles = {
   reviewBody: {
     display: 'flex',
     flexDirection: 'row',
+  },
+  textAndStars: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
   },
   carRating: {
     minWidth: '160px',
@@ -75,6 +83,7 @@ const st: Styles = {
   editReviewBody: {
     display: 'flex',
     flexDirection: 'row',
+    justifyContent: 'space-between',
     minHeight: '14vh',
   },
   editPosted: {
@@ -86,6 +95,12 @@ const st: Styles = {
   editText: {
     fontSize: '18px',
   },
+  newReviewBody: {
+    display: 'flex',
+    flexDirection: 'row',
+    minHeight: '14vh',
+    justifyContent: 'space-between',
+  }
 };
 
 const ArrowImg = styled.img`
@@ -144,13 +159,23 @@ const SubmitB = styled(Button)`
   }
 `;
 
+const DisabledB = styled(Button)`
+  font-size: 16px;
+  border-color: #adff2f;
+  color: #adff2f;
+  margin-left: 1%;
+`;
+
 interface PropTypes {
   revDetails: IReview;
+  newRev?: boolean;
+  setReviews: Dispatch<SetStateAction<IReview[]>>;
 }
-function ReviewCard({ revDetails }: PropTypes): ReactElement {
+function ReviewCard({ revDetails, newRev, setReviews }: PropTypes): ReactElement {
   const {
     _id,
     userId,
+    carId,
     userFirstName,
     userLastName,
     updatedAt,
@@ -231,6 +256,45 @@ function ReviewCard({ revDetails }: PropTypes): ReactElement {
     setIsBeingEdited(false);
   };
 
+  const submitNew: FormMethod<FormEvent<HTMLFormElement>> = (event) => {
+    event.preventDefault();
+    const jwtToken = sessionStorage.getItem('jwtToken');
+    const review = {
+      carId,
+      userId,
+      userFirstName,
+      userLastName,
+      text: reviewText,
+      carRating: 0,
+      useful: 0,
+    }
+    apiReqs
+      .newReview(jwtToken!, review)
+      .then((reviews) => setReviews(reviews))
+      .catch(console.error);
+  };
+
+  const newReview = (
+    <form onSubmit={submitNew}>
+      <div style={st.newReviewBody}>
+        <Textarea style={st.editText} onChange={handleReviewText} value={reviewText} />
+        <div style={st.carRating}>{stars}</div>
+      </div>
+      <div style={st.buttonWrapper}>
+        <div style={st.editPosted}>
+          Will be posted by{' '}
+          <span style={st.poster}>
+            {userFirstName} {userLastName}
+          </span>
+          {reviewText.length > 50 ?
+            <SubmitB type="submit">Submit</SubmitB> :
+            <DisabledB disabled>Submit</DisabledB>
+          }
+        </div>
+      </div>
+    </form>
+  );
+
   const postedAt = `${moment(timeStamp).fromNow()} (${moment(timeStamp).format('MMM Do YYYY')})`;
   const displayReview = (
     <>
@@ -240,8 +304,10 @@ function ReviewCard({ revDetails }: PropTypes): ReactElement {
           <div>{postVotes}</div>
           <ArrowImg src={downArrow} alt="down arrow" onClick={() => updatePostRating(false)} />
         </div>
-        <div>{reviewText}</div>
-        <div style={st.carRating}>{stars}</div>
+        <div style={st.textAndStars}>
+          <div>{reviewText}</div>
+          <div style={st.carRating}>{stars}</div>
+        </div>
       </div>
       <div style={st.posted}>
         Posted by{' '}
@@ -277,6 +343,8 @@ function ReviewCard({ revDetails }: PropTypes): ReactElement {
     </form>
   );
 
+  const existingReview = isBeingEdited ? editReview : displayReview;
+
   return (
     <article style={st.reviewCard}>
       {isAlert ? (
@@ -284,7 +352,7 @@ function ReviewCard({ revDetails }: PropTypes): ReactElement {
           {alertMsg}
         </Alert>
       ) : null}
-      {isBeingEdited ? editReview : displayReview}
+      {newRev ? newReview : existingReview}
     </article>
   );
 }

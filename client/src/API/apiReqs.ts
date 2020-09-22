@@ -62,7 +62,7 @@ export default {
     };
     return defaultRequest<IReview[]>(`reviews/${carId}`, init);
   },
-  async newReview(jwtToken: string, review: IReview): Promise<IReview> {
+  async newReview(jwtToken: string, review: IReview): Promise<IReview[]> {
     const init: RequestInit = {
       method: 'POST',
       mode: 'cors',
@@ -73,7 +73,7 @@ export default {
       },
       body: JSON.stringify(review),
     };
-    return defaultRequest<IReview>('reviews', init);
+    return defaultRequest<IReview[]>('reviews', init);
   },
   async updReview(jwtToken: string, review: IReview, reviewId: string): Promise<IReview> {
     const init: RequestInit = {
