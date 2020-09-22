@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ReactElement } from 'react';
+import React, { useState, useEffect, ReactElement, FormEvent, ChangeEvent } from 'react';
 import moment from 'moment';
 import CSS from 'csstype';
 import styled from 'styled-components';
@@ -10,7 +10,7 @@ import upArrow from '../../Images/upArrow.png';
 import downArrow from '../../Images/downArrow.png';
 import starEmpty from '../../Images/ratingStar.png';
 import starFull from '../../Images/ratingStarFull.png';
-import { IReview } from '../index.d';
+import { IReview, FormMethod } from '../index.d';
 import apiReqs from '../../API/apiReqs';
 
 interface Styles {
@@ -159,18 +159,14 @@ function ReviewCard({ revDetails }: PropTypes): ReactElement {
     useful,
     voters,
   } = revDetails;
-  const postedAt = `${moment(updatedAt).fromNow()} (${moment(updatedAt).format('MMM Do YYYY')})`;
   const [postVotes, setPostVotes] = useState<number>(useful!);
+  const [reviewText, setReviewText] = useState<string>(text!);
+  const [timeStamp, setTimeStamp] = useState<Date>(updatedAt!);
   const [rateCar, setRateCar] = useState<number>(carRating!);
   const [isAlert, setAlert] = useState<boolean>(false);
   const [alertMsg, setAlertMsg] = useState<string>('');
   const [isEditable, setIsEditable] = useState<boolean>(false);
   const [isBeingEdited, setIsBeingEdited] = useState<boolean>(false);
-
-  const stars = new Array(5).fill(null).map((_, i) => {
-    const imgSrc = i + 1 > rateCar ? starEmpty : starFull;
-    return <RatingStar imgSrc={imgSrc} key={Symbol(i).toString()} />;
-  });
 
   useEffect(() => {
     const jwtToken = sessionStorage.getItem('jwtToken');
@@ -179,6 +175,11 @@ function ReviewCard({ revDetails }: PropTypes): ReactElement {
       if (userId === userData._id) setIsEditable(true);
     }
   }, [userId]);
+
+  const stars = new Array(5).fill(null).map((_, i) => {
+    const imgSrc = i + 1 > rateCar ? starEmpty : starFull;
+    return <RatingStar imgSrc={imgSrc} key={Symbol(i).toString()} />;
+  });
 
   const displayAlert = (message: string, delay: number): void => {
     setAlert(true);
@@ -204,11 +205,33 @@ function ReviewCard({ revDetails }: PropTypes): ReactElement {
       };
       apiReqs
         .updReview(jwtToken, usefulUpdate, _id!)
-        .then((updatedReview) => updatedReview.useful && setPostVotes(updatedReview.useful))
+        .then((updatedReview) => {
+          updatedReview.useful && setPostVotes(updatedReview.useful);
+          updatedReview.updatedAt && setTimeStamp(updatedReview.updatedAt);
+        })
         .catch(console.error);
     }
   };
 
+  const handleReviewText: FormMethod<ChangeEvent<HTMLTextAreaElement>> = (event) => {
+    event.preventDefault();
+    setReviewText(event.currentTarget.value);
+  };
+
+  const submitUpdate: FormMethod<FormEvent<HTMLFormElement>> = (event) => {
+    event.preventDefault();
+    const jwtToken = sessionStorage.getItem('jwtToken');
+    apiReqs
+      .updReview(jwtToken!, { text: reviewText }, _id!)
+      .then((updatedReview) => {
+        updatedReview.text && setReviewText(updatedReview.text);
+        updatedReview.updatedAt && setTimeStamp(updatedReview.updatedAt);
+      })
+      .catch(console.error);
+    setIsBeingEdited(false);
+  };
+
+  const postedAt = `${moment(timeStamp).fromNow()} (${moment(timeStamp).format('MMM Do YYYY')})`;
   const displayReview = (
     <>
       <div style={st.reviewBody}>
@@ -217,7 +240,7 @@ function ReviewCard({ revDetails }: PropTypes): ReactElement {
           <div>{postVotes}</div>
           <ArrowImg src={downArrow} alt="down arrow" onClick={() => updatePostRating(false)} />
         </div>
-        <div>{text}</div>
+        <div>{reviewText}</div>
         <div style={st.carRating}>{stars}</div>
       </div>
       <div style={st.posted}>
@@ -232,9 +255,9 @@ function ReviewCard({ revDetails }: PropTypes): ReactElement {
   );
 
   const editReview = (
-    <form>
+    <form onSubmit={submitUpdate}>
       <div style={st.editReviewBody}>
-        <Textarea style={st.editText}>{text}</Textarea>
+        <Textarea style={st.editText} onChange={handleReviewText} value={reviewText} />
         <div style={st.carRating}>{stars}</div>
       </div>
       <div style={st.buttonWrapper}>
@@ -247,7 +270,7 @@ function ReviewCard({ revDetails }: PropTypes): ReactElement {
             {userFirstName} {userLastName}
           </span>{' '}
           — {postedAt}
-          <SubmitB onClick={() => setIsBeingEdited(false)}>Submit</SubmitB>
+          <SubmitB type="submit">Submit</SubmitB>
           <CancelB onClick={() => setIsBeingEdited(false)}>Cancel</CancelB>
         </div>
       </div>
