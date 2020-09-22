@@ -1,8 +1,10 @@
-import React, { useState, ReactElement } from 'react';
+import React, { useState, useEffect, ReactElement } from 'react';
 import moment from 'moment';
 import CSS from 'csstype';
 import styled from 'styled-components';
 import { Alert } from '@zendeskgarden/react-notifications';
+import { Textarea } from '@zendeskgarden/react-forms';
+import { Button } from '@zendeskgarden/react-buttons';
 import RatingStar from './RatingStar';
 import upArrow from '../../Images/upArrow.png';
 import downArrow from '../../Images/downArrow.png';
@@ -19,6 +21,10 @@ interface Styles {
   poster: CSS.Properties;
   postRating: CSS.Properties;
   alert: CSS.Properties;
+  editPosted: CSS.Properties;
+  editText: CSS.Properties;
+  buttonWrapper: CSS.Properties;
+  editReviewBody: CSS.Properties;
 }
 const st: Styles = {
   alert: {
@@ -40,8 +46,7 @@ const st: Styles = {
     flexDirection: 'row',
   },
   carRating: {
-    width: '100%',
-    minWidth: '30%',
+    minWidth: '160px',
     textAlign: 'right',
   },
   posted: {
@@ -60,6 +65,27 @@ const st: Styles = {
     minWidth: '5vw',
     paddingTop: '2vh',
   },
+  buttonWrapper: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: '1.5vh',
+  },
+  editReviewBody: {
+    display: 'flex',
+    flexDirection: 'row',
+    minHeight: '14vh',
+  },
+  editPosted: {
+    width: '100%',
+    textAlign: 'right',
+    fontSize: '16px',
+    fontStyle: 'italic',
+  },
+  editText: {
+    fontSize: '18px',
+  },
 };
 
 const ArrowImg = styled.img`
@@ -69,6 +95,55 @@ const ArrowImg = styled.img`
     cursor: pointer;
   }
 `
+
+const CancelB = styled(Button)`
+  font-size: 16px;
+  border-color: #adff2f;
+  color: #adff2f;
+  margin-left: 1%;
+  &:hover {
+    border-color: #00ff00;
+    color: #00ff00;
+    background-color: transparent;
+  }
+`;
+
+const DeleteB = styled(Button)`
+  font-size: 16px;
+  border-color: #adff2f;
+  color: #adff2f;
+  margin-left: 1%;
+  &:hover {
+    border-color: #B22222;
+    color: #B22222;
+    background-color: transparent;
+  }
+`;
+
+const EditB = styled(Button)`
+  font-size: 16px;
+  border-color: #adff2f;
+  color: #adff2f;
+  margin-left: 1%;
+  &:hover {
+    border-color: #00ff00;
+    color: #00ff00;
+    background-color: transparent;
+  }
+`;
+
+const SubmitB = styled(Button)`
+  font-size: 16px;
+  border-color: #adff2f;
+  color: #adff2f;
+  margin-left: 1%;
+  &:hover {
+    border-color: #00ff00;
+    color: #00ff00;
+    background-color: transparent;
+  }
+`;
+
 interface PropTypes {
   revDetails: IReview;
 }
@@ -89,37 +164,40 @@ function ReviewCard({ revDetails }: PropTypes): ReactElement {
   const [rateCar, setRateCar] = useState<number>(carRating!);
   const [isAlert, setAlert] = useState<boolean>(false);
   const [alertMsg, setAlertMsg] = useState<string>('');
+  const [isEditable, setIsEditable] = useState<boolean>(false);
+  const [isBeingEdited, setIsBeingEdited] = useState<boolean>(false);
 
   const stars = new Array(5).fill(null).map((_, i) => {
     const imgSrc = ((i + 1) > rateCar) ? starEmpty : starFull;
     return <RatingStar imgSrc={imgSrc} key={Symbol(i).toString()}/>;
   });
 
+  useEffect(() => {
+    const jwtToken = sessionStorage.getItem('jwtToken');
+    if (jwtToken) {
+      const userData = JSON.parse(atob(jwtToken.split('.')[1]));
+      if (userId === userData._id) setIsEditable(true);
+    }
+  }, [userId]);
+
+  const displayAlert = (message: string, delay: number): void => {
+    setAlert(true);
+    setAlertMsg(message);
+    setTimeout(() => {
+      setAlert(false);
+      setAlertMsg('');
+    }, delay);
+  };
+
   const updatePostRating = (toIncrease: boolean): void => {
     const jwtToken = sessionStorage.getItem('jwtToken');
     const userData = jwtToken && JSON.parse(atob(jwtToken.split('.')[1]));
     if (!jwtToken) {
-      setAlert(true);
-      setAlertMsg(`You need to be logged in to vote!`);
-      setTimeout(() => {
-        setAlert(false);
-        setAlertMsg('');
-      }, 1200);
+      displayAlert('You need to be logged in to vote!', 1200);
     } else if (userData._id === userId) {
-      setAlert(true);
-      setAlertMsg(`You can't vote for your own post!`);
-      setTimeout(() => {
-        setAlert(false);
-        setAlertMsg('');
-      }, 1200);
+      displayAlert(`You can't vote for your own post!`, 1200);
     } else if (voters && voters.includes(userData._id)) {
-      console.log(userData, revDetails);
-      setAlert(true);
-      setAlertMsg(`You've already voted for this post!`);
-      setTimeout(() => {
-        setAlert(false);
-        setAlertMsg('');
-      }, 1200);
+      displayAlert(`You've already voted for this post!`, 1200);
     } else {
       const usefulUpdate = {
         useful: toIncrease ? postVotes + 1 : postVotes - 1,
@@ -131,6 +209,44 @@ function ReviewCard({ revDetails }: PropTypes): ReactElement {
     }
   };
 
+  const displayReview = (
+    <>
+      <div style={st.reviewBody}>
+        <div style={st.postRating}>
+          <ArrowImg src={upArrow} alt="up arrow" onClick={() => updatePostRating(true)} />
+          <div>{postVotes}</div>
+          <ArrowImg src={downArrow} alt="down arrow" onClick={() => updatePostRating(false)} />
+        </div>
+        <div>{text}</div>
+        <div style={st.carRating}>{stars}</div>
+      </div>
+      <div style={st.posted}>
+        Posted by <span style={st.poster}>{userFirstName} {userLastName}</span> — {postedAt}
+        {isEditable ? <EditB onClick={() => setIsBeingEdited(true)}>Edit</EditB> : null}
+      </div>
+    </>
+  );
+
+  const editReview = (
+    <form>
+      <div style={st.editReviewBody}>
+        <Textarea style={st.editText}>{text}</Textarea>
+        <div style={st.carRating}>{stars}</div>
+      </div>
+      <div style={st.buttonWrapper}>
+        <div>
+          <DeleteB onClick={() => null}>Delete</DeleteB>
+        </div>
+        <div style={st.editPosted}>
+          Posted by <span style={st.poster}>{userFirstName} {userLastName}</span> — {postedAt}
+          <SubmitB onClick={() => setIsBeingEdited(false)}>Submit</SubmitB>
+          <CancelB onClick={() => setIsBeingEdited(false)}>Cancel</CancelB>
+        </div>
+
+      </div>
+    </form>
+  );
+
   return (
     <article style={st.reviewCard}>
       {isAlert ? (
@@ -138,18 +254,7 @@ function ReviewCard({ revDetails }: PropTypes): ReactElement {
           {alertMsg}
         </Alert>
       ) : null}
-      <div style={st.reviewBody}>
-        <div style={st.postRating}>
-          <ArrowImg src={upArrow} alt="up arrow" onClick={(event) => updatePostRating(true)} />
-          <div>{postVotes}</div>
-          <ArrowImg src={downArrow} alt="down arrow" onClick={(event) => updatePostRating(false)} />
-        </div>
-        <div>{text}</div>
-        <div style={st.carRating}>{stars}</div>
-      </div>
-      <div style={st.posted}>
-        Posted by <span style={st.poster}>{userFirstName} {userLastName}</span> — {postedAt}
-      </div>
+      {isBeingEdited ? editReview : displayReview}
     </article>
   );
 }
