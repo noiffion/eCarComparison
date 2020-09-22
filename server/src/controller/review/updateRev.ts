@@ -3,9 +3,10 @@ import Reviews from '../../models/Reviews';
 
 const updateRev: ControllerMethod = async function (req, res) {
   try {
+    delete req.body.userId;
     const updatedReview = await Reviews.findByIdAndUpdate(
       req.params.reviewId,
-      req.body.useful,
+      req.body,
       {
         new: true,
         useFindAndModify: false
