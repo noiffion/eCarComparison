@@ -94,7 +94,7 @@ const ArrowImg = styled.img`
   &:hover {
     cursor: pointer;
   }
-`
+`;
 
 const CancelB = styled(Button)`
   font-size: 16px;
@@ -114,8 +114,8 @@ const DeleteB = styled(Button)`
   color: #adff2f;
   margin-left: 1%;
   &:hover {
-    border-color: #B22222;
-    color: #B22222;
+    border-color: #b22222;
+    color: #b22222;
     background-color: transparent;
   }
 `;
@@ -168,8 +168,8 @@ function ReviewCard({ revDetails }: PropTypes): ReactElement {
   const [isBeingEdited, setIsBeingEdited] = useState<boolean>(false);
 
   const stars = new Array(5).fill(null).map((_, i) => {
-    const imgSrc = ((i + 1) > rateCar) ? starEmpty : starFull;
-    return <RatingStar imgSrc={imgSrc} key={Symbol(i).toString()}/>;
+    const imgSrc = i + 1 > rateCar ? starEmpty : starFull;
+    return <RatingStar imgSrc={imgSrc} key={Symbol(i).toString()} />;
   });
 
   useEffect(() => {
@@ -201,7 +201,7 @@ function ReviewCard({ revDetails }: PropTypes): ReactElement {
     } else {
       const usefulUpdate = {
         useful: toIncrease ? postVotes + 1 : postVotes - 1,
-      }
+      };
       apiReqs
         .updReview(jwtToken, usefulUpdate, _id!)
         .then((updatedReview) => updatedReview.useful && setPostVotes(updatedReview.useful))
@@ -221,7 +221,11 @@ function ReviewCard({ revDetails }: PropTypes): ReactElement {
         <div style={st.carRating}>{stars}</div>
       </div>
       <div style={st.posted}>
-        Posted by <span style={st.poster}>{userFirstName} {userLastName}</span> — {postedAt}
+        Posted by{' '}
+        <span style={st.poster}>
+          {userFirstName} {userLastName}
+        </span>{' '}
+        — {postedAt}
         {isEditable ? <EditB onClick={() => setIsBeingEdited(true)}>Edit</EditB> : null}
       </div>
     </>
@@ -238,11 +242,14 @@ function ReviewCard({ revDetails }: PropTypes): ReactElement {
           <DeleteB onClick={() => null}>Delete</DeleteB>
         </div>
         <div style={st.editPosted}>
-          Posted by <span style={st.poster}>{userFirstName} {userLastName}</span> — {postedAt}
+          Posted by{' '}
+          <span style={st.poster}>
+            {userFirstName} {userLastName}
+          </span>{' '}
+          — {postedAt}
           <SubmitB onClick={() => setIsBeingEdited(false)}>Submit</SubmitB>
           <CancelB onClick={() => setIsBeingEdited(false)}>Cancel</CancelB>
         </div>
-
       </div>
     </form>
   );

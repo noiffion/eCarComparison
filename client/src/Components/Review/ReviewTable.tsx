@@ -30,7 +30,7 @@ function ReviewTable({ carId }: PropTypes): ReactElement {
       .catch(console.error);
   }, [carId]);
 
-  const revPosts = reviews.map((review) => <ReviewCard revDetails={review} key={review._id}/> );
+  const revPosts = reviews.map((review) => <ReviewCard revDetails={review} key={review._id} />);
 
   return (
     <>

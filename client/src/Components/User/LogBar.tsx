@@ -75,7 +75,7 @@ function LogBar({
 
   const avatarName = (): string => {
     const jwtToken = sessionStorage.getItem('jwtToken');
-    const userData = jwtToken ? JSON.parse(atob(jwtToken.split('.')[1])) : { firstName : 'X'};
+    const userData = jwtToken ? JSON.parse(atob(jwtToken.split('.')[1])) : { firstName: 'X' };
     return userData.firstName.charAt(0);
   };
 

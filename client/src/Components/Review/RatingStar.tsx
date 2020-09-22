@@ -9,7 +9,7 @@ const st: Styles = {
     height: '30px',
     width: '30px',
   },
-}
+};
 
 interface PropTypes {
   imgSrc: string;

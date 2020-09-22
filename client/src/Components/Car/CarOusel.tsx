@@ -38,19 +38,22 @@ const CarOusel = ({ car }: PropTypes): ReactElement => {
       <div className="embla">
         <div className="embla__viewport" ref={mainViewportRef}>
           <div className="embla__container">
-            {car && car.detailPics && car.detailPics.map((imgSrc, index) => {
-              const imgName = imgSrc.match(/details\/(.+)$/);
-              return (
-                <div className="embla__slide" key={index}>
-                  <div className="embla__slide__inner">
-                    <img
-                      className="embla__slide__img"
-                      src={imgSrc}
-                      alt={imgName ? imgName[1] : "car image"}
-                    />
+            {car &&
+              car.detailPics &&
+              car.detailPics.map((imgSrc, index) => {
+                const imgName = imgSrc.match(/details\/(.+)$/);
+                return (
+                  <div className="embla__slide" key={index}>
+                    <div className="embla__slide__inner">
+                      <img
+                        className="embla__slide__img"
+                        src={imgSrc}
+                        alt={imgName ? imgName[1] : 'car image'}
+                      />
+                    </div>
                   </div>
-                </div>
-            )})}
+                );
+              })}
           </div>
         </div>
       </div>
@@ -58,33 +61,35 @@ const CarOusel = ({ car }: PropTypes): ReactElement => {
       <div className="embla embla--thumb">
         <div className="embla__viewport" ref={thumbViewportRef}>
           <div className="embla__container embla__container--thumb">
-            {car && car.detailPics && car.detailPics.map((imgSrc, index) => {
-              const imgName = imgSrc.match(/details\/(.+)$/);
-              return (
-                <div
-                  key={`${car.manufacturer} ${car.name} ${index}`}
-                  className={`embla__slide embla__slide--thumb
+            {car &&
+              car.detailPics &&
+              car.detailPics.map((imgSrc, index) => {
+                const imgName = imgSrc.match(/details\/(.+)$/);
+                return (
+                  <div
+                    key={`${car.manufacturer} ${car.name} ${index}`}
+                    className={`embla__slide embla__slide--thumb
                     ${index === selectedIndex ? 'is-selected' : ''}
                   `}
-                >
-                  <button
-                    onClick={() => onThumbClick(index)}
-                    className="embla__slide__inner embla__slide__inner--thumb"
-                    type="button"
                   >
-                    <img
-                      className="embla__slide__thumbnail"
-                      src={imgSrc}
-                      alt={imgName ? imgName[1] : "car image"}
-                    />
-                  </button>
-                </div>
-            )})}
+                    <button
+                      onClick={() => onThumbClick(index)}
+                      className="embla__slide__inner embla__slide__inner--thumb"
+                      type="button"
+                    >
+                      <img
+                        className="embla__slide__thumbnail"
+                        src={imgSrc}
+                        alt={imgName ? imgName[1] : 'car image'}
+                      />
+                    </button>
+                  </div>
+                );
+              })}
           </div>
         </div>
       </div>
     </article>
-
   );
 
   return <> {car && car.detailPics && carousel} </>;
