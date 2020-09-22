@@ -99,8 +99,8 @@ function Header({
     setSearchedCar(inputStr);
     const searchString = inputStr.toLowerCase();
     const filtCars = eCarList.filter((car) => {
-      const brandName = car.manufacturer.toLowerCase();
-      const carName = car.name.toLowerCase();
+      const brandName = car!.manufacturer!.toLowerCase();
+      const carName = car!.name!.toLowerCase();
       const carFullName = `${brandName} ${carName}`;
       return carFullName.includes(searchString);
     });

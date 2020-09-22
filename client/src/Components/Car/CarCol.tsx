@@ -54,14 +54,14 @@ interface PropTypes {
   setSecondCar: Dispatch<SetStateAction<ICar | undefined>>;
 }
 function CarCol({ car, isLeft, setSecondCar }: PropTypes): ReactElement {
-  const carPrice = `${car.msrp.toString().slice(0, 2)},${car.msrp.toString().slice(2)}`;
+  const carPrice = car.msrp && `${car.msrp.toString().slice(0, 2)},${car.msrp.toString().slice(2)}`;
   return (
     <article style={st.carInfo}>
       <p style={st.carName}>
         Model: <span style={st.carDetail}>{`${car.manufacturer} ${car.name}`}</span>
       </p>
       <img
-        src={isLeft ? car.cardPics[0] : car.cardPics[1]}
+        src={car.cardPics && (isLeft ? car.cardPics[0] : car.cardPics[1])}
         style={st.carImg}
         alt={`${car.manufacturer} ${car.name}`}
       />

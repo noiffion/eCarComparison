@@ -78,7 +78,7 @@ const SButton = styled(Button)`
 `;
 
 function CarBrochure(): ReactElement {
-  const [car, setCar] = useState<ICar | null>(null);
+  const [car, setCar] = useState<ICar>({});
   interface ParamType {
     carId: string;
   }
@@ -91,7 +91,7 @@ function CarBrochure(): ReactElement {
       .catch(console.error);
   }, [carId]);
 
-  const carPrice = `${car?.msrp.toString().slice(0, 2)},${car?.msrp.toString().slice(2)}`;
+  const carPrice = car.msrp && `${car.msrp.toString().slice(0, 2)},${car.msrp.toString().slice(2)}`;
   return (
     <>
       <section style={st.detailsSection}>
