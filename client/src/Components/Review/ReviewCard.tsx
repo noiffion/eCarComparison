@@ -270,6 +270,17 @@ function ReviewCard({ revDetails, newRev, setReviews }: PropTypes): ReactElement
     }
     apiReqs
       .newReview(jwtToken!, review)
+      .then((reviews) => {
+        setReviewText('');
+        setReviews(reviews);
+      })
+      .catch(console.error);
+  };
+
+  const deleteReview = () => {
+    const jwtToken = sessionStorage.getItem('jwtToken');
+    apiReqs
+      .delReview(jwtToken!, _id!)
       .then((reviews) => setReviews(reviews))
       .catch(console.error);
   };
@@ -328,7 +339,7 @@ function ReviewCard({ revDetails, newRev, setReviews }: PropTypes): ReactElement
       </div>
       <div style={st.buttonWrapper}>
         <div>
-          <DeleteB onClick={() => null}>Delete</DeleteB>
+          <DeleteB onClick={deleteReview}>Delete</DeleteB>
         </div>
         <div style={st.editPosted}>
           Posted by{' '}

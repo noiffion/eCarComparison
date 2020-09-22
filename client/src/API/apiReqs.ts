@@ -88,7 +88,7 @@ export default {
     };
     return defaultRequest<IReview>(`reviews/${reviewId}`, init);
   },
-  async delReview(jwtToken: string, reviewId: string): Promise<IReview> {
+  async delReview(jwtToken: string, reviewId: string): Promise<IReview[]> {
     const init: RequestInit = {
       method: 'DELETE',
       mode: 'cors',
@@ -98,6 +98,6 @@ export default {
         Authorization: `Bearer ${jwtToken}`,
       },
     };
-    return defaultRequest<IReview>(`reviews/${reviewId}`, init);
+    return defaultRequest<IReview[]>(`reviews/${reviewId}`, init);
   },
 };
