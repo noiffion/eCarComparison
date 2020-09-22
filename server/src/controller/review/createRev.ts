@@ -8,7 +8,7 @@ const createRev: ControllerMethod = async function (req, res) {
     const reviews: IReview[] = await Reviews.find({ carId: `${req.body.carId}` }, null, {
       sort: { updatedAt: -1 },
     });
-    res.status(200);
+    res.status(201);
     res.send(reviews);
   } catch (err) {
     console.error(err);
