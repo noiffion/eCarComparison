@@ -46,6 +46,7 @@ const SButton = styled(Button)`
     color: #00ff00;
   }
 `;
+
 interface PropTypes {
   authenticated: boolean;
   setAuthenticated: Dispatch<SetStateAction<boolean>>;

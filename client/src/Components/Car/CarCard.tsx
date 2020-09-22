@@ -66,7 +66,7 @@ function Car({ car, isFromLeft }: PropTypes): ReactElement {
     },
   };
 
-  const cardPicSrc = car.cardPics && (isFromLeft ? car.cardPics[0] : car.cardPics[1]) || '';
+  const cardPicSrc = car.cardPics && (isFromLeft ? car.cardPics[0] : car.cardPics[1]);
   const carShadow = isFromLeft
     ? { boxShadow: '-5px 5px 10px #888888' }
     : { boxShadow: '5px 5px 10px #888888' };
