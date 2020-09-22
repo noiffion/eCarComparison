@@ -33,7 +33,7 @@ const CarOusel = ({ car }: PropTypes): ReactElement => {
     embla.on('select', onSelect);
   }, [embla, onSelect]);
 
-  return (
+  const carousel = (
     <article style={{ width: '70%' }}>
       <div className="embla">
         <div className="embla__viewport" ref={mainViewportRef}>
@@ -76,7 +76,6 @@ const CarOusel = ({ car }: PropTypes): ReactElement => {
                       className="embla__slide__thumbnail"
                       src={imgSrc}
                       alt={imgName ? imgName[1] : "car image"}
-                      loading="lazy"
                     />
                   </button>
                 </div>
@@ -85,7 +84,10 @@ const CarOusel = ({ car }: PropTypes): ReactElement => {
         </div>
       </div>
     </article>
+
   );
+
+  return <> {car && car.detailPics && carousel} </>;
 };
 
 export default CarOusel;
