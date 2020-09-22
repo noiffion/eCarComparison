@@ -40,6 +40,7 @@ export interface IReview extends mongoose.Document {
   text: string;
   carRating: number;
   useful: number;
+  voters: string[];
   createdAt: Date;
   updatedAt: Date;
 }

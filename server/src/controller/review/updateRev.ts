@@ -3,7 +3,14 @@ import Reviews from '../../models/Reviews';
 
 const updateRev: ControllerMethod = async function (req, res) {
   try {
-    const updatedReview = await Reviews.findByIdAndUpdate(req.params.reviewId, req.body);
+    const updatedReview = await Reviews.findByIdAndUpdate(
+      req.params.reviewId,
+      req.body.useful,
+      {
+        new: true,
+        useFindAndModify: false
+      }
+    );
     res.status(200);
     res.send(updatedReview);
   } catch (err) {

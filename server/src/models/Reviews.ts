@@ -30,6 +30,9 @@ const Reviews: mongoose.Schema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    voters: {
+      type: [String],
+    },
   },
   { timestamps: true }
 );
