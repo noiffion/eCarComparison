@@ -40,6 +40,9 @@ function Main(): ReactElement {
       .then((cars) => {
         setECarList(cars);
         setFilteredCars(cars);
+        const jwtToken = sessionStorage.getItem('jwtToken');
+        const userData = jwtToken && JSON.parse(atob(jwtToken.split('.')[1]));
+        if (userData._id) setAuthenticated(true);
       })
       .catch(console.error);
   }, []);

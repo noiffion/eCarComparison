@@ -1,5 +1,4 @@
 import { ControllerMethod } from '../controller';
-
 import Users from '../../models/Users';
 import { IUser } from '../../models/models';
 
