@@ -1,5 +1,15 @@
 import AWS from 'aws-sdk';
-import { awsConf } from '../server';
+import dotenv from 'dotenv';
+
+dotenv.config({ path: `${__dirname}/../.env` });
+
+const awsConf = {
+  AWS_BUCKET: process.env.AWS_BUCKET,
+  AWS_REGION: process.env.AWS_REGION,
+  AWS_PROFILE: process.env.AWS_PROFILE,
+  AWS_ACCESS_KEY: process.env.AWS_ACCESS_KEY,
+  AWS_SECRET_KEY: process.env.AWS_SECRET_KEY,
+};
 
 AWS.config.credentials = new AWS.Credentials({
   accessKeyId: awsConf.AWS_ACCESS_KEY,

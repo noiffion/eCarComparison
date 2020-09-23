@@ -37,12 +37,20 @@ function Main(): ReactElement {
   useEffect((): void => {
     apiReqs
       .getECars()
-      .then((cars) => {
+      .then(async (cars) => {
         setECarList(cars);
         setFilteredCars(cars);
         const jwtToken = sessionStorage.getItem('jwtToken');
-        const userData = jwtToken && JSON.parse(atob(jwtToken.split('.')[1]));
-        if (userData._id) setAuthenticated(true);
+        try {
+          if (jwtToken) {
+            const userInfo: IUser = await apiReqs.profile(jwtToken);
+            setAuthenticated(true);
+            setUser({ ...userInfo });
+            console.log(userInfo);
+          }
+        } catch (err) {
+          console.error(err);
+        }
       })
       .catch(console.error);
   }, []);
