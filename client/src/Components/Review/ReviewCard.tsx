@@ -1,4 +1,12 @@
-import React, { useState, useEffect, ReactElement, FormEvent, ChangeEvent, Dispatch, SetStateAction } from 'react';
+import React, {
+  useState,
+  useEffect,
+  ReactElement,
+  FormEvent,
+  ChangeEvent,
+  Dispatch,
+  SetStateAction,
+} from 'react';
 import moment from 'moment';
 import CSS from 'csstype';
 import styled from 'styled-components';
@@ -98,7 +106,7 @@ const st: Styles = {
     flexDirection: 'row',
     minHeight: '14vh',
     justifyContent: 'space-between',
-  }
+  },
 };
 
 const ArrowImg = styled.img`
@@ -260,7 +268,7 @@ function ReviewCard({ revDetails, newRev, setReviews }: PropTypes): ReactElement
       text: reviewText,
       carRating: rateCar,
       useful: 0,
-    }
+    };
     apiReqs
       .newReview(jwtToken!, review)
       .then((reviews) => {
@@ -292,10 +300,11 @@ function ReviewCard({ revDetails, newRev, setReviews }: PropTypes): ReactElement
           <span style={st.poster}>
             {userFirstName} {userLastName}
           </span>
-          {reviewText.length > 50 ?
-            <SubmitB type="submit">Submit</SubmitB> :
+          {reviewText.length > 50 ? (
+            <SubmitB type="submit">Submit</SubmitB>
+          ) : (
             <DisabledB disabled>Submit</DisabledB>
-          }
+          )}
         </div>
       </div>
     </form>

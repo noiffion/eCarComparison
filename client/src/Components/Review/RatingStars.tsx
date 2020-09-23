@@ -33,12 +33,7 @@ function RatingStar({ editable, rateCar, setRateCar }: PropTypes): ReactElement 
   const stars = new Array(5).fill(null).map((_, i) => {
     const imgSrc = i + 1 > rateCar ? starEmpty : starFull;
     const displayStar = (
-      <img
-        src={imgSrc}
-        style={st.star}
-        alt="rating star"
-        key={Symbol(i).toString()}
-      />
+      <img src={imgSrc} style={st.star} alt="rating star" key={Symbol(i).toString()} />
     );
     const editableStar = (
       <Star

@@ -1,7 +1,6 @@
 import AWS from 'aws-sdk';
 import { awsConf } from '../server';
 
-//Configure AWS
 AWS.config.credentials = new AWS.Credentials({
   accessKeyId: awsConf.AWS_ACCESS_KEY,
   secretAccessKey: awsConf.AWS_SECRET_KEY,
@@ -13,33 +12,23 @@ export const s3 = new AWS.S3({
   params: { Bucket: awsConf.AWS_BUCKET },
 });
 
-/* getGetSignedUrl generates an aws signed url to retreive an item
- * @Params
- *    key: string - the filename to be put into the s3 bucket
- * @Returns:
- *    a url as a string
- */
-export function getGetSignedUrl(key: string): string {
+// generates an aws signed url to download an item
+export function getGetSignedUrl(filename: string): string {
   const signedUrlExpireSeconds = 60 * 5;
-  const url = s3.getSignedUrl('getObject', {
+  const url: string = s3.getSignedUrl('getObject', {
     Bucket: awsConf.AWS_BUCKET,
-    Key: key,
+    Key: filename,
     Expires: signedUrlExpireSeconds,
   });
   return url;
 }
 
-/* getPutSignedUrl generates an aws signed url to put an item
- * @Params
- *    key: string - the filename to be retreived from s3 bucket
- * @Returns:
- *    a url as a string
- */
-export function getPutSignedUrl(key: string): string {
+// generates an aws signed url to upload an item
+export function getPutSignedUrl(filename: string): string {
   const signedUrlExpireSeconds = 60 * 5;
-  const url = s3.getSignedUrl('putObject', {
+  const url: string = s3.getSignedUrl('putObject', {
     Bucket: awsConf.AWS_BUCKET,
-    Key: key,
+    Key: filename,
     Expires: signedUrlExpireSeconds,
   });
   return url;

@@ -40,14 +40,8 @@ function ReviewTable({ carId }: PropTypes): ReactElement {
     text: '',
     userFirstName: userData ? userData.firstName : '',
     userLastName: userData ? userData.lastName : '',
-  }
-  const newReview = (
-    <ReviewCard
-      revDetails={revDetails}
-      newRev={true}
-      setReviews={setReviews}
-    />
-  )
+  };
+  const newReview = <ReviewCard revDetails={revDetails} newRev={true} setReviews={setReviews} />;
   const revPosts = reviews.map((review, i) => {
     return <ReviewCard revDetails={review} setReviews={setReviews} key={review._id} />;
   });
