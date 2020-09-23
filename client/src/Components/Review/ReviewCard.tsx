@@ -6,11 +6,9 @@ import { Alert } from '@zendeskgarden/react-notifications';
 import { Textarea } from '@zendeskgarden/react-forms';
 import { Button } from '@zendeskgarden/react-buttons';
 import { IReview, FormMethod } from '../index.d';
-import RatingStar from './RatingStar';
+import RatingStars from './RatingStars';
 import upArrow from '../../Images/upArrow.png';
 import downArrow from '../../Images/downArrow.png';
-import starEmpty from '../../Images/ratingStar.png';
-import starFull from '../../Images/ratingStarFull.png';
 import apiReqs from '../../API/apiReqs';
 
 interface Styles {
@@ -187,7 +185,6 @@ function ReviewCard({ revDetails, newRev, setReviews }: PropTypes): ReactElement
   const [postVotes, setPostVotes] = useState<number>(useful!);
   const [reviewText, setReviewText] = useState<string>(text!);
   const [timeStamp, setTimeStamp] = useState<Date>(updatedAt!);
-  const [rateCar, setRateCar] = useState<number>(carRating!);
   const [isAlert, setAlert] = useState<boolean>(false);
   const [alertMsg, setAlertMsg] = useState<string>('');
   const [isEditable, setIsEditable] = useState<boolean>(false);
@@ -200,11 +197,6 @@ function ReviewCard({ revDetails, newRev, setReviews }: PropTypes): ReactElement
       if (userId === userData._id) setIsEditable(true);
     }
   }, [userId]);
-
-  const stars = new Array(5).fill(null).map((_, i) => {
-    const imgSrc = i + 1 > rateCar ? starEmpty : starFull;
-    return <RatingStar imgSrc={imgSrc} key={Symbol(i).toString()} />;
-  });
 
   const displayAlert = (message: string, delay: number): void => {
     setAlert(true);
@@ -289,7 +281,7 @@ function ReviewCard({ revDetails, newRev, setReviews }: PropTypes): ReactElement
     <form onSubmit={submitNew}>
       <div style={st.newReviewBody}>
         <Textarea style={st.editText} onChange={handleReviewText} value={reviewText} />
-        <div style={st.carRating}>{stars}</div>
+        <div style={st.carRating}><RatingStars carRating={carRating!} /></div>
       </div>
       <div style={st.buttonWrapper}>
         <div style={st.editPosted}>
@@ -317,7 +309,7 @@ function ReviewCard({ revDetails, newRev, setReviews }: PropTypes): ReactElement
         </div>
         <div style={st.textAndStars}>
           <div>{reviewText}</div>
-          <div style={st.carRating}>{stars}</div>
+          <div style={st.carRating}><RatingStars carRating={carRating!} /></div>
         </div>
       </div>
       <div style={st.posted}>
@@ -335,7 +327,7 @@ function ReviewCard({ revDetails, newRev, setReviews }: PropTypes): ReactElement
     <form onSubmit={submitUpdate}>
       <div style={st.editReviewBody}>
         <Textarea style={st.editText} onChange={handleReviewText} value={reviewText} />
-        <div style={st.carRating}>{stars}</div>
+        <div style={st.carRating}><RatingStars carRating={carRating!} /></div>
       </div>
       <div style={st.buttonWrapper}>
         <div>
