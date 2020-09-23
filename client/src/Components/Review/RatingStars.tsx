@@ -1,5 +1,6 @@
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, Dispatch, SetStateAction } from 'react';
 import CSS from 'csstype';
+import styled from 'styled-components';
 import starEmpty from '../../Images/ratingStar.png';
 import starFull from '../../Images/ratingStarFull.png';
 
@@ -13,17 +14,43 @@ const st: Styles = {
   },
 };
 
+const Star = styled.img`
+  height: 30px;
+  width: 30px;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
 interface PropTypes {
-  carRating: number;
+  editable: boolean;
+  rateCar: number;
+  setRateCar: Dispatch<SetStateAction<number>>;
 }
-function RatingStar({ carRating }: PropTypes): ReactElement {
-  const [rateCar, setRateCar] = useState<number>(carRating!);
+function RatingStar({ editable, rateCar, setRateCar }: PropTypes): ReactElement {
+  const changeStarColor = (nthStar: number) => setRateCar(nthStar);
 
   const stars = new Array(5).fill(null).map((_, i) => {
     const imgSrc = i + 1 > rateCar ? starEmpty : starFull;
-    return <img src={imgSrc} style={st.star} alt="rating star" key={Symbol(i).toString()}/>;
+    const displayStar = (
+      <img
+        src={imgSrc}
+        style={st.star}
+        alt="rating star"
+        key={Symbol(i).toString()}
+      />
+    );
+    const editableStar = (
+      <Star
+        src={imgSrc}
+        style={st.star}
+        alt="rating star"
+        key={Symbol(i).toString()}
+        onClick={(event) => changeStarColor(i + 1)}
+      />
+    );
+    return editable ? editableStar : displayStar;
   });
-
   return <> {stars} </>;
 }
 

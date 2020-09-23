@@ -185,6 +185,7 @@ function ReviewCard({ revDetails, newRev, setReviews }: PropTypes): ReactElement
   const [postVotes, setPostVotes] = useState<number>(useful!);
   const [reviewText, setReviewText] = useState<string>(text!);
   const [timeStamp, setTimeStamp] = useState<Date>(updatedAt!);
+  const [rateCar, setRateCar] = useState<number>(carRating!);
   const [isAlert, setAlert] = useState<boolean>(false);
   const [alertMsg, setAlertMsg] = useState<string>('');
   const [isEditable, setIsEditable] = useState<boolean>(false);
@@ -239,7 +240,7 @@ function ReviewCard({ revDetails, newRev, setReviews }: PropTypes): ReactElement
     event.preventDefault();
     const jwtToken = sessionStorage.getItem('jwtToken');
     apiReqs
-      .updReview(jwtToken!, { text: reviewText }, _id!)
+      .updReview(jwtToken!, { text: reviewText, carRating: rateCar }, _id!)
       .then((updatedReview) => {
         updatedReview.text && setReviewText(updatedReview.text);
         updatedReview.updatedAt && setTimeStamp(updatedReview.updatedAt);
@@ -257,7 +258,7 @@ function ReviewCard({ revDetails, newRev, setReviews }: PropTypes): ReactElement
       userFirstName,
       userLastName,
       text: reviewText,
-      carRating: 0,
+      carRating: rateCar,
       useful: 0,
     }
     apiReqs
@@ -281,7 +282,9 @@ function ReviewCard({ revDetails, newRev, setReviews }: PropTypes): ReactElement
     <form onSubmit={submitNew}>
       <div style={st.newReviewBody}>
         <Textarea style={st.editText} onChange={handleReviewText} value={reviewText} />
-        <div style={st.carRating}><RatingStars carRating={carRating!} /></div>
+        <div style={st.carRating}>
+          <RatingStars editable={true} rateCar={rateCar} setRateCar={setRateCar} />
+        </div>
       </div>
       <div style={st.buttonWrapper}>
         <div style={st.editPosted}>
@@ -309,7 +312,9 @@ function ReviewCard({ revDetails, newRev, setReviews }: PropTypes): ReactElement
         </div>
         <div style={st.textAndStars}>
           <div>{reviewText}</div>
-          <div style={st.carRating}><RatingStars carRating={carRating!} /></div>
+          <div style={st.carRating}>
+            <RatingStars editable={false} rateCar={rateCar} setRateCar={setRateCar} />
+          </div>
         </div>
       </div>
       <div style={st.posted}>
@@ -327,7 +332,9 @@ function ReviewCard({ revDetails, newRev, setReviews }: PropTypes): ReactElement
     <form onSubmit={submitUpdate}>
       <div style={st.editReviewBody}>
         <Textarea style={st.editText} onChange={handleReviewText} value={reviewText} />
-        <div style={st.carRating}><RatingStars carRating={carRating!} /></div>
+        <div style={st.carRating}>
+          <RatingStars editable={true} rateCar={rateCar} setRateCar={setRateCar} />
+        </div>
       </div>
       <div style={st.buttonWrapper}>
         <div>
