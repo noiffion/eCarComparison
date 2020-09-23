@@ -10,7 +10,6 @@ interface Controller {
   signUp: ControllerMethod;
   signIn: ControllerMethod;
   profile: ControllerMethod;
-  getAWSSignedUrl: ControllerMethod;
   putAWSSignedUrl: ControllerMethod;
   uploadProfilePic: ControllerMethod;
   readRevs: ControllerMethod;
