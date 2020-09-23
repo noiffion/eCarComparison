@@ -14,7 +14,6 @@ interface Styles {
 }
 const st: Styles = {
   compareContainer: {
-    border: '1px dashed #2f4f4f',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
