@@ -1,6 +1,6 @@
-import { ControllerMethod } from '../controller';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
+import { ControllerMethod } from '../controller';
 import Users from '../../models/Users';
 import { JWT_KEY } from '../../server';
 
