@@ -10,10 +10,10 @@ import CSS from 'csstype';
 import { Link, useHistory } from 'react-router-dom';
 import { Field, MediaInput } from '@zendeskgarden/react-forms';
 import { Alert } from '@zendeskgarden/react-notifications';
-import LogBar from '../User/LogBar';
+import LogBar from './LogBar';
 import eCarSrc from '../../Images/eCar.png';
 import magnGlSrc from '../../Images/magnGlass.svg';
-import { ICar, FormMethod } from '../index.d';
+import { ICar, FormMethod, IUser } from '../index.d';
 
 interface Styles {
   navBar: CSS.Properties;
@@ -74,12 +74,16 @@ const st: Styles = {
 };
 
 interface PropTypes {
+  user: IUser;
+  setUser: Dispatch<SetStateAction<IUser>>;
   eCarList: ICar[];
   setFilteredCars: Dispatch<SetStateAction<ICar[]>>;
   authenticated: boolean;
   setAuthenticated: Dispatch<SetStateAction<boolean>>;
 }
 function Header({
+  user,
+  setUser,
   eCarList,
   setFilteredCars,
   authenticated,
@@ -143,6 +147,8 @@ function Header({
           </Field>
         </form>
         <LogBar
+          user={user}
+          setUser={setUser}
           setAlert={setAlert}
           setAlertMsg={setAlertMsg}
           authenticated={authenticated}

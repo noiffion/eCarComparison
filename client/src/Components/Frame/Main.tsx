@@ -32,7 +32,7 @@ function Main(): ReactElement {
   const [eCarList, setECarList] = useState<ICar[]>([]);
   const [filteredCars, setFilteredCars] = useState<ICar[]>([]);
   const [authenticated, setAuthenticated] = useState<boolean>(false);
-  const [user, setUser] = useState<IUser>({ email: '' });
+  const [user, setUser] = useState<IUser>({});
 
   useEffect((): void => {
     apiReqs
@@ -58,6 +58,8 @@ function Main(): ReactElement {
     <ThemeProvider theme={{ ...DEFAULT_THEME, rtl: false }}>
       <header>
         <Header
+          user={user}
+          setUser={setUser}
           eCarList={eCarList}
           setFilteredCars={setFilteredCars}
           authenticated={authenticated}
@@ -73,10 +75,10 @@ function Main(): ReactElement {
             <Profile user={user} setUser={setUser} />
           </Route>
           <Route path="/user/signIn/">
-            <SignIn setAuthenticated={setAuthenticated} />
+            <SignIn setAuthenticated={setAuthenticated} setUser={setUser} />
           </Route>
           <Route path="/user/signUp/">
-            <SignUp setAuthenticated={setAuthenticated} />
+            <SignUp setAuthenticated={setAuthenticated} setUser={setUser} />
           </Route>
           <Route path="/carBrochure/:carId">
             <CarBrochure />

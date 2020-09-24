@@ -1,4 +1,4 @@
-import { ICar, IUser, IReview, IToken, SignedUrl } from '../Components/index.d';
+import { ICar, IUser, IReview, SignAuth, SignedUrl } from '../Components/index.d';
 
 const API_URL = 'http://localhost:5000/';
 
@@ -27,7 +27,7 @@ export default {
     return request<ICar>(`cars/${carId}`, init);
   },
 
-  async signAuth(isNew: boolean, userData: IUser): Promise<IToken> {
+  async signAuth(isNew: boolean, userData: IUser): Promise<SignAuth> {
     const path = isNew ? 'signUp' : 'signIn';
     const init: RequestInit = {
       method: 'POST',
@@ -37,7 +37,7 @@ export default {
       },
       body: JSON.stringify(userData),
     };
-    return request<IToken>(path, init);
+    return request<SignAuth>(path, init);
   },
   async profile(jwtToken: string): Promise<IUser> {
     const init: RequestInit = {

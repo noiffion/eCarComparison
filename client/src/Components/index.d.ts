@@ -47,10 +47,11 @@ export interface FormMethod<E> {
   (event: E): void;
 }
 
-export interface IToken {
-  jwtToken: string;
-}
-
 export interface SignedUrl {
   url: string;
+}
+
+export interface SignAuth {
+  token: string;
+  user: IUser;
 }

@@ -69,8 +69,9 @@ const SButton = styled(Button)`
 
 interface PropTypes {
   setAuthenticated: Dispatch<SetStateAction<boolean>>;
+  setUser: Dispatch<SetStateAction<IUser>>;
 }
-function SignUp({ setAuthenticated }: PropTypes): ReactElement {
+function SignUp({ setAuthenticated, setUser }: PropTypes): ReactElement {
   const [email, setMail] = useState<string>('');
   const [password, setPswd] = useState<string>('');
   const [firstName, setFName] = useState<string>('');
@@ -98,8 +99,9 @@ function SignUp({ setAuthenticated }: PropTypes): ReactElement {
       lastLogin: new Date(),
     };
     try {
-      const { jwtToken } = await apiReqs.signAuth(true, newUser);
-      sessionStorage.setItem('jwtToken', jwtToken);
+      const { token, user } = await apiReqs.signAuth(true, newUser);
+      sessionStorage.setItem('jwtToken', token);
+      setUser(user);
       setAuthenticated(true);
       history.push('/');
     } catch (err) {

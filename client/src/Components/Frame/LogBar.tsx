@@ -4,6 +4,7 @@ import { Avatar } from '@zendeskgarden/react-avatars';
 import { Button } from '@zendeskgarden/react-buttons';
 import styled from 'styled-components';
 import CSS from 'csstype';
+import { IUser } from '..';
 
 interface Styles {
   linkList: CSS.Properties;
@@ -48,12 +49,16 @@ const SButton = styled(Button)`
 `;
 
 interface PropTypes {
+  user: IUser;
+  setUser: Dispatch<SetStateAction<IUser>>;
   authenticated: boolean;
   setAuthenticated: Dispatch<SetStateAction<boolean>>;
   setAlert: Dispatch<SetStateAction<boolean>>;
   setAlertMsg: Dispatch<SetStateAction<string>>;
 }
 function LogBar({
+  user,
+  setUser,
   authenticated,
   setAuthenticated,
   setAlert,
@@ -63,6 +68,7 @@ function LogBar({
 
   const logout = (): void => {
     sessionStorage.removeItem('jwtToken');
+    setUser({});
     setAuthenticated(false);
     history.push('/mainList');
     setAlert(true);
@@ -71,12 +77,6 @@ function LogBar({
       setAlert(false);
       setAlertMsg('');
     }, 2000);
-  };
-
-  const avatarName = (): string => {
-    const jwtToken = sessionStorage.getItem('jwtToken');
-    const userData = jwtToken ? JSON.parse(atob(jwtToken.split('.')[1])) : { firstName: 'X' };
-    return userData.firstName.charAt(0);
   };
 
   return (
@@ -90,7 +90,9 @@ function LogBar({
                 size="medium"
                 style={{ marginTop: '1px', marginBottom: '1px' }}
               >
-                <Avatar.Text>{avatarName()}</Avatar.Text>
+                <Avatar.Text>
+                  {(user && user.firstName) ? user.firstName.charAt(0): 'X'}
+                </Avatar.Text>
               </Avatar>
             </SLink>
           </li>

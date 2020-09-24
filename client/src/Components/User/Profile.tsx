@@ -1,4 +1,4 @@
-import React, { useEffect, ReactElement, Dispatch, SetStateAction } from 'react';
+import React, { ReactElement, Dispatch, SetStateAction } from 'react';
 import { useHistory } from 'react-router-dom';
 import CSS from 'csstype';
 import styled from 'styled-components';
@@ -69,26 +69,18 @@ interface PropTypes {
 function Profile({ user, setUser }: PropTypes): ReactElement {
   const history = useHistory();
 
-  useEffect(() => {
-    const jwtToken = sessionStorage.getItem('jwtToken') || '';
-    const getProfile = async () => {
-      try {
-        const userInfo: IUser = await apiReqs.profile(jwtToken);
-        if (Object.keys(user).length < 2) setUser({ ...userInfo });
-      } catch (err) {
-        console.error(err);
-        history.push('/');
-      }
-    };
-    getProfile();
-  }, [user, setUser, history]);
-
   const processFile = async (event) => {
     const jwtToken = sessionStorage.getItem('jwtToken') || '';
     const imageFile = event.target.files[0];
     const signed = await apiReqs.putAWSSign(jwtToken, imageFile.name);
     apiReqs.uploadToS3(signed.url, imageFile)
-      .then(() => apiReqs.uploadProfilePic(jwtToken, { userIcon: imageFile.name }))
+      .then(async () => {
+        const userInfo: IUser = await apiReqs.uploadProfilePic(
+          jwtToken,
+          { userIcon: imageFile.name }
+        );
+        setUser({ ...userInfo });
+      })
       .catch(console.error);
   };
 
