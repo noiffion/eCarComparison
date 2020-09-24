@@ -88,7 +88,7 @@ function LogBar({
               <Avatar
                 backgroundColor="#00ff00"
                 size="medium"
-                style={{ marginRight: '3px', marginBottom: '3px' }}
+                style={{ marginTop: '1px', marginBottom: '1px' }}
               >
                 <Avatar.Text>{avatarName()}</Avatar.Text>
               </Avatar>
