@@ -103,6 +103,5 @@ dist
 # TernJS port file
 .tern-port
 
-# src/models/cars.json
-# src/models/reviews.json
-# src/models/users.json
+# mongoDB dummy data
+src/utils/*.json
