@@ -9,7 +9,7 @@ router.get('/cars/:carId', controller.getOneCar);
 router.post('/signup', controller.signUp);
 router.post('/signin', controller.signIn);
 router.get('/profile', authCheck, controller.profile);
-router.get('/profile/pic/:imgName', authCheck, controller.putAWSSignedUrl);
+router.get('/profile/pic/:imgName', authCheck, controller.putSignedUrl);
 router.put('/profile/pic', authCheck, controller.uploadProfilePic);
 
 router.get('/reviews/:carId', controller.readRevs);

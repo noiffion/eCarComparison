@@ -4,7 +4,7 @@ import getOneCar from './car/getOneCar';
 import signUp from './user/signUp';
 import profile from './user/profile';
 import signIn from './user/signIn';
-import putAWSSignedUrl from './user/putAWSSignedUrl';
+import putSignedUrl from './user/putSignedUrl';
 import uploadProfilePic from './user/uploadProfilePic';
 import readRevs from './review/readRevs';
 import createRev from './review/createRev';
@@ -17,7 +17,7 @@ const controller: Controller = {
   signUp,
   signIn,
   profile,
-  putAWSSignedUrl,
+  putSignedUrl,
   uploadProfilePic,
   readRevs,
   createRev,
