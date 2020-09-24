@@ -2,15 +2,18 @@ import React, { ReactElement, Dispatch, SetStateAction } from 'react';
 import { useHistory } from 'react-router-dom';
 import CSS from 'csstype';
 import styled from 'styled-components';
+import avatar from '../../Images/avatar.png';
 import apiReqs from '../../API/apiReqs';
 import { IUser } from '../index.d';
 
 interface Styles {
   profileContainer: CSS.Properties;
-  fillSpace: CSS.Properties;
+  imageFrame: CSS.Properties;
+  userIcon: CSS.Properties;
   persParticulars: CSS.Properties;
   persDetails: CSS.Properties;
   fileUpload: CSS.Properties;
+  fillSpace: CSS.Properties;
 }
 
 const st: Styles = {
@@ -18,6 +21,19 @@ const st: Styles = {
     display: 'flex',
     flexDirection: 'column',
     width: '70%',
+  },
+  imageFrame: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: '40vh',
+  },
+  userIcon: {
+    minWidth: '22vw',
+    maxHeight: '40vh',
+    borderRadius: '50%',
   },
   persParticulars: {
     width: '100%',
@@ -87,10 +103,20 @@ function Profile({ user, setUser }: PropTypes): ReactElement {
       .catch(console.error);
   };
 
+  const imageFrame = (
+    <div style={st.imageFrame}>
+      {user && user.userIcon ? (
+        <img style={st.userIcon} src={user.userIcon} alt="profile pic" />
+      ) : (
+        <img style={st.userIcon} src={avatar} alt="profile pic" />
+      )}
+    </div>
+  );
+
   return (
     <section style={st.profileContainer}>
       <h1>Welcome, {user.firstName}</h1>
-      {user && user.userIcon && <img src={user.userIcon} alt="profile pic" />}
+      {imageFrame}
       <ul style={st.persParticulars}>
         <li>Email:</li>
         <li style={st.persDetails}>{user.email}</li>
