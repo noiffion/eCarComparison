@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "lib": ["esnext"],
+    "lib": ["esnext", "DOM"],
     "module": "commonjs",
     "moduleResolution": "node",
     "strict": true,
@@ -9,14 +9,13 @@
     "alwaysStrict": true,
     "esModuleInterop": true,
     "sourceMap": true,
-    "baseUrl": ".",
-    "rootDir": "src",
+    "baseUrl": "/",
+    "outDir": "./www",
     "paths": {
       "*": ["node_modules*"]
     },
     "typeRoots": ["node_modules/@types"],
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
