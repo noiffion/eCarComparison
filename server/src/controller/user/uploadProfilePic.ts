@@ -18,10 +18,12 @@ const uploadProfilePic: ControllerMethod = async function (req, res) {
       firstName: upUser.firstName,
       lastName: upUser.lastName,
       lastLogin: upUser.lastLogin,
-      userIcon: upUser.userIcon ? getGetSignedUrl(upUser.userIcon): '',
+      userIcon: upUser.userIcon ? getGetSignedUrl(upUser.userIcon) : '',
+      createdAt: upUser.createdAt,
+      updatedAt: upUser.updatedAt,
     };
     res.status(200);
-    res.send(upUser);
+    res.send(respUser);
   } catch (err) {
     console.error(err);
     res.status(500);

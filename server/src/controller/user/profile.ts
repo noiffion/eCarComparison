@@ -14,7 +14,7 @@ const profile: ControllerMethod = async function (req, res) {
       firstName: user.firstName,
       lastName: user.lastName,
       lastLogin: user.lastLogin,
-      userIcon: user.userIcon ? getGetSignedUrl(user.userIcon): '',
+      userIcon: user.userIcon ? getGetSignedUrl(user.userIcon) : '',
     };
     res.status(200);
     res.send(respUser);
