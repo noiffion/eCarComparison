@@ -105,3 +105,6 @@ dist
 
 # mongoDB dummy data
 src/utils/*.json
+
+# tsc --extendedDiagnostics output
+www/

@@ -12,7 +12,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .ts",
     "pretty": "./node_modules/.bin/prettier --write './**/*.{ts,json,md}'",
-    "check": "yarn run eslint && yarn run pretty"
+    "check": "yarn run eslint && yarn run pretty",
+    "prod": "tsc && node ./www/server.js"
   },
   "dependencies": {
     "aws-sdk": "^2.758.0",
