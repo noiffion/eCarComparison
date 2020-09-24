@@ -1,4 +1,5 @@
 import { ControllerMethod } from '../controller';
+import { getGetSignedUrl } from '../../utils/aws';
 import Users from '../../models/Users';
 import { IUser } from '../../models/models';
 
@@ -6,12 +7,21 @@ const uploadProfilePic: ControllerMethod = async function (req, res) {
   try {
     const userId = req.body.userId;
     delete req.body.userId;
-    const user: IUser = await Users.findByIdAndUpdate(userId, req.body, {
+    const upUser: IUser = await Users.findByIdAndUpdate(userId, req.body, {
       new: true,
       useFindAndModify: false,
     });
+    const respUser = {
+      _id: upUser._id,
+      favourites: upUser.favourites,
+      email: upUser.email,
+      firstName: upUser.firstName,
+      lastName: upUser.lastName,
+      lastLogin: upUser.lastLogin,
+      userIcon: upUser.userIcon ? getGetSignedUrl(upUser.userIcon): '',
+    };
     res.status(200);
-    res.send(user);
+    res.send(upUser);
   } catch (err) {
     console.error(err);
     res.status(500);

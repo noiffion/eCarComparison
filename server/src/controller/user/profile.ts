@@ -1,5 +1,5 @@
 import { ControllerMethod } from '../controller';
-import * as AWS from '../../utils/aws';
+import { getGetSignedUrl } from '../../utils/aws';
 import Users from '../../models/Users';
 import { IUser } from '../../models/models';
 
@@ -14,7 +14,7 @@ const profile: ControllerMethod = async function (req, res) {
       firstName: user.firstName,
       lastName: user.lastName,
       lastLogin: user.lastLogin,
-      userIcon: user.userIcon ? AWS.getGetSignedUrl(user.userIcon): '',
+      userIcon: user.userIcon ? getGetSignedUrl(user.userIcon): '',
     };
     res.status(200);
     res.send(respUser);
