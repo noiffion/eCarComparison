@@ -5,7 +5,7 @@ import { ICar } from '../../models/models';
 const getECars: ControllerMethod = async function (req, res) {
   try {
     const eCarList: ICar[] = await Cars.find({ powertrain: 'electric' }, null, {
-      sort: { manufacturer : 1 },
+      sort: { manufacturer: 1 },
     });
     res.status(200);
     res.send(eCarList);
