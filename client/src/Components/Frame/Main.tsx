@@ -81,7 +81,7 @@ function Main(): ReactElement {
             <SignUp setAuthenticated={setAuthenticated} setUser={setUser} />
           </Route>
           <Route path="/carBrochure/:carId">
-            <CarBrochure />
+            <CarBrochure user={user} />
           </Route>
           <Route path="/comparison/:carId">
             <Comparison />

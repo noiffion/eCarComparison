@@ -97,7 +97,6 @@ function Profile({ user, setUser }: PropTypes): ReactElement {
         const userInfo: IUser = await apiReqs.uploadProfilePic(jwtToken, {
           userIcon: imageFile.name,
         });
-        console.log(userInfo);
         setUser({ ...userInfo });
       })
       .catch(console.error);
