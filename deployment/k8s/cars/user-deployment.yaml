@@ -2,10 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    service: udagram-feed
-  name: udagram-feed
+    service: udagram-user
+  name: udagram-user
 spec:
-  replicas: 3
+  replicas: 2
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -13,22 +13,22 @@ spec:
       maxUnavailable: 25%
   selector:
     matchLabels:
-      service: udagram-feed
+      service: udagram-user
   template:
     metadata:
       labels:
-        service: udagram-feed
+        service: udagram-user
     spec:
       containers:
-      - image: noiffion/udagram-feed
-        name: udagram-feed
+      - image: noiffion/udagram-user
+        name: udagram-user
         imagePullPolicy: Always
         resources:
           requests:
-            memory: "128Mi"
+            memory: "64Mi"
             cpu: "250m"
           limits:
-            memory: "2048Mi"
+            memory: "1024Mi"
             cpu: "500m"
         env:
         - name: FRONT_URL
@@ -36,21 +36,6 @@ spec:
             configMapKeyRef:
               name: env-config
               key: FRONT_URL
-        - name: AWS_BUCKET
-          valueFrom:
-            configMapKeyRef:
-              name: env-config
-              key: AWS_BUCKET
-        - name: AWS_PROFILE
-          valueFrom:
-            configMapKeyRef:
-              name: env-config
-              key: AWS_PROFILE
-        - name: AWS_REGION
-          valueFrom:
-            configMapKeyRef:
-              name: env-config
-              key: AWS_REGION
         - name: POSTGRES_DB
           valueFrom:
             configMapKeyRef:
@@ -76,14 +61,4 @@ spec:
             secretKeyRef:
               name: env-secret
               key: JWT_SECRET
-        - name: AWS_ACCESS_KEY
-          valueFrom:
-            secretKeyRef:
-              name: env-secret
-              key: AWS_ACCESS_KEY
-        - name: AWS_SECRET_KEY
-          valueFrom:
-            secretKeyRef:
-              name: env-secret
-              key: AWS_SECRET_KEY
       restartPolicy: Always
