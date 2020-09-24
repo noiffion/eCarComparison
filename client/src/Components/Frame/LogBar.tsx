@@ -4,7 +4,7 @@ import { Avatar } from '@zendeskgarden/react-avatars';
 import { Button } from '@zendeskgarden/react-buttons';
 import styled from 'styled-components';
 import CSS from 'csstype';
-import { IUser } from '..';
+import { IUser } from '../index.d';
 
 interface Styles {
   linkList: CSS.Properties;
@@ -90,9 +90,7 @@ function LogBar({
                 size="medium"
                 style={{ marginTop: '1px', marginBottom: '1px' }}
               >
-                <Avatar.Text>
-                  {(user && user.firstName) ? user.firstName.charAt(0): 'X'}
-                </Avatar.Text>
+                <Avatar.Text>{user && user.firstName ? user.firstName.charAt(0) : 'X'}</Avatar.Text>
               </Avatar>
             </SLink>
           </li>

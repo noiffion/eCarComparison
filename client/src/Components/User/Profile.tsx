@@ -31,7 +31,7 @@ const st: Styles = {
   },
   persDetails: {
     color: '#2f4f4f',
-    fontStyle: 'italic'
+    fontStyle: 'italic',
   },
   fileUpload: {
     position: 'relative',
@@ -41,12 +41,12 @@ const st: Styles = {
   fillSpace: {
     marginTop: '70vh',
   },
-}
+};
 
 const UploadTitle = styled.span`
   color: #00ff00;
   width: 100%;
-`
+`;
 const UploadButton = styled.input`
   position: absolute;
   top: 0;
@@ -71,14 +71,17 @@ function Profile({ user, setUser }: PropTypes): ReactElement {
 
   const processFile = async (event) => {
     const jwtToken = sessionStorage.getItem('jwtToken') || '';
+    if (!jwtToken) history.push('/');
+
     const imageFile = event.target.files[0];
     const signed = await apiReqs.putAWSSign(jwtToken, imageFile.name);
-    apiReqs.uploadToS3(signed.url, imageFile)
+    apiReqs
+      .uploadToS3(signed.url, imageFile)
       .then(async () => {
-        const userInfo: IUser = await apiReqs.uploadProfilePic(
-          jwtToken,
-          { userIcon: imageFile.name }
-        );
+        const userInfo: IUser = await apiReqs.uploadProfilePic(jwtToken, {
+          userIcon: imageFile.name,
+        });
+        console.log(userInfo);
         setUser({ ...userInfo });
       })
       .catch(console.error);
@@ -86,10 +89,8 @@ function Profile({ user, setUser }: PropTypes): ReactElement {
 
   return (
     <section style={st.profileContainer}>
-      <h1>
-        Welcome, {user.firstName}
-      </h1>
-      <img alt="profile pic" />
+      <h1>Welcome, {user.firstName}</h1>
+      {user && user.userIcon && <img src={user.userIcon} alt="profile pic" />}
       <ul style={st.persParticulars}>
         <li>Email:</li>
         <li style={st.persDetails}>{user.email}</li>
