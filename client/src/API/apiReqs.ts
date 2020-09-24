@@ -1,11 +1,11 @@
-import { ICar, IUser, IReview, IToken } from '../Components/index.d';
+import { ICar, IUser, IReview, IToken, SignedUrl } from '../Components/index.d';
 
 const API_URL = 'http://localhost:5000/';
 
-async function defaultRequest<T>(path: string, init: RequestInit): Promise<T> {
+async function request<T>(path: string, init: RequestInit): Promise<T> {
   return fetch(`${API_URL}${path}`, init)
-    .then((result) => (result.status >= 400 ? Promise.reject(result) : result))
-    .then((result) => result.json())
+    .then((resp: Response) => (resp.status >= 400 ? Promise.reject(resp) : resp))
+    .then((resp: Response) => resp.json())
     .catch(console.error);
 }
 
@@ -14,7 +14,7 @@ export default {
     const init: RequestInit = {
       method: 'GET',
     };
-    return defaultRequest<ICar[]>('cars', init);
+    return request<ICar[]>('cars', init);
   },
   async getOneCar(carId: string): Promise<ICar> {
     const init: RequestInit = {
@@ -24,7 +24,7 @@ export default {
         Accept: 'application/json',
       },
     };
-    return defaultRequest<ICar>(`cars/${carId}`, init);
+    return request<ICar>(`cars/${carId}`, init);
   },
 
   async signAuth(isNew: boolean, userData: IUser): Promise<IToken> {
@@ -37,7 +37,7 @@ export default {
       },
       body: JSON.stringify(userData),
     };
-    return defaultRequest<IToken>(path, init);
+    return request<IToken>(path, init);
   },
   async profile(jwtToken: string): Promise<IUser> {
     const init: RequestInit = {
@@ -49,9 +49,9 @@ export default {
         Authorization: `Bearer ${jwtToken}`,
       },
     };
-    return defaultRequest<IUser>('profile', init);
+    return request<IUser>('profile', init);
   },
-  async putAWSSign(jwtToken: string, fileName: string): Promise<string> {
+  async putAWSSign(jwtToken: string, fileName: string): Promise<SignedUrl> {
     const init: RequestInit = {
       method: 'GET',
       mode: 'cors',
@@ -61,7 +61,34 @@ export default {
         Authorization: `Bearer ${jwtToken}`,
       },
     };
-    return defaultRequest<string>(`profile/pic/${fileName}`, init);
+    return request<SignedUrl>(`profile/pic/${fileName}`, init);
+  },
+  async uploadToS3(signedUrl: string, imageFile: File): Promise<string | void> {
+    const init: RequestInit = {
+      method: 'PUT',
+      mode: 'cors',
+      headers: {
+        'Content-Type': imageFile.type,
+      },
+      body: imageFile,
+    };
+    return fetch(signedUrl, init)
+      .then((resp: Response) => (resp.status >= 400 ? Promise.reject(resp) : resp))
+      .then((resp: Response) => resp.text())
+      .catch(console.error);
+  },
+  async uploadProfilePic(jwtToken: string, profilePic: IUser): Promise<IUser> {
+    const init: RequestInit = {
+      method: 'PUT',
+      mode: 'cors',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${jwtToken}`,
+      },
+      body: JSON.stringify(profilePic),
+    };
+    return request<IUser>('profile/pic', init);
   },
 
   async getReviews(carId: string): Promise<IReview[]> {
@@ -72,7 +99,7 @@ export default {
         Accept: 'application/json',
       },
     };
-    return defaultRequest<IReview[]>(`reviews/${carId}`, init);
+    return request<IReview[]>(`reviews/${carId}`, init);
   },
   async newReview(jwtToken: string, review: IReview): Promise<IReview[]> {
     const init: RequestInit = {
@@ -85,7 +112,7 @@ export default {
       },
       body: JSON.stringify(review),
     };
-    return defaultRequest<IReview[]>('reviews', init);
+    return request<IReview[]>('reviews', init);
   },
   async updReview(jwtToken: string, review: IReview, reviewId: string): Promise<IReview> {
     const init: RequestInit = {
@@ -98,7 +125,7 @@ export default {
       },
       body: JSON.stringify(review),
     };
-    return defaultRequest<IReview>(`reviews/${reviewId}`, init);
+    return request<IReview>(`reviews/${reviewId}`, init);
   },
   async delReview(jwtToken: string, reviewId: string): Promise<IReview[]> {
     const init: RequestInit = {
@@ -110,6 +137,6 @@ export default {
         Authorization: `Bearer ${jwtToken}`,
       },
     };
-    return defaultRequest<IReview[]>(`reviews/${reviewId}`, init);
+    return request<IReview[]>(`reviews/${reviewId}`, init);
   },
 };

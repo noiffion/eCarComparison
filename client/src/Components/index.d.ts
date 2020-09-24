@@ -50,3 +50,7 @@ export interface FormMethod<E> {
 export interface IToken {
   jwtToken: string;
 }
+
+export interface SignedUrl {
+  url: string;
+}

@@ -86,17 +86,10 @@ function Profile({ user, setUser }: PropTypes): ReactElement {
   const processFile = async (event) => {
     const jwtToken = sessionStorage.getItem('jwtToken') || '';
     const imageFile = event.target.files[0];
-    const signedUrl = await apiReqs.putAWSSign(jwtToken, imageFile.name);
-    console.log(imageFile, signedUrl);
-
-    /*
-    const headers = new HttpHeaders({ 'Content-Type': file.type });
-    const req = new HttpRequest('PUT', signedUrl, file, {
-      headers: headers,
-      reportProgress: true, // track progress
-    });
-    */
-
+    const signed = await apiReqs.putAWSSign(jwtToken, imageFile.name);
+    apiReqs.uploadToS3(signed.url, imageFile)
+      .then(() => apiReqs.uploadProfilePic(jwtToken, { userIcon: imageFile.name }))
+      .catch(console.error);
   };
 
   return (
