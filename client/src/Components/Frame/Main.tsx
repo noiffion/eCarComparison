@@ -46,7 +46,6 @@ function Main(): ReactElement {
             const userInfo: IUser = await apiReqs.profile(jwtToken);
             setAuthenticated(true);
             setUser({ ...userInfo });
-            console.log(userInfo);
           }
         } catch (err) {
           console.error(err);

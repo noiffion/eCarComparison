@@ -51,6 +51,18 @@ export default {
     };
     return defaultRequest<IUser>('profile', init);
   },
+  async putAWSSign(jwtToken: string, fileName: string): Promise<string> {
+    const init: RequestInit = {
+      method: 'GET',
+      mode: 'cors',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${jwtToken}`,
+      },
+    };
+    return defaultRequest<string>(`profile/pic/${fileName}`, init);
+  },
 
   async getReviews(carId: string): Promise<IReview[]> {
     const init: RequestInit = {
