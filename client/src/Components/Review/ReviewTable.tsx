@@ -2,7 +2,7 @@ import React, { useState, useEffect, ReactElement } from 'react';
 import CSS from 'csstype';
 import apiReqs from '../../API/apiReqs';
 import ReviewCard from './ReviewCard';
-import { IReview } from '../index.d';
+import { IReview, IUser } from '../index.d';
 
 interface Styles {
   reviewsSection: CSS.Properties;
@@ -18,9 +18,10 @@ const st: Styles = {
 };
 
 interface PropTypes {
+  user: IUser;
   carId: string;
 }
-function ReviewTable({ carId }: PropTypes): ReactElement {
+function ReviewTable({ carId, user }: PropTypes): ReactElement {
   const [reviews, setReviews] = useState<IReview[]>([]);
 
   useEffect((): void => {
@@ -31,15 +32,14 @@ function ReviewTable({ carId }: PropTypes): ReactElement {
   }, [carId]);
 
   const jwtToken = sessionStorage.getItem('jwtToken');
-  const userData = jwtToken && JSON.parse(atob(jwtToken.split('.')[1]));
   const revDetails = {
     carId,
     updatedAt: new Date(),
     carRating: 0,
     useful: 0,
     text: '',
-    userFirstName: userData ? userData.firstName : '',
-    userLastName: userData ? userData.lastName : '',
+    userFirstName: user ? user.firstName : '',
+    userLastName: user ? user.lastName : '',
   };
   const newReview = <ReviewCard revDetails={revDetails} newRev={true} setReviews={setReviews} />;
   const revPosts = reviews.map((review, i) => {

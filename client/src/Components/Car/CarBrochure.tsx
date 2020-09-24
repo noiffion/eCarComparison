@@ -7,7 +7,7 @@ import CSS from 'csstype';
 import CarOusel from './CarOusel';
 import ReviewTable from '../Review/ReviewTable';
 import apiReqs from '../../API/apiReqs';
-import { ICar } from '../index.d';
+import { ICar, IUser } from '../index.d';
 
 interface Styles {
   detailsSection: CSS.Properties;
@@ -77,7 +77,10 @@ const SButton = styled(Button)`
   }
 `;
 
-function CarBrochure(): ReactElement {
+interface PropTypes {
+  user: IUser;
+}
+function CarBrochure({ user }: PropTypes): ReactElement {
   const [car, setCar] = useState<ICar>({});
   interface ParamType {
     carId: string;
@@ -119,9 +122,9 @@ function CarBrochure(): ReactElement {
           </>
         )}
       </section>
-      <ReviewTable carId={carId} />
+      <ReviewTable carId={carId} user={user} />
     </>
   );
 }
 
-export default withRouter(CarBrochure);
+export default CarBrochure;
