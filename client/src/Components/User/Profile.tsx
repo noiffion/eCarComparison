@@ -2,7 +2,7 @@ import React, { ReactElement, Dispatch, SetStateAction } from 'react';
 import { useHistory } from 'react-router-dom';
 import CSS from 'csstype';
 import styled from 'styled-components';
-import avatar from '../../Images/avatar.png';
+import avatarImg from '../../Images/avatar.png';
 import apiReqs from '../../API/apiReqs';
 import { IUser } from '../index.d';
 
@@ -108,7 +108,7 @@ function Profile({ user, setUser }: PropTypes): ReactElement {
       {user && user.userIcon ? (
         <img style={st.userIcon} src={user.userIcon} alt="profile pic" />
       ) : (
-        <img style={st.userIcon} src={avatar} alt="profile pic" />
+        <img style={st.userIcon} src={avatarImg} alt="profile pic" />
       )}
     </div>
   );
