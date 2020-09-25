@@ -1,26 +1,30 @@
-version: "3"
+version: "3.8"
 services:
   reverseproxy:
-      image: noiffion/udagram-revproxy
+      image: noiffion/ecars-revproxy
       ports:
           - 8080:8080
       restart: always
       depends_on:
-        - backend-user
-        - backend-feed
-  backend-user:
-    image: noiffion/udagram-user
+        - ecars-cars
+        - ecars-reviews
+        - ecars-users
+  ecars-cars:
+    image: noiffion/ecars-cars
     tty: true
     env_file:
       - .env
-  backend-feed:
+  ecars-reviews:
+    image: noiffion/ecars-reviews
     tty: true
-    image: noiffion/udagram-feed
-    volumes:
-      - $HOME/.aws:/root/.aws
     env_file:
       - .env
-  frontend:
-    image: noiffion/udagram-client
+  ecars-users:
+    image: noiffion/ecars-users
+    tty: true
+    env_file:
+      - .env
+  ecars-client:
+    image: noiffion/ecars-client
     ports:
-      - "8100:80"
+      - "3003:80"

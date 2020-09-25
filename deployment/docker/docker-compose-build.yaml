@@ -1,18 +1,22 @@
-version: "3"
+version: "3.8"
 services:
-  reverseproxy:
+  ecars-revproxy:
     build:
       context: .
-    image: noiffion/udagram-revproxy
-  backend_user:
+    image: noiffion/ecars-revproxy
+  ecars-cars:
     build:
-      context: ../../user
-    image: noiffion/udagram-user
-  backend_feed:
+      context: ../../cars
+    image: noiffion/ecars-cars
+  ecars-reviews:
     build:
-      context: ../../feed
-    image: noiffion/udagram-feed
-  frontend:
+      context: ../../reviews
+    image: noiffion/ecars-reviews
+  ecars-users:
+    build:
+      context: ../../users
+    image: noiffion/ecars-users
+  ecars-client:
     build:
       context: ../../client
-    image: noiffion/udagram-client
+    image: noiffion/ecars-client
