@@ -4,7 +4,6 @@ import { Avatar } from '@zendeskgarden/react-avatars';
 import { Button } from '@zendeskgarden/react-buttons';
 import styled from 'styled-components';
 import CSS from 'csstype';
-import avatarImg from '../../Images/avatar.png';
 import { IUser } from '../index.d';
 
 interface Styles {
@@ -92,7 +91,7 @@ function LogBar({
                 style={{ marginTop: '1px', marginBottom: '1px' }}
               >
                 {user && user.userIcon ? (
-                  <img src={user.userIcon} alt="user icon image" />
+                  <img src={user.userIcon} alt="user icon" />
                 ) : (
                   <Avatar.Text>{user.firstName?.charAt(0)}</Avatar.Text>
                 )}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, ReactElement } from 'react';
-import { useParams, withRouter, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { Button } from '@zendeskgarden/react-buttons';
 import { Dots } from '@zendeskgarden/react-loaders';
 import styled from 'styled-components';
