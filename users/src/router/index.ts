@@ -4,10 +4,10 @@ import authCheck from '../utils/authCheck';
 
 const router = express.Router();
 
-router.post('/signup', controller.signUp);
-router.post('/signin', controller.signIn);
-router.get('/profile', authCheck, controller.profile);
-router.get('/profile/pic/:imgName', authCheck, controller.putSignedUrl);
-router.put('/profile/pic', authCheck, controller.uploadProfilePic);
+router.post('/users/signup', controller.signUp);
+router.post('/users/signin', controller.signIn);
+router.get('/users/profile', authCheck, controller.profile);
+router.get('/users/profile/pic/:imgName', authCheck, controller.putSignedUrl);
+router.put('/users/profile/pic', authCheck, controller.uploadProfilePic);
 
 export default router;
