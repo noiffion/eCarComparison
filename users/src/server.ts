@@ -1,8 +1,8 @@
 import express, { Request, Response } from 'express';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import console from './utils/console';
 import router from './router';
-import cors from 'cors';
 
 export const JWT_KEY = process.env.JWT_KEY || '';
 const PORT = process.env.PORT;
