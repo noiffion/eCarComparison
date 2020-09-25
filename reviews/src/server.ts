@@ -24,7 +24,7 @@ mongoose
       res.status(200);
       res.send('eCar API root');
     });
-    app.use(router);
+    app.use('/api/', router);
     app.get('*', (req: Request, res: Response): void => {
       res.status(404);
       res.send('Not found the page you have been looking for!');

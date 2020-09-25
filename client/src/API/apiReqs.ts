@@ -1,6 +1,6 @@
 import { ICar, IUser, IReview, SignAuth, SignedUrl } from '../Components/index.d';
 
-const API_URL = 'http://localhost:5000/';
+const API_URL = 'http://localhost:8080/api/';
 
 async function request<T>(path: string, init: RequestInit): Promise<T> {
   return fetch(`${API_URL}${path}`, init)
