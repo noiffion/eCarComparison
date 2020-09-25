@@ -11,12 +11,14 @@ async function request<T>(path: string, init: RequestInit): Promise<T> {
 
 export default {
   async getECars(): Promise<ICar[]> {
+    const path = 'cars';
     const init: RequestInit = {
       method: 'GET',
     };
-    return request<ICar[]>('cars', init);
+    return request<ICar[]>(path, init);
   },
   async getOneCar(carId: string): Promise<ICar> {
+    const path = `cars/${carId}`;
     const init: RequestInit = {
       method: 'GET',
       mode: 'cors',
@@ -24,11 +26,11 @@ export default {
         Accept: 'application/json',
       },
     };
-    return request<ICar>(`cars/${carId}`, init);
+    return request<ICar>(path, init);
   },
 
   async signAuth(isNew: boolean, userData: IUser): Promise<SignAuth> {
-    const path = isNew ? 'signUp' : 'signIn';
+    const path = isNew ? 'users/signUp' : 'users/signIn';
     const init: RequestInit = {
       method: 'POST',
       mode: 'cors',
@@ -40,6 +42,7 @@ export default {
     return request<SignAuth>(path, init);
   },
   async profile(jwtToken: string): Promise<IUser> {
+    const path = 'users/profile';
     const init: RequestInit = {
       method: 'GET',
       mode: 'cors',
@@ -49,9 +52,10 @@ export default {
         Authorization: `Bearer ${jwtToken}`,
       },
     };
-    return request<IUser>('profile', init);
+    return request<IUser>(path, init);
   },
   async putAWSSign(jwtToken: string, fileName: string): Promise<SignedUrl> {
+    const path = `users/profile/pic/${fileName}`;
     const init: RequestInit = {
       method: 'GET',
       mode: 'cors',
@@ -61,7 +65,7 @@ export default {
         Authorization: `Bearer ${jwtToken}`,
       },
     };
-    return request<SignedUrl>(`profile/pic/${fileName}`, init);
+    return request<SignedUrl>(path, init);
   },
   async uploadToS3(signedUrl: string, imageFile: File): Promise<string | void> {
     const init: RequestInit = {
@@ -78,6 +82,7 @@ export default {
       .catch(console.error);
   },
   async uploadProfilePic(jwtToken: string, profilePic: IUser): Promise<IUser> {
+    const path = 'users/profile/pic';
     const init: RequestInit = {
       method: 'PUT',
       mode: 'cors',
@@ -88,10 +93,11 @@ export default {
       },
       body: JSON.stringify(profilePic),
     };
-    return request<IUser>('profile/pic', init);
+    return request<IUser>(path, init);
   },
 
   async getReviews(carId: string): Promise<IReview[]> {
+    const path = `reviews/${carId}`;
     const init: RequestInit = {
       method: 'GET',
       mode: 'cors',
@@ -99,9 +105,10 @@ export default {
         Accept: 'application/json',
       },
     };
-    return request<IReview[]>(`reviews/${carId}`, init);
+    return request<IReview[]>(path, init);
   },
   async newReview(jwtToken: string, review: IReview): Promise<IReview[]> {
+    const path = 'reviews';
     const init: RequestInit = {
       method: 'POST',
       mode: 'cors',
@@ -112,9 +119,10 @@ export default {
       },
       body: JSON.stringify(review),
     };
-    return request<IReview[]>('reviews', init);
+    return request<IReview[]>(path, init);
   },
   async updReview(jwtToken: string, review: IReview, reviewId: string): Promise<IReview> {
+    const path = `reviews/${reviewId}`;
     const init: RequestInit = {
       method: 'PUT',
       mode: 'cors',
@@ -125,9 +133,10 @@ export default {
       },
       body: JSON.stringify(review),
     };
-    return request<IReview>(`reviews/${reviewId}`, init);
+    return request<IReview>(path, init);
   },
   async delReview(jwtToken: string, reviewId: string): Promise<IReview[]> {
+    const path = `reviews/${reviewId}`;
     const init: RequestInit = {
       method: 'DELETE',
       mode: 'cors',
@@ -137,6 +146,6 @@ export default {
         Authorization: `Bearer ${jwtToken}`,
       },
     };
-    return request<IReview[]>(`reviews/${reviewId}`, init);
+    return request<IReview[]>(path, init);
   },
 };
