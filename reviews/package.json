@@ -1,5 +1,5 @@
 {
-  "name": "ecarcomparison_server",
+  "name": "ecarcomparison_reviews",
   "version": "1.0.0",
   "description": "eCarComparison Codeworks project BE folder",
   "main": "src/server.ts",

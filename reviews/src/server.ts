@@ -10,7 +10,7 @@ const MONGO = {
   UNAME: process.env.DB_UNAME,
   PWD: process.env.DB_PWD,
   PATH: process.env.DB_PATH,
-}
+};
 const mongoURL = `mongodb+srv://${MONGO.UNAME}:${MONGO.PWD}${MONGO.PATH}`;
 
 const app = express();
