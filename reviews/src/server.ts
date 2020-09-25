@@ -6,10 +6,12 @@ import router from './router';
 
 export const JWT_KEY = process.env.JWT_KEY || '';
 const PORT = process.env.PORT;
-const MONGO_USERNAME = process.env.DB_UNAME;
-const MONGO_PASSWORD = process.env.DB_PWD;
-const MONGO_PATH = process.env.DB_PATH;
-const mongoURL = `mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}${MONGO_PATH}`;
+const MONGO = {
+  UNAME: process.env.DB_UNAME,
+  PWD: process.env.DB_PWD,
+  PATH: process.env.DB_PATH,
+}
+const mongoURL = `mongodb+srv://${MONGO.UNAME}:${MONGO.PWD}${MONGO.PATH}`;
 
 const app = express();
 
