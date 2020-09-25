@@ -31,6 +31,6 @@ mongoose
       res.status(404);
       res.send('Not found the page you have been looking for!');
     });
-    app.listen(PORT, () => console.info(`eCarComp server is running on port: ${PORT}`));
+    app.listen(PORT, () => console.info(`eCarComp - cars server is running on port: ${PORT}`));
   })
   .catch(console.error);
