@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { IReview } from './models';
+import { IReview } from './index.d';
 
 const Reviews: mongoose.Schema = new mongoose.Schema(
   {

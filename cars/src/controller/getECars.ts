@@ -1,6 +1,6 @@
-import { ControllerMethod } from './controller';
-import Cars from '../models/Cars';
-import { ICar } from '../models/models';
+import Cars from '../model/Cars';
+import { ControllerMethod } from './index.d';
+import { ICar } from '../model';
 
 const getECars: ControllerMethod = async function (req, res) {
   try {

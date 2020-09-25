@@ -1,7 +1,7 @@
-import { ControllerMethod } from './controller';
+import { ControllerMethod } from './index.d';
+import Users from '../model/Users';
 import { getGetSignedUrl } from '../utils/aws';
-import Users from '../models/Users';
-import { IUser } from '../models/models';
+import { IUser } from '../model';
 
 const uploadProfilePic: ControllerMethod = async function (req, res) {
   try {

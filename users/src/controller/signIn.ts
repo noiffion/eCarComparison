@@ -1,10 +1,10 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import { ControllerMethod } from './controller';
+import Users from '../model/Users';
 import { getGetSignedUrl } from '../utils/aws';
-import Users from '../models/Users';
-import { IUser } from '../models/models';
 import { JWT_KEY } from '../server';
+import { ControllerMethod } from './index.d';
+import { IUser } from '../model';
 
 const signIn: ControllerMethod = async function (req, res) {
   const { email, password } = req.body;

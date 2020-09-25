@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { ICar } from './models';
+import { ICar } from './index.d';
 
 const Cars: mongoose.Schema = new mongoose.Schema(
   {

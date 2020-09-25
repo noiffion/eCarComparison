@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import { ControllerMethod } from './controller';
-import Users from '../models/Users';
+import Users from '../model/Users';
+import { ControllerMethod } from './index.d';
 import { JWT_KEY } from '../server';
 
 const signUp: ControllerMethod = async function (req, res) {

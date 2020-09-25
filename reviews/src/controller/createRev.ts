@@ -1,6 +1,6 @@
 import { ControllerMethod } from './controller';
-import Reviews from '../models/Reviews';
-import { IReview } from '../models/models';
+import Reviews from '../model/Reviews';
+import { IReview } from '../model';
 
 const createRev: ControllerMethod = async function (req, res) {
   try {

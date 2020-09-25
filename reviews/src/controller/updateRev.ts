@@ -1,5 +1,5 @@
 import { ControllerMethod } from './controller';
-import Reviews from '../models/Reviews';
+import Reviews from '../model/Reviews';
 
 const updateRev: ControllerMethod = async function (req, res) {
   try {

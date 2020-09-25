@@ -1,5 +1,5 @@
-import { ControllerMethod } from './controller';
 import { getPutSignedUrl } from '../utils/aws';
+import { ControllerMethod } from './index.d';
 
 const putSignedUrl: ControllerMethod = async function (req, res) {
   try {
