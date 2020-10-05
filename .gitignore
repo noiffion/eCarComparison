@@ -107,6 +107,6 @@ dist
 # environment variables setter script
 set_env.sh
 
-#k8s environment live variables
-env-configmap_live.yaml
-env-secret_live.yaml
+#k8s environment variables
+_env-configmap.yaml
+_env-secret.yaml
