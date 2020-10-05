@@ -60,7 +60,7 @@ Add .travis.yml file with the appropriate settings (after each commit to the 'ma
 You'll need to install [Docker](https://docs.docker.com/install/). Open a new terminal within the project directory (in the 'deployment' folder):
 
 ```
-cd deployment
+cd deployment/docker
 ```
 The following shell variables need to be set (in an .env file in the folder above with the appropriate values):
 ```
@@ -92,6 +92,8 @@ docker-compose up
 <div align="center">
   <img src="./screenshots/docker-compose_up.png" alt="docker-compose up" style="zoom:40%;" />
 </div>
+
+After that you should open a browser at http://localhost:3003/
 
 Stop the containers:
 ```

@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    service: udagram-client
-  name: udagram-client
+    service: ecars-client
+  name: ecars-client
 spec:
   replicas: 2
   strategy:
@@ -13,17 +13,17 @@ spec:
       maxUnavailable: 25%
   selector:
     matchLabels:
-      service: udagram-client
+      service: ecars-client
       api: external
   template:
     metadata:
       labels:
-        service: udagram-client
+        service: ecars-client
         api: external
     spec:
       containers:
-      - image: noiffion/udagram-client
-        name: udagram-client
+      - image: noiffion/ecars-client
+        name: ecars-client
         imagePullPolicy: Always
         ports:
         - containerPort: 80

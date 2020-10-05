@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    service: revproxy
-  name: revproxy
+    service: ecars-revproxy
+  name: ecars-revproxy
 spec:
   replicas: 2
   strategy:
@@ -13,15 +13,15 @@ spec:
       maxUnavailable: 25%
   selector:
     matchLabels:
-      service: revproxy
+      service: ecars-revproxy
   template:
     metadata:
       labels:
-        service: revproxy
+        service: ecars-revproxy
     spec:
       containers:
-      - image: noiffion/revproxy
-        name: revproxy
+      - image: noiffion/ecars-revproxy
+        name: ecars-revproxy
         imagePullPolicy: Always
         resources:
           requests:

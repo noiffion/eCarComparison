@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    service: udagram-user
-  name: udagram-user
+    service: ecars-user
+  name: ecars-user
 spec:
   replicas: 2
   strategy:
@@ -13,15 +13,15 @@ spec:
       maxUnavailable: 25%
   selector:
     matchLabels:
-      service: udagram-user
+      service: ecars-user
   template:
     metadata:
       labels:
-        service: udagram-user
+        service: ecars-user
     spec:
       containers:
-      - image: noiffion/udagram-user
-        name: udagram-user
+      - image: noiffion/ecars-user
+        name: ecars-user
         imagePullPolicy: Always
         resources:
           requests:
