@@ -123,7 +123,7 @@ An EKS cluster with proper node groups must be set up on AWS.
 
 Connect the kubernetes cluster created on AWS to kubectl:
 ```
-aws eks --region eu-central-1 update-kubeconfig --name <project_name>
+aws eks --region <aws-region> update-kubeconfig --name <project_name>
 ```
 
 Set the correct values in env-secret.yaml and env-configmap.yaml files.
