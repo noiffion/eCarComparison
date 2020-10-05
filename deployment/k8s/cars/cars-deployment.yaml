@@ -36,11 +36,11 @@ spec:
             configMapKeyRef:
               name: env-config
               key: FRONT_URL
-        - name: POSTGRES_DB
+        - name: DB_UNAME
           valueFrom:
             configMapKeyRef:
               name: env-config
-              key: POSTGRES_DB
+              key: DB_UNAME
         - name: POSTGRES_HOST
           valueFrom:
             configMapKeyRef:
