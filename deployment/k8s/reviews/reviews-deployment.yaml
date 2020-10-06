@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: ecars-reviews
+  name: ecars-reviews
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      service: ecars-reviews
+  template:
+    metadata:
+      labels:
+        service: ecars-reviews
+    spec:
+      containers:
+      - image: noiffion/ecars-reviews
+        name: ecars-reviews
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"
+        env:
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: PORT
+        - name: FRONT_URL
+          valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: FRONT_URL
+        - name: DB_UNAME
+          valueFrom:
+            secretKeyRef:
+              name: env-secret
+              key: DB_UNAME
+        - name: DB_PWD
+          valueFrom:
+            secretKeyRef:
+              name: env-secret
+              key: DB_PWD
+        - name: DB_PATH
+          valueFrom:
+            secretKeyRef:
+              name: env-secret
+              key: DB_PATH
+        - name: JWT_KEY
+          valueFrom:
+            secretKeyRef:
+              name: env-secret
+              key: JWT_KEY
+      restartPolicy: Always
