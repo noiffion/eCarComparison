@@ -31,6 +31,11 @@ spec:
             memory: "1024Mi"
             cpu: "500m"
         env:
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: PORT
         - name: FRONT_URL
           valueFrom:
             configMapKeyRef:
@@ -38,27 +43,22 @@ spec:
               key: FRONT_URL
         - name: DB_UNAME
           valueFrom:
-            configMapKeyRef:
-              name: env-config
+            secretKeyRef:
+              name: env-secret
               key: DB_UNAME
-        - name: POSTGRES_HOST
-          valueFrom:
-            configMapKeyRef:
-              name: env-config
-              key: POSTGRES_HOST
-        - name: POSTGRES_PASSWORD
+        - name: DB_PWD
           valueFrom:
             secretKeyRef:
               name: env-secret
-              key: POSTGRES_PASSWORD
-        - name: POSTGRES_USERNAME
+              key: DB_PWD
+        - name: DB_PATH
           valueFrom:
             secretKeyRef:
               name: env-secret
-              key: POSTGRES_USERNAME
-        - name: JWT_SECRET
+              key: DB_PATH
+        - name: JWT_KEY
           valueFrom:
             secretKeyRef:
               name: env-secret
-              key: JWT_SECRET
+              key: JWT_KEY
       restartPolicy: Always
