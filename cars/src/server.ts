@@ -5,6 +5,7 @@ import console from './utils/console';
 import router from './router';
 
 export const JWT_KEY = process.env.JWT_KEY || '';
+const FRONT_URL = process.env.FRONT_URL;
 const PORT = process.env.PORT;
 const MONGO = {
   UNAME: process.env.DB_UNAME,
@@ -20,7 +21,7 @@ mongoose
   .then(() => {
     console.info('Successfully connected to the Mongo database!');
 
-    app.use(cors({ origin: 'http://localhost:3003', credentials: true }));
+    app.use(cors({ origin: FRONT_URL, credentials: true }));
     app.use(express.json());
     app.get('/', (req: Request, res: Response): void => {
       res.status(200);
