@@ -1,4 +1,4 @@
-import { ControllerMethod } from './controller';
+import { ControllerMethod } from './index.d';
 import Reviews from '../model/Reviews';
 
 const updateRev: ControllerMethod = async function (req, res) {
