@@ -134,29 +134,52 @@ Go to the 'deployment/k8s' folder and run the commands below in the following or
 kubectl apply -f env-secret.yaml
 kubectl apply -f env-configmap.yaml
 
-kubectl apply -f frontend-deployment.yaml
-kubectl apply -f frontend-service.yaml
+kubectl apply -f client-deployment.yaml
+kubectl apply -f client-service.yaml
 
-kubectl apply -f backend-feed-deployment.yaml
-kubectl apply -f backend-feed-service.yaml
+kubectl apply -f users-deployment.yaml
+kubectl apply -f users-service.yaml
 
-kubectl apply -f backend-user-deployment.yaml
-kubectl apply -f backend-user-service.yaml
+kubectl apply -f reviews-deployment.yaml
+kubectl apply -f reviews-service.yaml
 
-kubectl apply -f reverseproxy-deployment.yaml
-kubectl apply -f reverseproxy-service.yaml
+kubectl apply -f cars-deployment.yaml
+kubectl apply -f cars-service.yaml
+
+kubectl apply -f revproxy-deployment.yaml
+kubectl apply -f revproxy-service.yaml
 ```
 
 Verify that every container has been deployed correctly, the services have been set up and all pods are running:
 ```
 kubectl get all
 ```
+<div align="center">
+  <img src="./screenshots/kubectl_get_all.png" alt="DockerHub" style="zoom:40%;" />
+</div>
 
-Cloudwatch!!!
+```
+kubectl logs <pod_name>
+```
+<div align="center">
+  <img src="./screenshots/kubectl_logs.png" alt="DockerHub" style="zoom:70%;" />
+</div>
 
 ***
 
-### Built with:
+## Cloudwatch
+
+<div align="center">
+  <img src="./screenshots/CloudWatch_EC2.png" alt="DockerHub" style="zoom:40%;" />
+</div>
+
+<div align="center">
+  <img src="./screenshots/CloudWatch_logs.png" alt="DockerHub" style="zoom:40%;" />
+</div>
+
+***
+
+## Built with:
 
 Front end:
 - [Create React App](https://github.com/facebook/create-react-app)
