@@ -49,7 +49,7 @@ The CI tool used for the project is TravisCI (you need to connect your repo to T
 Add .travis.yml file with the appropriate settings (after each commit to the 'main' branch a build process starts automatically).
 
 <div align="center">
-  <img src="./screenshots/travis_build.png" alt="result of build process with Travis" style="zoom:40%;" />
+  <img src="./screenshots/Travis_build.png" alt="result of build process with Travis" style="zoom:40%;" />
 </div>
 
 ***
