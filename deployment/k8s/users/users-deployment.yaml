@@ -1,0 +1,89 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: ecars-users
+  name: ecars-users
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      service: ecars-users
+  template:
+    metadata:
+      labels:
+        service: ecars-users
+    spec:
+      containers:
+      - image: noiffion/ecars-users
+        name: ecars-users
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"
+        env:
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: PORT
+        - name: FRONT_URL
+          valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: FRONT_URL
+        - name: AWS_PROFILE
+          valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: AWS_PROFILE
+        - name: AWS_REGION
+          valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: AWS_REGION
+        - name: AWS_BUCKET
+          valueFrom:
+            configMapKeyRef:
+              name: env-config
+              key: AWS_BUCKET
+        - name: DB_UNAME
+          valueFrom:
+            secretKeyRef:
+              name: env-secret
+              key: DB_UNAME
+        - name: DB_PWD
+          valueFrom:
+            secretKeyRef:
+              name: env-secret
+              key: DB_PWD
+        - name: DB_PATH
+          valueFrom:
+            secretKeyRef:
+              name: env-secret
+              key: DB_PATH
+        - name: AWS_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: env-secret
+              key: AWS_ACCESS_KEY
+        - name: AWS_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: env-secret
+              key: AWS_SECRET_KEY
+        - name: JWT_KEY
+          valueFrom:
+            secretKeyRef:
+              name: env-secret
+              key: JWT_KEY
+      restartPolicy: Always
