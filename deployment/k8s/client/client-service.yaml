@@ -6,8 +6,8 @@ metadata:
   name: ecars-client
 spec:
   ports:
-  - name: "8100"
-    port: 8100
+  - name: "3003"
+    port: 3003
     targetPort: 80
   selector:
     service: ecars-client
